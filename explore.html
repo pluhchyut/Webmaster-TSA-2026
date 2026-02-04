@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Explore New Providence</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link
+      href="https://api.mapbox.com/mapbox-gl-js/v2.16.1/mapbox-gl.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="grain"></div>
+
+    <header class="site-header">
+      <div class="brand">
+        <span class="brand-mark">NP</span>
+        <div>
+          <p class="brand-title">New Providence Community Hub</p>
+          <p class="brand-subtitle">Explore</p>
+        </div>
+      </div>
+      <nav class="nav">
+        <a href="index.html">Home</a>
+        <a href="explore.html" class="active">Explore</a>
+        <a href="bulletin.html">Bulletin</a>
+        <a href="directory.html">Directory</a>
+        <a href="support.html">Support</a>
+        <a href="education.html">Education</a>
+        <a href="forum.html">Forum</a>
+        <a href="chatbot.html">Chatbot</a>
+      </nav>
+      <a class="cta" href="funding.html">Funding</a>
+    </header>
+
+
+    <div class="warning-banner" id="warning-banner">
+      <strong>Warnings</strong>
+      <span>No active warnings. Alerts will appear here if needed.</span>
+    </div>
+
+    <main>
+      <section class="section">
+        <div class="section-title">
+          <h2>Explore New Providence</h2>
+          <p>
+            Interactive destinations map plus curated attraction categories. Use
+            the dropdowns to filter highlights.
+          </p>
+        </div>
+        <div class="explore-grid">
+          <div class="map-panel">
+            <div class="map-header">
+              <p class="eyebrow">Interactive map</p>
+              <button id="reset-map" class="ghost">Reset view</button>
+            </div>
+            <div id="map" class="live-map"></div>
+            <div class="map-tooltip" id="map-tooltip" aria-live="polite"></div>
+            <p class="note">
+              Map powered by Mapbox. Replace the access token below.
+            </p>
+          </div>
+          <div class="attractions-panel">
+            <div class="filters">
+              <label>
+                Category
+                <select id="category-select">
+                  <option value="all">All Attractions</option>
+                  <option value="restaurants">Restaurants</option>
+                  <option value="hiking">Hiking & Parks</option>
+                  <option value="shopping">Shopping</option>
+                  <option value="arts">Arts & Culture</option>
+                </select>
+              </label>
+              <label>
+                Neighborhood
+                <select id="neighborhood-select">
+                  <option value="all">All Neighborhoods</option>
+                  <option value="downtown">Downtown</option>
+                  <option value="oakwood">Oakwood</option>
+                  <option value="fairview">Fairview</option>
+                </select>
+              </label>
+            </div>
+            <div class="attraction-cards" id="attraction-cards"></div>
+            <p class="slot">Space reserved for additional attraction categories.</p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <p>New Providence Community Hub · Draft for competition showcase</p>
+    </footer>
+
+    <script>
+      window.MAPBOX_TOKEN = "YOUR_MAPBOX_ACCESS_TOKEN";
+    </script>
+    <script src="https://api.mapbox.com/mapbox-gl-js/v2.16.1/mapbox-gl.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>

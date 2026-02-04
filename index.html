@@ -1,0 +1,173 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>New Providence, NJ Community Hub</title>
+    <meta
+      name="description"
+      content="A modern community portal for New Providence, New Jersey featuring events, services, alerts, and local organizations."
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="grain"></div>
+
+    <header class="site-header">
+      <div class="brand">
+        <span class="brand-mark">NP</span>
+        <div>
+          <p class="brand-title">New Providence Community Hub</p>
+          <p class="brand-subtitle">New Providence, New Jersey</p>
+        </div>
+      </div>
+      <nav class="nav">
+        <a href="index.html" class="active">Home</a>
+        <a href="explore.html">Explore</a>
+        <a href="bulletin.html">Bulletin</a>
+        <a href="directory.html">Directory</a>
+        <a href="support.html">Support</a>
+        <a href="education.html">Education</a>
+        <a href="forum.html">Forum</a>
+        <a href="chatbot.html">Chatbot</a>
+      </nav>
+      <button class="cta">Town Alerts</button>
+    </header>
+
+
+    <div class="warning-banner" id="warning-banner">
+      <strong>Warnings</strong>
+      <span>No active warnings. Alerts will appear here if needed.</span>
+    </div>
+
+    <main class="snap-container">
+      <section class="hero snap-section">
+        <div class="hero-copy">
+          <p class="eyebrow">Community-first portal</p>
+          <h1>
+            Everything happening in New Providence, curated for neighbors,
+            visitors, and local leaders.
+          </h1>
+          <p class="lede">
+            Track projects and funding, find attractions, get live community
+            updates, and connect with local organizations. Designed for a
+            competition-ready presentation with room to grow.
+          </p>
+          <div class="hero-actions">
+            <a class="primary" href="bulletin.html">View Community Calendar</a>
+            <a class="ghost" href="support.html">Submit a Town Issue</a>
+          </div>
+          <div class="hero-metrics">
+            <div>
+              <p class="metric-value">$18.4M</p>
+              <p class="metric-label">Active civic funding</p>
+            </div>
+            <div>
+              <p class="metric-value">42</p>
+              <p class="metric-label">Community partners</p>
+            </div>
+            <div>
+              <p class="metric-value">6</p>
+              <p class="metric-label">Real-time alert channels</p>
+            </div>
+          </div>
+        </div>
+        <div class="hero-visual">
+          <div class="orbit-card">
+            <p class="card-title">Town Snapshot</p>
+            <ul>
+              <li>Population: 13,650</li>
+              <li>County: Union</li>
+              <li>Focus: Walkability & sustainability</li>
+            </ul>
+          </div>
+          <div class="orbit-card">
+            <p class="card-title">Today in town</p>
+            <p>Library Story Time · 10:30 AM</p>
+            <p>Planning Board Session · 7:00 PM</p>
+          </div>
+          <div class="hero-typewriter">
+            <p class="eyebrow">Live Message</p>
+            <div class="typewriter-box" id="typewriter-box"></div>
+          </div>
+          <div class="hero-glow"></div>
+        </div>
+      </section>
+
+      <section class="section snap-section">
+        <div class="section-title">
+          <h2>Quick Jump</h2>
+          <p>Explore each hub area in its own dedicated page.</p>
+        </div>
+        <div class="quick-grid">
+          <a class="quick-card" href="explore.html">
+            <h3>Explore & Map</h3>
+            <p>Interactive map, attractions, and neighborhood filters.</p>
+          </a>
+          <a class="quick-card" href="funding.html">
+            <h3>Funding Graphs</h3>
+            <p>Track capital projects, grants, and investments.</p>
+          </a>
+          <a class="quick-card" href="bulletin.html">
+            <h3>Bulletin Board</h3>
+            <p>Regulations, lost pets, street projects, and calendar.</p>
+          </a>
+          <a class="quick-card" href="forum.html">
+            <h3>Community Forum</h3>
+            <p>Ask questions, get answers, highlight wins.</p>
+          </a>
+          <a class="quick-card" href="directory.html">
+            <h3>Get Connected</h3>
+            <p>Clubs, groups, and volunteer teams.</p>
+          </a>
+          <a class="quick-card" href="support.html">
+            <h3>Support & Help</h3>
+            <p>Alerts, hotlines, and improvement tickets.</p>
+          </a>
+          <a class="quick-card" href="education.html">
+            <h3>Education & School</h3>
+            <p>BOE updates, district links, community learning.</p>
+          </a>
+          <a class="quick-card" href="chatbot.html">
+            <h3>Town Chatbot</h3>
+            <p>GPT-powered assistant for town services.</p>
+          </a>
+        </div>
+      </section>
+
+      <section class="section snap-section">
+        <div class="highlights-hero">
+          <div class="highlights-media" id="highlights-media">
+            <div class="highlights-image is-active" id="highlights-image-a"></div>
+            <div class="highlights-image" id="highlights-image-b"></div>
+            <div class="highlights-title typewriter-title" id="highlights-title"></div>
+            <button class="highlights-arrow left" id="highlights-prev">Prev</button>
+            <button class="highlights-arrow right" id="highlights-next">Next</button>
+            <div class="highlights-controls">
+              <div class="highlights-dots" id="highlights-dots"></div>
+            </div>
+          </div>
+          <aside class="hero-typewriter highlights-typewriter">
+            <p class="eyebrow">Event Notes</p>
+            <div class="typewriter-box" id="highlights-typewriter"></div>
+          </aside>
+        </div>
+      </section>
+
+      <section class="section finale snap-section">
+        <h2>Room to grow</h2>
+        <p>
+          This hub leaves space for future data feeds, embedded town services,
+          and live community updates.
+        </p>
+        <a class="ghost" href="bulletin.html">Reserve a slot</a>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <p>New Providence Community Hub · Draft for competition showcase</p>
+    </footer>
+
+    <script src="app.js"></script>
+  </body>
+</html>
