@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Community Bulletin Board</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="grain"></div>
+
+    <header class="site-header">
+      <div class="brand">
+        <span class="brand-mark">NP</span>
+        <div>
+          <p class="brand-title">New Providence Community Hub</p>
+          <p class="brand-subtitle">Bulletin Board</p>
+        </div>
+      </div>
+      <nav class="nav">
+        <a href="index.html">Home</a>
+        <a href="explore.html">Explore</a>
+        <a href="bulletin.html" class="active">Bulletin</a>
+        <a href="directory.html">Directory</a>
+        <a href="support.html">Support</a>
+        <a href="education.html">Education</a>
+        <a href="forum.html">Forum</a>
+      </nav>
+      <a class="cta" href="funding.html">Funding</a>
+    </header>
+
+
+    <div class="warning-banner" id="warning-banner">
+      <strong>Warnings</strong>
+      <span>No active warnings. Alerts will appear here if needed.</span>
+    </div>
+
+    <main>
+      <section class="section">
+        <div class="section-title">
+          <h2>Community Bulletin Board</h2>
+          <p>
+            Updates, regulations, lost pets, urgent notices, and street projects.
+          </p>
+        </div>
+        <div class="bulletin-loop" aria-label="Bulletin loop">
+          <div class="bulletin-track" id="bulletin-track">
+            <div class="bulletin-card">
+              <p class="tag">New Regulation</p>
+              <h3>Outdoor dining seasonal permit update</h3>
+              <p>Permit renewals due March 15. New patio safety checklist added.</p>
+            </div>
+            <div class="bulletin-card">
+              <p class="tag">Lost Pet</p>
+              <h3>Missing golden retriever near Central Ave</h3>
+              <p>Last seen Sunday afternoon. Contact animal shelter hotline.</p>
+            </div>
+            <div class="bulletin-card">
+              <p class="tag">Street Project</p>
+              <h3>South Street paving schedule</h3>
+              <p>Work begins February 20 with nightly lane closures.</p>
+            </div>
+            <div class="bulletin-card">
+              <p class="tag">Rut Rohs</p>
+              <h3>Storm drain blockage alert</h3>
+              <p>Public Works clearing area; report additional flooding.</p>
+            </div>
+            <div class="bulletin-card">
+              <p class="tag">Safety</p>
+              <h3>Crosswalk visibility upgrade</h3>
+              <p>LED beacons installed near the library this week.</p>
+            </div>
+            <div class="bulletin-card">
+              <p class="tag">Community</p>
+              <h3>Volunteer call: Winter Fest Parade</h3>
+              <p>Sign up for marshaling and hospitality stations.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="highlights">
+          <div class="highlights-header">
+            <h3>Highlights</h3>
+            <span class="tag">Live feed</span>
+          </div>
+          <div class="highlights-item" id="highlights-item"></div>
+        </div>
+
+        <div class="calendar">
+          <div class="calendar-header">
+            <h3>Town Calendar</h3>
+            <button id="bulletin-add-event" class="ghost" type="button">
+              Add Event
+            </button>
+          </div>
+          <div class="calendar-grid" id="calendar-grid">
+            <div>
+              <p class="calendar-date">Feb 6</p>
+              <p>Town Council Meeting</p>
+            </div>
+            <div>
+              <p class="calendar-date">Feb 10</p>
+              <p>Senior Center Open House</p>
+            </div>
+            <div>
+              <p class="calendar-date">Feb 14</p>
+              <p>Winter Fest Parade</p>
+            </div>
+            <div>
+              <p class="calendar-date">Feb 22</p>
+              <p>Community Cleanup Day</p>
+            </div>
+          </div>
+          <p class="slot">Space reserved for live calendar integration.</p>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <p>New Providence Community Hub · Draft for competition showcase</p>
+    </footer>
+
+    <script src="app.js"></script>
+  </body>
+</html>

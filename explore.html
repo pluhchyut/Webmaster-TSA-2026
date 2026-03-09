@@ -5,10 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Explore New Providence</title>
     <link rel="stylesheet" href="styles.css" />
-    <link
-      href="https://api.mapbox.com/mapbox-gl-js/v2.16.1/mapbox-gl.css"
-      rel="stylesheet"
-    />
   </head>
   <body>
     <div class="grain"></div>
@@ -29,7 +25,6 @@
         <a href="support.html">Support</a>
         <a href="education.html">Education</a>
         <a href="forum.html">Forum</a>
-        <a href="chatbot.html">Chatbot</a>
       </nav>
       <a class="cta" href="funding.html">Funding</a>
     </header>
@@ -52,16 +47,32 @@
         <div class="explore-grid">
           <div class="map-panel">
             <div class="map-header">
-              <p class="eyebrow">Interactive map</p>
-              <button id="reset-map" class="ghost">Reset view</button>
+              <p class="eyebrow">3D Town Map</p>
+              <button id="reset-town" class="ghost">Reset view</button>
             </div>
-            <div id="map" class="live-map"></div>
-            <div class="map-tooltip" id="map-tooltip" aria-live="polite"></div>
+            <div class="town3d-wrap" aria-label="3D town map">
+              <div id="town3d" class="town3d"></div>
+              <div
+                class="map-tooltip"
+                id="map-tooltip"
+                aria-live="polite"
+              ></div>
+            </div>
             <p class="note">
-              Map powered by Mapbox. Replace the access token below.
+              Drag to pan, right-drag to rotate, scroll to zoom. Click thumbtacks
+              to view details.
             </p>
           </div>
           <div class="attractions-panel">
+            <div class="details-card" id="attraction-details">
+              <p class="eyebrow">Selected</p>
+              <h3 id="details-title">Click a thumbtack</h3>
+              <p id="details-desc" class="note">
+                Select an attraction in the 3D map or from the list to see
+                details here.
+              </p>
+              <div class="details-meta" id="details-meta"></div>
+            </div>
             <div class="filters">
               <label>
                 Category
@@ -84,7 +95,41 @@
               </label>
             </div>
             <div class="attraction-cards" id="attraction-cards"></div>
-            <p class="slot">Space reserved for additional attraction categories.</p>
+            <div class="suggest-card">
+              <p class="eyebrow">Suggest an attraction</p>
+              <label>
+                Name
+                <input id="suggest-name" type="text" placeholder="Attraction name" />
+              </label>
+              <label>
+                Category
+                <select id="suggest-category">
+                  <option value="restaurants">Restaurants</option>
+                  <option value="hiking">Hiking & Parks</option>
+                  <option value="shopping">Shopping</option>
+                  <option value="arts">Arts & Culture</option>
+                </select>
+              </label>
+              <label>
+                Description
+                <textarea
+                  id="suggest-desc"
+                  rows="3"
+                  placeholder="A quick description (hours, why it's great, etc.)"
+                ></textarea>
+              </label>
+              <div class="suggest-actions">
+                <button id="suggest-pick" class="ghost" type="button">
+                  Pick location on map
+                </button>
+                <button id="suggest-submit" class="primary" type="button">
+                  Submit
+                </button>
+              </div>
+              <p class="note" id="suggest-status">
+                Suggestions are saved locally for now (demo mode).
+              </p>
+            </div>
           </div>
         </div>
       </section>
@@ -94,10 +139,7 @@
       <p>New Providence Community Hub · Draft for competition showcase</p>
     </footer>
 
-    <script>
-      window.MAPBOX_TOKEN = "YOUR_MAPBOX_ACCESS_TOKEN";
-    </script>
-    <script src="https://api.mapbox.com/mapbox-gl-js/v2.16.1/mapbox-gl.js"></script>
+    <script src="https://unpkg.com/three@0.160.0/build/three.min.js"></script>
     <script src="app.js"></script>
   </body>
 </html>

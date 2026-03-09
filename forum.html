@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Community Forum</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="grain"></div>
+
+    <header class="site-header">
+      <div class="brand">
+        <span class="brand-mark">NP</span>
+        <div>
+          <p class="brand-title">New Providence Community Hub</p>
+          <p class="brand-subtitle">Community Forum</p>
+        </div>
+      </div>
+      <nav class="nav">
+        <a href="index.html">Home</a>
+        <a href="explore.html">Explore</a>
+        <a href="bulletin.html">Bulletin</a>
+        <a href="directory.html">Directory</a>
+        <a href="support.html">Support</a>
+        <a href="education.html">Education</a>
+        <a href="forum.html" class="active">Forum</a>
+      </nav>
+      <a class="cta" href="funding.html">Funding</a>
+    </header>
+
+
+    <div class="warning-banner" id="warning-banner">
+      <strong>Warnings</strong>
+      <span>No active warnings. Alerts will appear here if needed.</span>
+    </div>
+
+    <main>
+      <section class="section">
+        <div class="section-title">
+          <h2>Community Forum</h2>
+          <p>Ask questions, get answers, and highlight local wins.</p>
+        </div>
+
+        <div class="forum-tabs" role="tablist">
+          <button class="forum-tab active" data-tab="question-1" role="tab">
+            Crosswalk request
+          </button>
+          <button class="forum-tab" data-tab="question-2" role="tab">
+            Winter hiking
+          </button>
+          <button class="forum-tab" data-tab="question-3" role="tab">
+            Volunteer needs
+          </button>
+        </div>
+
+        <div class="forum-panels">
+          <div class="forum-panel active" id="question-1" role="tabpanel">
+            <div class="forum-post compact">
+              <h3>How do I request a new crosswalk?</h3>
+              <p>
+                Answered by Public Works: submit a Town Improvement ticket with
+                location details.
+              </p>
+            </div>
+          </div>
+          <div class="forum-panel" id="question-2" role="tabpanel">
+            <div class="forum-post compact">
+              <h3>Best winter hiking loop?</h3>
+              <p>Local scouts recommend the Oakwood Ridge loop.</p>
+            </div>
+          </div>
+          <div class="forum-panel" id="question-3" role="tabpanel">
+            <div class="forum-post compact">
+              <h3>Where can I volunteer this month?</h3>
+              <p>Lions Club food drive needs help Feb 8-12.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="forum-form">
+          <h4>Ask the community</h4>
+          <input id="forum-question-title" type="text" placeholder="Your question" />
+          <textarea
+            id="forum-question-details"
+            rows="3"
+            placeholder="Details"
+          ></textarea>
+          <button id="forum-post-question" class="primary" type="button">
+            Post Question
+          </button>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <p>New Providence Community Hub · Draft for competition showcase</p>
+    </footer>
+
+    <script src="app.js"></script>
+  </body>
+</html>
