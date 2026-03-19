@@ -3,66 +3,145 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Funding Graphs</title>
+    <title>Funding | New Providence Community Hub</title>
+    <meta
+      name="description"
+      content="Funding and project progress for New Providence community initiatives."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700;800&family=JetBrains+Mono:wght@400;600&family=Playfair+Display:wght@600;700;800&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="styles.css" />
   </head>
-  <body>
-    <div class="grain"></div>
-
-    <header class="site-header">
-      <div class="brand">
-        <span class="brand-mark">NP</span>
-        <div>
-          <p class="brand-title">New Providence Community Hub</p>
-          <p class="brand-subtitle">Funding & Projects</p>
-        </div>
+  <body data-page="funding">
+    <a class="skip-link" href="#main-content">Skip to content</a>
+    <header class="site-header" data-header>
+      <div class="header-shell">
+        <a class="brand" href="index.html" aria-label="New Providence Community Hub home">
+          <span class="brand-mark">NP</span>
+          <span class="brand-copy">
+            <strong>New Providence Community Hub</strong>
+            <span>New Providence, New Jersey</span>
+          </span>
+        </a>
+        <button
+          class="menu-toggle"
+          type="button"
+          aria-label="Open navigation"
+          aria-expanded="false"
+          data-menu-toggle
+        >
+          <span></span>
+          <span></span>
+        </button>
+        <nav class="site-nav" data-nav>
+          <a href="index.html">Home</a>
+          <a href="explore.html">Explore</a>
+          <a href="bulletin.html">Bulletin</a>
+          <a href="directory.html">Directory</a>
+          <a href="support.html">Support</a>
+          <a href="education.html">Education</a>
+          <a href="forum.html">Forum</a>
+          <a class="active" href="funding.html">Funding</a>
+        </nav>
+        <button class="button button-primary header-cta" type="button" data-open-alerts>
+          Town Alerts
+        </button>
       </div>
-      <nav class="nav">
-        <a href="index.html">Home</a>
-        <a href="explore.html">Explore</a>
-        <a href="bulletin.html">Bulletin</a>
-        <a href="directory.html">Directory</a>
-        <a href="support.html">Support</a>
-        <a href="education.html">Education</a>
-        <a href="forum.html">Forum</a>
-      </nav>
-      <a class="cta" href="funding.html">Funding</a>
     </header>
 
+    <section class="warning-banner is-hidden" data-warning-banner>
+      <div class="warning-banner__icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" focusable="false">
+          <path
+            d="M12 3 1.8 20.5h20.4L12 3Zm0 4.8 5.5 9.5H6.5L12 7.8Zm-1 2.5v3.9h2v-3.9h-2Zm0 5.1v2h2v-2h-2Z"
+            fill="currentColor"
+          />
+        </svg>
+      </div>
+      <div>
+        <p class="warning-banner__eyebrow">Active Town Notice</p>
+        <p class="warning-banner__text" data-warning-text></p>
+      </div>
+    </section>
 
-    <div class="warning-banner" id="warning-banner">
-      <strong>Warnings</strong>
-      <span>No active warnings. Alerts will appear here if needed.</span>
-    </div>
+    <main id="main-content">
+      <section class="page-hero page-hero--compact site-width reveal">
+        <p class="eyebrow">Funding & Projects</p>
+        <h1>Capital projects in motion.</h1>
+        <p>Animated funding charts, project categories, and a clean grant timeline.</p>
+      </section>
 
-    <main>
-      <section class="section">
-        <div class="section-title">
-          <h2>Funding & Project Graphs</h2>
-          <p>
-            Clear visuals for town funding, capital projects, and grant
-            initiatives. Update the data anytime.
-          </p>
-        </div>
-        <div class="funding-grid">
-          <div class="funding-chart" id="funding-chart"></div>
-          <div class="funding-details">
-            <h3>Funding breakdown</h3>
-            <ul>
-              <li>Infrastructure: sidewalks, resurfacing, drainage</li>
-              <li>Public safety: equipment upgrades, resiliency</li>
-              <li>Community spaces: parks, library, recreation</li>
-            </ul>
-            <p class="slot">Space reserved for grant updates and supporting docs.</p>
+      <section class="section site-width reveal funding-layout">
+        <article class="card card--dark">
+          <p class="eyebrow">Allocation Snapshot</p>
+          <div class="funding-bars" data-funding-bars></div>
+        </article>
+        <article class="card">
+          <p class="eyebrow">Funding Details</p>
+          <h2>What each category covers</h2>
+          <ul class="stack-list">
+            <li>Infrastructure: roads, sidewalks, drainage, and traffic safety.</li>
+            <li>Public Safety: emergency equipment, communications, and resilience.</li>
+            <li>Community Spaces: parks, library upgrades, recreation, and civic spaces.</li>
+            <li>Sustainability: green streets, environmental initiatives, and energy savings.</li>
+          </ul>
+          <p class="helper-text">Reserve slot for grant updates and future funding notes.</p>
+        </article>
+      </section>
+
+      <section class="section site-width reveal">
+        <article class="card">
+          <p class="eyebrow">Grant Timeline</p>
+          <div class="timeline">
+            <article>
+              <strong>2024</strong>
+              <span>Planning phase</span>
+            </article>
+            <article>
+              <strong>2025</strong>
+              <span>Grants secured</span>
+            </article>
+            <article>
+              <strong>2026</strong>
+              <span>Construction begins</span>
+            </article>
+            <article>
+              <strong>2027</strong>
+              <span>Completion</span>
+            </article>
           </div>
-        </div>
+        </article>
       </section>
     </main>
 
     <footer class="site-footer">
-      <p>New Providence Community Hub · Draft for competition showcase</p>
+      <div class="site-width footer-grid">
+        <div>
+          <h2>New Providence Community Hub</h2>
+          <p>
+            A civic resource platform designed for clarity, care, and everyday town life.
+          </p>
+        </div>
+        <div>
+          <p class="footer-title">Navigate</p>
+          <a href="explore.html">Explore</a>
+          <a href="directory.html">Directory</a>
+          <a href="support.html">Support</a>
+        </div>
+        <div>
+          <p class="footer-title">Credits</p>
+          <p>New Providence High School</p>
+          <p>TSA Webmaster 2026</p>
+        </div>
+      </div>
+      <div class="site-width footer-bar">
+        New Providence Community Hub · TSA Webmaster 2026 · New Providence High School
+      </div>
     </footer>
-
     <script src="app.js"></script>
   </body>
 </html>

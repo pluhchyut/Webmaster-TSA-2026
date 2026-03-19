@@ -3,166 +3,300 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>New Providence, NJ Community Hub</title>
+    <title>New Providence Community Hub</title>
     <meta
       name="description"
-      content="A modern community portal for New Providence, New Jersey featuring events, services, alerts, and local organizations."
+      content="Competition-grade community hub for New Providence, New Jersey."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700;800&family=JetBrains+Mono:wght@400;600&family=Playfair+Display:wght@600;700;800&display=swap"
+      rel="stylesheet"
     />
     <link rel="stylesheet" href="styles.css" />
   </head>
-  <body>
-    <div class="grain"></div>
-
-    <header class="site-header">
-      <div class="brand">
-        <span class="brand-mark">NP</span>
-        <div>
-          <p class="brand-title">New Providence Community Hub</p>
-          <p class="brand-subtitle">New Providence, New Jersey</p>
-        </div>
+  <body data-page="home">
+    <a class="skip-link" href="#main-content">Skip to content</a>
+    <header class="site-header" data-header>
+      <div class="header-shell">
+        <a class="brand" href="index.html" aria-label="New Providence Community Hub home">
+          <span class="brand-mark">NP</span>
+          <span class="brand-copy">
+            <strong>New Providence Community Hub</strong>
+            <span>New Providence, New Jersey</span>
+          </span>
+        </a>
+        <button
+          class="menu-toggle"
+          type="button"
+          aria-label="Open navigation"
+          aria-expanded="false"
+          data-menu-toggle
+        >
+          <span></span>
+          <span></span>
+        </button>
+        <nav class="site-nav" data-nav>
+          <a class="active" href="index.html">Home</a>
+          <a href="explore.html">Explore</a>
+          <a href="bulletin.html">Bulletin</a>
+          <a href="directory.html">Directory</a>
+          <a href="support.html">Support</a>
+          <a href="education.html">Education</a>
+          <a href="forum.html">Forum</a>
+          <a href="funding.html">Funding</a>
+        </nav>
+        <button class="button button-primary header-cta" type="button" data-open-alerts>
+          Town Alerts
+        </button>
       </div>
-      <nav class="nav">
-        <a href="index.html" class="active">Home</a>
-        <a href="explore.html">Explore</a>
-        <a href="bulletin.html">Bulletin</a>
-        <a href="directory.html">Directory</a>
-        <a href="support.html">Support</a>
-        <a href="education.html">Education</a>
-        <a href="forum.html">Forum</a>
-      </nav>
-      <button class="cta" id="town-alerts-btn" type="button">Town Alerts</button>
     </header>
 
+    <section class="warning-banner is-hidden" data-warning-banner>
+      <div class="warning-banner__icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" focusable="false">
+          <path
+            d="M12 3 1.8 20.5h20.4L12 3Zm0 4.8 5.5 9.5H6.5L12 7.8Zm-1 2.5v3.9h2v-3.9h-2Zm0 5.1v2h2v-2h-2Z"
+            fill="currentColor"
+          />
+        </svg>
+      </div>
+      <div>
+        <p class="warning-banner__eyebrow">Active Town Notice</p>
+        <p class="warning-banner__text" data-warning-text></p>
+      </div>
+    </section>
 
-    <div class="warning-banner" id="warning-banner">
-      <strong>Warnings</strong>
-      <span>No active warnings. Alerts will appear here if needed.</span>
-    </div>
-
-    <main class="snap-container">
-      <section class="hero snap-section">
-        <div class="hero-copy">
-          <p class="eyebrow">Community-first portal</p>
-          <h1>
-            Everything happening in New Providence, curated for neighbors,
-            visitors, and local leaders.
-          </h1>
-          <p class="lede">
-            Track projects and funding, find attractions, get live community
-            updates, and connect with local organizations. Designed for a
-            competition-ready presentation with room to grow.
-          </p>
-          <div class="hero-actions">
-            <a class="primary" href="bulletin.html">View Community Calendar</a>
-            <a class="ghost" href="support.html">Submit a Town Issue</a>
-          </div>
-          <div class="hero-metrics">
-            <div>
-              <p class="metric-value">$18.4M</p>
-              <p class="metric-label">Active civic funding</p>
+    <main id="main-content">
+      <section class="hero-home section-bleed">
+        <div class="hero-home__grid site-width">
+          <div class="hero-home__copy reveal">
+            <p class="eyebrow">New Providence, NJ · Est. 1921</p>
+            <h1 class="hero-title">
+              <span>Your</span>
+              <span>Community,</span>
+              <span>Connected.</span>
+            </h1>
+            <p class="hero-summary">
+              Track projects, discover local resources, and stay informed through a
+              polished community hub built for New Providence residents.
+            </p>
+            <div class="button-row">
+              <a class="button button-primary" href="explore.html">Explore Resources</a>
+              <a class="button button-ghost" href="bulletin.html">View Bulletin</a>
+              <a class="button button-ghost" href="support.html#ticket-form">File a Ticket</a>
             </div>
-            <div>
-              <p class="metric-value">42</p>
-              <p class="metric-label">Community partners</p>
-            </div>
-            <div>
-              <p class="metric-value">6</p>
-              <p class="metric-label">Real-time alert channels</p>
+            <div class="hero-stats">
+              <article class="stat-card">
+                <strong data-count="18.4" data-prefix="$" data-suffix="M">0</strong>
+                <span>Active Funding</span>
+              </article>
+              <article class="stat-card">
+                <strong data-count="42">0</strong>
+                <span>Community Partners</span>
+              </article>
+              <article class="stat-card">
+                <strong data-count="13650">0</strong>
+                <span>Residents Served</span>
+              </article>
             </div>
           </div>
-        </div>
-        <div class="hero-visual">
-          <div class="orbit-card">
-            <p class="card-title">Town Snapshot</p>
-            <ul>
-              <li>Population: 13,650</li>
-              <li>County: Union</li>
-              <li>Focus: Walkability & sustainability</li>
-            </ul>
+          <div class="hero-home__visual reveal">
+            <div class="hero-blob" aria-hidden="true"></div>
+            <article
+              class="layer-card card card--dark is-active"
+              data-layer-card
+              tabindex="0"
+              role="button"
+              aria-label="Bring Today in Town card forward"
+            >
+              <p class="eyebrow">Today in Town</p>
+              <h2 data-today-date>March 18, 2026</h2>
+              <ul class="stack-list">
+                <li>Board of Education workshop · 5:30 PM</li>
+                <li>Library teen maker lab · 6:00 PM</li>
+              </ul>
+            </article>
+            <article
+              class="layer-card card layer-card--offset"
+              data-layer-card
+              tabindex="0"
+              role="button"
+              aria-label="Bring Live Updates card forward"
+            >
+              <p class="eyebrow">Live Updates</p>
+              <p class="type-line" data-live-updates></p>
+            </article>
+            <article
+              class="layer-card card layer-card--mini"
+              data-layer-card
+              tabindex="0"
+              role="button"
+              aria-label="Bring Quick Stats card forward"
+            >
+              <p class="eyebrow">Quick Stats</p>
+              <dl class="mini-stats">
+                <div>
+                  <dt>County</dt>
+                  <dd>Union</dd>
+                </div>
+                <div>
+                  <dt>Zip</dt>
+                  <dd>07974</dd>
+                </div>
+                <div>
+                  <dt>Stations</dt>
+                  <dd>2 NJ Transit</dd>
+                </div>
+              </dl>
+            </article>
           </div>
-          <div class="orbit-card">
-            <p class="card-title">Today in town</p>
-            <p>Library Story Time · 10:30 AM</p>
-            <p>Planning Board Session · 7:00 PM</p>
-          </div>
-          <div class="hero-typewriter">
-            <p class="eyebrow">Live Message</p>
-            <div class="typewriter-box" id="typewriter-box"></div>
-          </div>
-          <div class="hero-glow"></div>
         </div>
       </section>
 
-      <section class="section snap-section">
-        <div class="section-title">
-          <h2>Quick Jump</h2>
-          <p>Explore each hub area in its own dedicated page.</p>
+      <section class="section site-width reveal">
+        <div class="section-heading">
+          <p class="eyebrow">Quick Jump</p>
+          <h2>Everything You Need</h2>
         </div>
         <div class="quick-grid">
           <a class="quick-card" href="explore.html">
+            <span class="quick-card__icon">M</span>
             <h3>Explore & Map</h3>
-            <p>Interactive map, attractions, and neighborhood filters.</p>
+            <p>Navigate the town in 3D and discover trusted local resources.</p>
           </a>
           <a class="quick-card" href="funding.html">
-            <h3>Funding Graphs</h3>
-            <p>Track capital projects, grants, and investments.</p>
+            <span class="quick-card__icon">F</span>
+            <h3>Funding</h3>
+            <p>See where civic investment is going and what projects are active.</p>
           </a>
           <a class="quick-card" href="bulletin.html">
+            <span class="quick-card__icon">B</span>
             <h3>Bulletin Board</h3>
-            <p>Regulations, lost pets, street projects, and calendar.</p>
+            <p>Stay on top of regulations, events, notices, and local alerts.</p>
           </a>
           <a class="quick-card" href="forum.html">
+            <span class="quick-card__icon">Q</span>
             <h3>Community Forum</h3>
-            <p>Ask questions, get answers, highlight wins.</p>
+            <p>Ask questions, browse answers, and post town-specific updates.</p>
           </a>
           <a class="quick-card" href="directory.html">
-            <h3>Get Connected</h3>
-            <p>Clubs, groups, and volunteer teams.</p>
+            <span class="quick-card__icon">D</span>
+            <h3>Directory</h3>
+            <p>Connect with clubs, civic groups, arts organizations, and teams.</p>
           </a>
           <a class="quick-card" href="support.html">
+            <span class="quick-card__icon">S</span>
             <h3>Support & Help</h3>
-            <p>Alerts, hotlines, and improvement tickets.</p>
+            <p>Find hotlines, report issues, and get connected to services fast.</p>
           </a>
           <a class="quick-card" href="education.html">
-            <h3>Education & School</h3>
-            <p>BOE updates, district links, community learning.</p>
+            <span class="quick-card__icon">E</span>
+            <h3>Education</h3>
+            <p>Monitor BOE updates, school links, learning programs, and notices.</p>
           </a>
         </div>
       </section>
 
-      <section class="section snap-section">
-        <div class="highlights-hero">
-          <div class="highlights-media" id="highlights-media">
-            <div class="highlights-image is-active" id="highlights-image-a"></div>
-            <div class="highlights-image" id="highlights-image-b"></div>
-            <div class="highlights-title typewriter-title" id="highlights-title"></div>
-            <button class="highlights-arrow left" id="highlights-prev">Prev</button>
-            <button class="highlights-arrow right" id="highlights-next">Next</button>
-            <div class="highlights-controls">
-              <div class="highlights-dots" id="highlights-dots"></div>
+      <section class="highlights-home section-bleed reveal" data-home-highlights>
+        <div class="site-width highlights-home__shell">
+          <div class="highlights-home__media" data-highlight-stage>
+            <div class="highlight-backdrop" data-highlight-image></div>
+            <div class="highlight-overlay">
+              <p class="eyebrow">Spotlighted Resource</p>
+              <h2 data-highlight-title>New Providence Food Pantry</h2>
+              <p data-highlight-note>
+                Weekly food assistance for residents in need with simple, local access.
+              </p>
+              <a class="button button-primary" data-highlight-link href="explore.html">
+                Learn More
+              </a>
             </div>
+            <div class="highlight-controls">
+              <button
+                class="icon-button"
+                type="button"
+                data-highlight-prev
+                aria-label="Previous spotlight"
+              >
+                &larr;
+              </button>
+              <div class="progress-rail">
+                <span data-highlight-progress></span>
+              </div>
+              <button
+                class="icon-button"
+                type="button"
+                data-highlight-next
+                aria-label="Next spotlight"
+              >
+                &rarr;
+              </button>
+            </div>
+            <div class="dot-row" data-highlight-dots aria-label="Highlight navigation"></div>
           </div>
-          <aside class="hero-typewriter highlights-typewriter">
-            <p class="eyebrow">Event Notes</p>
-            <div class="typewriter-box" id="highlights-typewriter"></div>
-          </aside>
         </div>
       </section>
 
-      <section class="section finale snap-section">
-        <h2>Room to grow</h2>
-        <p>
-          This hub leaves space for future data feeds, embedded town services,
-          and live community updates.
-        </p>
-        <a class="ghost" href="bulletin.html">Reserve a slot</a>
+      <section class="stats-band section-bleed reveal">
+        <div class="site-width stats-band__grid">
+          <article>
+            <strong data-count="6500">0</strong>
+            <span>Buildings Mapped</span>
+          </article>
+          <article>
+            <strong data-count="18">0</strong>
+            <span>Events This Month</span>
+          </article>
+          <article>
+            <strong data-count="11">0</strong>
+            <span>Active Support Services</span>
+          </article>
+          <article>
+            <strong data-count="105">0</strong>
+            <span>Years of Community</span>
+          </article>
+        </div>
+      </section>
+
+      <section class="section site-width reveal">
+        <div class="finale-card">
+          <p class="eyebrow">Reserve a Slot</p>
+          <h2>This hub grows with the community.</h2>
+          <p>
+            More services, more directories, more ways to connect. The framework is
+            ready for the next wave of local updates.
+          </p>
+          <a class="button button-ghost" href="explore.html">Reserve a slot</a>
+        </div>
       </section>
     </main>
 
     <footer class="site-footer">
-      <p>New Providence Community Hub · Draft for competition showcase</p>
+      <div class="site-width footer-grid">
+        <div>
+          <h2>New Providence Community Hub</h2>
+          <p>
+            A civic resource platform designed for clarity, care, and everyday town life.
+          </p>
+        </div>
+        <div>
+          <p class="footer-title">Navigate</p>
+          <a href="explore.html">Explore</a>
+          <a href="bulletin.html">Bulletin</a>
+          <a href="support.html">Support</a>
+        </div>
+        <div>
+          <p class="footer-title">Credits</p>
+          <p>New Providence High School</p>
+          <p>TSA Webmaster 2026</p>
+        </div>
+      </div>
+      <div class="site-width footer-bar">
+        New Providence Community Hub · TSA Webmaster 2026 · New Providence High School
+      </div>
     </footer>
-
     <script src="app.js"></script>
   </body>
 </html>

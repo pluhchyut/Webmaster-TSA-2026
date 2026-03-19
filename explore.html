@@ -3,143 +3,253 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Explore New Providence</title>
+    <title>Explore | New Providence Community Hub</title>
+    <meta
+      name="description"
+      content="Explore New Providence through a 3D town map and searchable resource directory."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700;800&family=JetBrains+Mono:wght@400;600&family=Playfair+Display:wght@600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://unpkg.com/three@0.160.0/build/three.min.js"></script>
     <link rel="stylesheet" href="styles.css" />
   </head>
-  <body>
-    <div class="grain"></div>
-
-    <header class="site-header">
-      <div class="brand">
-        <span class="brand-mark">NP</span>
-        <div>
-          <p class="brand-title">New Providence Community Hub</p>
-          <p class="brand-subtitle">Explore</p>
-        </div>
+  <body data-page="explore">
+    <a class="skip-link" href="#main-content">Skip to content</a>
+    <header class="site-header" data-header>
+      <div class="header-shell">
+        <a class="brand" href="index.html" aria-label="New Providence Community Hub home">
+          <span class="brand-mark">NP</span>
+          <span class="brand-copy">
+            <strong>New Providence Community Hub</strong>
+            <span>New Providence, New Jersey</span>
+          </span>
+        </a>
+        <button
+          class="menu-toggle"
+          type="button"
+          aria-label="Open navigation"
+          aria-expanded="false"
+          data-menu-toggle
+        >
+          <span></span>
+          <span></span>
+        </button>
+        <nav class="site-nav" data-nav>
+          <a href="index.html">Home</a>
+          <a class="active" href="explore.html">Explore</a>
+          <a href="bulletin.html">Bulletin</a>
+          <a href="directory.html">Directory</a>
+          <a href="support.html">Support</a>
+          <a href="education.html">Education</a>
+          <a href="forum.html">Forum</a>
+          <a href="funding.html">Funding</a>
+        </nav>
+        <button class="button button-primary header-cta" type="button" data-open-alerts>
+          Town Alerts
+        </button>
       </div>
-      <nav class="nav">
-        <a href="index.html">Home</a>
-        <a href="explore.html" class="active">Explore</a>
-        <a href="bulletin.html">Bulletin</a>
-        <a href="directory.html">Directory</a>
-        <a href="support.html">Support</a>
-        <a href="education.html">Education</a>
-        <a href="forum.html">Forum</a>
-      </nav>
-      <a class="cta" href="funding.html">Funding</a>
     </header>
 
+    <section class="warning-banner is-hidden" data-warning-banner>
+      <div class="warning-banner__icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" focusable="false">
+          <path
+            d="M12 3 1.8 20.5h20.4L12 3Zm0 4.8 5.5 9.5H6.5L12 7.8Zm-1 2.5v3.9h2v-3.9h-2Zm0 5.1v2h2v-2h-2Z"
+            fill="currentColor"
+          />
+        </svg>
+      </div>
+      <div>
+        <p class="warning-banner__eyebrow">Active Town Notice</p>
+        <p class="warning-banner__text" data-warning-text></p>
+      </div>
+    </section>
 
-    <div class="warning-banner" id="warning-banner">
-      <strong>Warnings</strong>
-      <span>No active warnings. Alerts will appear here if needed.</span>
-    </div>
+    <main id="main-content">
+      <section class="page-hero page-hero--compact site-width reveal">
+        <p class="eyebrow">Explore & Map</p>
+        <h1>Navigate the town in 3D.</h1>
+        <p>
+          Search resources, focus local organizations, and suggest new additions directly
+          on the town map.
+        </p>
+      </section>
 
-    <main>
-      <section class="section">
-        <div class="section-title">
-          <h2>Explore New Providence</h2>
-          <p>
-            Interactive destinations map plus curated attraction categories. Use
-            the dropdowns to filter highlights.
-          </p>
-        </div>
-        <div class="explore-grid">
-          <div class="map-panel">
-            <div class="map-header">
-              <p class="eyebrow">3D Town Map</p>
-              <button id="reset-town" class="ghost">Reset view</button>
+      <section class="section site-width reveal">
+        <div class="explore-layout">
+          <div class="map-shell card card--dark">
+            <div class="map-shell__top">
+              <div>
+                <p class="eyebrow">Three.js Town View</p>
+                <h2>New Providence in isometric view</h2>
+              </div>
+              <button class="button button-ghost button-ghost--light" type="button" data-reset-map>
+                Reset View
+              </button>
             </div>
-            <div class="town3d-wrap" aria-label="3D town map">
-              <div id="town3d" class="town3d"></div>
-              <div
-                class="map-tooltip"
-                id="map-tooltip"
-                aria-live="polite"
-              ></div>
-            </div>
-            <p class="note">
-              Drag to pan, right-drag to rotate, scroll to zoom. Click thumbtacks
-              to view details.
+            <div class="town-map" data-town-map aria-label="3D resource map"></div>
+            <div class="map-tooltip" data-map-tooltip aria-live="polite"></div>
+            <p class="map-note">
+              Left-drag to pan, right-drag to rotate, scroll to zoom. Official pins are gold.
             </p>
           </div>
-          <div class="attractions-panel">
-            <div class="details-card" id="attraction-details">
-              <p class="eyebrow">Selected</p>
-              <h3 id="details-title">Click a thumbtack</h3>
-              <p id="details-desc" class="note">
-                Select an attraction in the 3D map or from the list to see
-                details here.
+
+          <aside class="resource-panel">
+            <div class="resource-panel__search card">
+              <label class="input-label" for="resource-search">Search resources</label>
+              <input
+                id="resource-search"
+                class="input"
+                type="search"
+                placeholder="Food pantry, library, volunteer, downtown..."
+                data-resource-search
+              />
+              <div class="pill-row" data-category-pills></div>
+              <div class="split-fields">
+                <label class="input-group">
+                  <span>Neighborhood</span>
+                  <select class="input" data-neighborhood-filter>
+                    <option value="all">All Neighborhoods</option>
+                    <option value="downtown">Downtown</option>
+                    <option value="fairview">Fairview</option>
+                    <option value="oakwood">Oakwood</option>
+                  </select>
+                </label>
+              </div>
+              <p class="results-count" data-results-count></p>
+            </div>
+
+            <div class="resource-detail card" data-resource-detail>
+              <p class="eyebrow">Selected Resource</p>
+              <h2 data-detail-name>Select a resource</h2>
+              <p data-detail-description>
+                Click a map pin or resource card to view the full detail panel.
               </p>
-              <div class="details-meta" id="details-meta"></div>
-            </div>
-            <div class="filters">
-              <label>
-                Category
-                <select id="category-select">
-                  <option value="all">All Attractions</option>
-                  <option value="restaurants">Restaurants</option>
-                  <option value="hiking">Hiking & Parks</option>
-                  <option value="shopping">Shopping</option>
-                  <option value="arts">Arts & Culture</option>
-                </select>
-              </label>
-              <label>
-                Neighborhood
-                <select id="neighborhood-select">
-                  <option value="all">All Neighborhoods</option>
-                  <option value="downtown">Downtown</option>
-                  <option value="oakwood">Oakwood</option>
-                  <option value="fairview">Fairview</option>
-                </select>
-              </label>
-            </div>
-            <div class="attraction-cards" id="attraction-cards"></div>
-            <div class="suggest-card">
-              <p class="eyebrow">Suggest an attraction</p>
-              <label>
-                Name
-                <input id="suggest-name" type="text" placeholder="Attraction name" />
-              </label>
-              <label>
-                Category
-                <select id="suggest-category">
-                  <option value="restaurants">Restaurants</option>
-                  <option value="hiking">Hiking & Parks</option>
-                  <option value="shopping">Shopping</option>
-                  <option value="arts">Arts & Culture</option>
-                </select>
-              </label>
-              <label>
-                Description
-                <textarea
-                  id="suggest-desc"
-                  rows="3"
-                  placeholder="A quick description (hours, why it's great, etc.)"
-                ></textarea>
-              </label>
-              <div class="suggest-actions">
-                <button id="suggest-pick" class="ghost" type="button">
-                  Pick location on map
+              <div class="tag-list" data-detail-tags></div>
+              <dl class="detail-list">
+                <div>
+                  <dt>Address</dt>
+                  <dd data-detail-address>—</dd>
+                </div>
+                <div>
+                  <dt>Phone</dt>
+                  <dd data-detail-phone>—</dd>
+                </div>
+                <div>
+                  <dt>Hours</dt>
+                  <dd data-detail-hours>—</dd>
+                </div>
+              </dl>
+              <div class="button-row">
+                <button class="button button-primary" type="button" data-detail-map>
+                  Map Me There
                 </button>
-                <button id="suggest-submit" class="primary" type="button">
-                  Submit
+                <button class="button button-ghost" type="button" data-detail-share>
+                  Share
                 </button>
               </div>
-              <p class="note" id="suggest-status">
-                Suggestions are saved locally for now (demo mode).
-              </p>
             </div>
-          </div>
+
+            <div class="resource-results card" data-resource-results></div>
+
+            <div class="resource-suggest card" id="suggest-resource">
+              <div class="section-heading section-heading--compact">
+                <p class="eyebrow">Suggest a Resource</p>
+                <h2>Add a local resource</h2>
+              </div>
+              <form data-suggest-form novalidate>
+                <div class="split-fields">
+                  <label class="input-group">
+                    <span>Name *</span>
+                    <input class="input" name="name" type="text" />
+                    <small data-error-for="name"></small>
+                  </label>
+                  <label class="input-group">
+                    <span>Category *</span>
+                    <select class="input" name="category">
+                      <option value="">Select category</option>
+                      <option value="food">Food</option>
+                      <option value="civic">Civic</option>
+                      <option value="education">Education</option>
+                      <option value="youth">Youth</option>
+                      <option value="arts">Arts</option>
+                      <option value="recreation">Recreation</option>
+                      <option value="outdoors">Outdoors</option>
+                      <option value="health">Health</option>
+                      <option value="social">Social</option>
+                      <option value="dining">Dining</option>
+                      <option value="shopping">Shopping</option>
+                    </select>
+                    <small data-error-for="category"></small>
+                  </label>
+                </div>
+                <label class="input-group">
+                  <span>Description *</span>
+                  <textarea class="input" name="description" rows="4"></textarea>
+                  <small data-error-for="description"></small>
+                </label>
+                <div class="split-fields">
+                  <label class="input-group">
+                    <span>Address</span>
+                    <input class="input" name="address" type="text" />
+                  </label>
+                  <label class="input-group">
+                    <span>Phone</span>
+                    <input class="input" name="phone" type="text" />
+                  </label>
+                </div>
+                <div class="split-fields">
+                  <label class="input-group">
+                    <span>Hours</span>
+                    <input class="input" name="hours" type="text" />
+                  </label>
+                  <label class="input-group">
+                    <span>Tags</span>
+                    <input class="input" name="tags" type="text" placeholder="comma, separated, tags" />
+                  </label>
+                </div>
+                <div class="button-row">
+                  <button class="button button-ghost" type="button" data-pick-location>
+                    Click map to set location
+                  </button>
+                  <button class="button button-primary" type="submit">Submit Resource</button>
+                </div>
+                <p class="form-status" data-suggest-status></p>
+              </form>
+            </div>
+          </aside>
         </div>
       </section>
     </main>
 
     <footer class="site-footer">
-      <p>New Providence Community Hub · Draft for competition showcase</p>
+      <div class="site-width footer-grid">
+        <div>
+          <h2>New Providence Community Hub</h2>
+          <p>
+            A civic resource platform designed for clarity, care, and everyday town life.
+          </p>
+        </div>
+        <div>
+          <p class="footer-title">Navigate</p>
+          <a href="index.html">Home</a>
+          <a href="bulletin.html">Bulletin</a>
+          <a href="support.html">Support</a>
+        </div>
+        <div>
+          <p class="footer-title">Credits</p>
+          <p>New Providence High School</p>
+          <p>TSA Webmaster 2026</p>
+        </div>
+      </div>
+      <div class="site-width footer-bar">
+        New Providence Community Hub · TSA Webmaster 2026 · New Providence High School
+      </div>
     </footer>
-
-    <script src="https://unpkg.com/three@0.160.0/build/three.min.js"></script>
     <script src="app.js"></script>
   </body>
 </html>

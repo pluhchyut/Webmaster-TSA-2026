@@ -3,123 +3,129 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Community Bulletin Board</title>
+    <title>Bulletin | New Providence Community Hub</title>
+    <meta
+      name="description"
+      content="Town notices, highlights, and upcoming events for New Providence."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700;800&family=JetBrains+Mono:wght@400;600&family=Playfair+Display:wght@600;700;800&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="styles.css" />
   </head>
-  <body>
-    <div class="grain"></div>
-
-    <header class="site-header">
-      <div class="brand">
-        <span class="brand-mark">NP</span>
-        <div>
-          <p class="brand-title">New Providence Community Hub</p>
-          <p class="brand-subtitle">Bulletin Board</p>
-        </div>
+  <body data-page="bulletin">
+    <a class="skip-link" href="#main-content">Skip to content</a>
+    <header class="site-header" data-header>
+      <div class="header-shell">
+        <a class="brand" href="index.html" aria-label="New Providence Community Hub home">
+          <span class="brand-mark">NP</span>
+          <span class="brand-copy">
+            <strong>New Providence Community Hub</strong>
+            <span>New Providence, New Jersey</span>
+          </span>
+        </a>
+        <button
+          class="menu-toggle"
+          type="button"
+          aria-label="Open navigation"
+          aria-expanded="false"
+          data-menu-toggle
+        >
+          <span></span>
+          <span></span>
+        </button>
+        <nav class="site-nav" data-nav>
+          <a href="index.html">Home</a>
+          <a href="explore.html">Explore</a>
+          <a class="active" href="bulletin.html">Bulletin</a>
+          <a href="directory.html">Directory</a>
+          <a href="support.html">Support</a>
+          <a href="education.html">Education</a>
+          <a href="forum.html">Forum</a>
+          <a href="funding.html">Funding</a>
+        </nav>
+        <button class="button button-primary header-cta" type="button" data-open-alerts>
+          Town Alerts
+        </button>
       </div>
-      <nav class="nav">
-        <a href="index.html">Home</a>
-        <a href="explore.html">Explore</a>
-        <a href="bulletin.html" class="active">Bulletin</a>
-        <a href="directory.html">Directory</a>
-        <a href="support.html">Support</a>
-        <a href="education.html">Education</a>
-        <a href="forum.html">Forum</a>
-      </nav>
-      <a class="cta" href="funding.html">Funding</a>
     </header>
 
+    <section class="warning-banner is-hidden" data-warning-banner>
+      <div class="warning-banner__icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" focusable="false">
+          <path
+            d="M12 3 1.8 20.5h20.4L12 3Zm0 4.8 5.5 9.5H6.5L12 7.8Zm-1 2.5v3.9h2v-3.9h-2Zm0 5.1v2h2v-2h-2Z"
+            fill="currentColor"
+          />
+        </svg>
+      </div>
+      <div>
+        <p class="warning-banner__eyebrow">Active Town Notice</p>
+        <p class="warning-banner__text" data-warning-text></p>
+      </div>
+    </section>
 
-    <div class="warning-banner" id="warning-banner">
-      <strong>Warnings</strong>
-      <span>No active warnings. Alerts will appear here if needed.</span>
-    </div>
+    <main id="main-content">
+      <section class="page-hero page-hero--compact site-width reveal">
+        <p class="eyebrow">Town Bulletin</p>
+        <h1>Live notices and the monthly calendar.</h1>
+        <p>Track regulations, safety notices, urgent updates, and resident-submitted events.</p>
+      </section>
 
-    <main>
-      <section class="section">
-        <div class="section-title">
-          <h2>Community Bulletin Board</h2>
-          <p>
-            Updates, regulations, lost pets, urgent notices, and street projects.
-          </p>
+      <section class="section site-width reveal">
+        <div class="bulletin-loop" data-bulletin-loop>
+          <div class="bulletin-track" data-bulletin-track></div>
         </div>
-        <div class="bulletin-loop" aria-label="Bulletin loop">
-          <div class="bulletin-track" id="bulletin-track">
-            <div class="bulletin-card">
-              <p class="tag">New Regulation</p>
-              <h3>Outdoor dining seasonal permit update</h3>
-              <p>Permit renewals due March 15. New patio safety checklist added.</p>
-            </div>
-            <div class="bulletin-card">
-              <p class="tag">Lost Pet</p>
-              <h3>Missing golden retriever near Central Ave</h3>
-              <p>Last seen Sunday afternoon. Contact animal shelter hotline.</p>
-            </div>
-            <div class="bulletin-card">
-              <p class="tag">Street Project</p>
-              <h3>South Street paving schedule</h3>
-              <p>Work begins February 20 with nightly lane closures.</p>
-            </div>
-            <div class="bulletin-card">
-              <p class="tag">Rut Rohs</p>
-              <h3>Storm drain blockage alert</h3>
-              <p>Public Works clearing area; report additional flooding.</p>
-            </div>
-            <div class="bulletin-card">
-              <p class="tag">Safety</p>
-              <h3>Crosswalk visibility upgrade</h3>
-              <p>LED beacons installed near the library this week.</p>
-            </div>
-            <div class="bulletin-card">
-              <p class="tag">Community</p>
-              <h3>Volunteer call: Winter Fest Parade</h3>
-              <p>Sign up for marshaling and hospitality stations.</p>
-            </div>
-          </div>
-        </div>
+      </section>
 
-        <div class="highlights">
-          <div class="highlights-header">
-            <h3>Highlights</h3>
-            <span class="tag">Live feed</span>
+      <section class="section site-width bulletin-grid reveal">
+        <article class="card card--dark live-panel">
+          <div class="live-panel__top">
+            <p class="eyebrow">Live Feed</p>
+            <span class="live-dot"></span>
           </div>
-          <div class="highlights-item" id="highlights-item"></div>
-        </div>
-
-        <div class="calendar">
-          <div class="calendar-header">
-            <h3>Town Calendar</h3>
-            <button id="bulletin-add-event" class="ghost" type="button">
-              Add Event
-            </button>
+          <p class="live-panel__text" data-bulletin-live></p>
+        </article>
+        <article class="card">
+          <div class="section-heading section-heading--compact">
+            <p class="eyebrow">Town Calendar</p>
+            <h2>Upcoming events</h2>
           </div>
-          <div class="calendar-grid" id="calendar-grid">
-            <div>
-              <p class="calendar-date">Feb 6</p>
-              <p>Town Council Meeting</p>
-            </div>
-            <div>
-              <p class="calendar-date">Feb 10</p>
-              <p>Senior Center Open House</p>
-            </div>
-            <div>
-              <p class="calendar-date">Feb 14</p>
-              <p>Winter Fest Parade</p>
-            </div>
-            <div>
-              <p class="calendar-date">Feb 22</p>
-              <p>Community Cleanup Day</p>
-            </div>
-          </div>
-          <p class="slot">Space reserved for live calendar integration.</p>
-        </div>
+          <div class="calendar-grid" data-calendar-grid></div>
+          <button class="button button-ghost" type="button" data-open-calendar-modal>
+            Add Event
+          </button>
+        </article>
       </section>
     </main>
 
     <footer class="site-footer">
-      <p>New Providence Community Hub · Draft for competition showcase</p>
+      <div class="site-width footer-grid">
+        <div>
+          <h2>New Providence Community Hub</h2>
+          <p>
+            A civic resource platform designed for clarity, care, and everyday town life.
+          </p>
+        </div>
+        <div>
+          <p class="footer-title">Navigate</p>
+          <a href="explore.html">Explore</a>
+          <a href="directory.html">Directory</a>
+          <a href="support.html">Support</a>
+        </div>
+        <div>
+          <p class="footer-title">Credits</p>
+          <p>New Providence High School</p>
+          <p>TSA Webmaster 2026</p>
+        </div>
+      </div>
+      <div class="site-width footer-bar">
+        New Providence Community Hub · TSA Webmaster 2026 · New Providence High School
+      </div>
     </footer>
-
     <script src="app.js"></script>
   </body>
 </html>

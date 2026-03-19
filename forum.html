@@ -3,100 +3,133 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Community Forum</title>
+    <title>Forum | New Providence Community Hub</title>
+    <meta
+      name="description"
+      content="Community questions and answers for New Providence residents."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700;800&family=JetBrains+Mono:wght@400;600&family=Playfair+Display:wght@600;700;800&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="styles.css" />
   </head>
-  <body>
-    <div class="grain"></div>
-
-    <header class="site-header">
-      <div class="brand">
-        <span class="brand-mark">NP</span>
-        <div>
-          <p class="brand-title">New Providence Community Hub</p>
-          <p class="brand-subtitle">Community Forum</p>
-        </div>
+  <body data-page="forum">
+    <a class="skip-link" href="#main-content">Skip to content</a>
+    <header class="site-header" data-header>
+      <div class="header-shell">
+        <a class="brand" href="index.html" aria-label="New Providence Community Hub home">
+          <span class="brand-mark">NP</span>
+          <span class="brand-copy">
+            <strong>New Providence Community Hub</strong>
+            <span>New Providence, New Jersey</span>
+          </span>
+        </a>
+        <button
+          class="menu-toggle"
+          type="button"
+          aria-label="Open navigation"
+          aria-expanded="false"
+          data-menu-toggle
+        >
+          <span></span>
+          <span></span>
+        </button>
+        <nav class="site-nav" data-nav>
+          <a href="index.html">Home</a>
+          <a href="explore.html">Explore</a>
+          <a href="bulletin.html">Bulletin</a>
+          <a href="directory.html">Directory</a>
+          <a href="support.html">Support</a>
+          <a href="education.html">Education</a>
+          <a class="active" href="forum.html">Forum</a>
+          <a href="funding.html">Funding</a>
+        </nav>
+        <button class="button button-primary header-cta" type="button" data-open-alerts>
+          Town Alerts
+        </button>
       </div>
-      <nav class="nav">
-        <a href="index.html">Home</a>
-        <a href="explore.html">Explore</a>
-        <a href="bulletin.html">Bulletin</a>
-        <a href="directory.html">Directory</a>
-        <a href="support.html">Support</a>
-        <a href="education.html">Education</a>
-        <a href="forum.html" class="active">Forum</a>
-      </nav>
-      <a class="cta" href="funding.html">Funding</a>
     </header>
 
+    <section class="warning-banner is-hidden" data-warning-banner>
+      <div class="warning-banner__icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" focusable="false">
+          <path
+            d="M12 3 1.8 20.5h20.4L12 3Zm0 4.8 5.5 9.5H6.5L12 7.8Zm-1 2.5v3.9h2v-3.9h-2Zm0 5.1v2h2v-2h-2Z"
+            fill="currentColor"
+          />
+        </svg>
+      </div>
+      <div>
+        <p class="warning-banner__eyebrow">Active Town Notice</p>
+        <p class="warning-banner__text" data-warning-text></p>
+      </div>
+    </section>
 
-    <div class="warning-banner" id="warning-banner">
-      <strong>Warnings</strong>
-      <span>No active warnings. Alerts will appear here if needed.</span>
-    </div>
+    <main id="main-content">
+      <section class="page-hero page-hero--compact site-width reveal">
+        <p class="eyebrow">Community Forum</p>
+        <h1>Town questions, answered clearly.</h1>
+        <p>Browse common topics or add a new question for the broader community.</p>
+      </section>
 
-    <main>
-      <section class="section">
-        <div class="section-title">
-          <h2>Community Forum</h2>
-          <p>Ask questions, get answers, and highlight local wins.</p>
+      <section class="section site-width reveal">
+        <div class="forum-shell">
+          <div class="forum-tabs" data-forum-tabs></div>
+          <div class="forum-panel card" data-forum-panel></div>
         </div>
+      </section>
 
-        <div class="forum-tabs" role="tablist">
-          <button class="forum-tab active" data-tab="question-1" role="tab">
-            Crosswalk request
-          </button>
-          <button class="forum-tab" data-tab="question-2" role="tab">
-            Winter hiking
-          </button>
-          <button class="forum-tab" data-tab="question-3" role="tab">
-            Volunteer needs
-          </button>
-        </div>
-
-        <div class="forum-panels">
-          <div class="forum-panel active" id="question-1" role="tabpanel">
-            <div class="forum-post compact">
-              <h3>How do I request a new crosswalk?</h3>
-              <p>
-                Answered by Public Works: submit a Town Improvement ticket with
-                location details.
-              </p>
-            </div>
+      <section class="section site-width reveal">
+        <div class="card">
+          <div class="section-heading section-heading--compact">
+            <p class="eyebrow">Post a Question</p>
+            <h2>Ask the community</h2>
           </div>
-          <div class="forum-panel" id="question-2" role="tabpanel">
-            <div class="forum-post compact">
-              <h3>Best winter hiking loop?</h3>
-              <p>Local scouts recommend the Oakwood Ridge loop.</p>
+          <form data-forum-form novalidate>
+            <label class="input-group">
+              <span>Your question</span>
+              <input class="input" name="question" type="text" />
+            </label>
+            <label class="input-group">
+              <span>Details</span>
+              <textarea class="input" name="details" rows="4"></textarea>
+            </label>
+            <div class="button-row">
+              <button class="button button-primary" type="submit">Post Question</button>
             </div>
-          </div>
-          <div class="forum-panel" id="question-3" role="tabpanel">
-            <div class="forum-post compact">
-              <h3>Where can I volunteer this month?</h3>
-              <p>Lions Club food drive needs help Feb 8-12.</p>
-            </div>
-          </div>
-        </div>
-
-        <div class="forum-form">
-          <h4>Ask the community</h4>
-          <input id="forum-question-title" type="text" placeholder="Your question" />
-          <textarea
-            id="forum-question-details"
-            rows="3"
-            placeholder="Details"
-          ></textarea>
-          <button id="forum-post-question" class="primary" type="button">
-            Post Question
-          </button>
+            <p class="form-status" data-forum-status></p>
+          </form>
         </div>
       </section>
     </main>
 
     <footer class="site-footer">
-      <p>New Providence Community Hub · Draft for competition showcase</p>
+      <div class="site-width footer-grid">
+        <div>
+          <h2>New Providence Community Hub</h2>
+          <p>
+            A civic resource platform designed for clarity, care, and everyday town life.
+          </p>
+        </div>
+        <div>
+          <p class="footer-title">Navigate</p>
+          <a href="explore.html">Explore</a>
+          <a href="directory.html">Directory</a>
+          <a href="support.html">Support</a>
+        </div>
+        <div>
+          <p class="footer-title">Credits</p>
+          <p>New Providence High School</p>
+          <p>TSA Webmaster 2026</p>
+        </div>
+      </div>
+      <div class="site-width footer-bar">
+        New Providence Community Hub · TSA Webmaster 2026 · New Providence High School
+      </div>
     </footer>
-
     <script src="app.js"></script>
   </body>
 </html>

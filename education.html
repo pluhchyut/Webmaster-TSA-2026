@@ -3,82 +3,149 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Education & School</title>
+    <title>Education | New Providence Community Hub</title>
+    <meta
+      name="description"
+      content="Education updates, school links, and community learning resources."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700;800&family=JetBrains+Mono:wght@400;600&family=Playfair+Display:wght@600;700;800&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="styles.css" />
   </head>
-  <body>
-    <div class="grain"></div>
-
-    <header class="site-header">
-      <div class="brand">
-        <span class="brand-mark">NP</span>
-        <div>
-          <p class="brand-title">New Providence Community Hub</p>
-          <p class="brand-subtitle">Education & School</p>
-        </div>
+  <body data-page="education">
+    <a class="skip-link" href="#main-content">Skip to content</a>
+    <header class="site-header" data-header>
+      <div class="header-shell">
+        <a class="brand" href="index.html" aria-label="New Providence Community Hub home">
+          <span class="brand-mark">NP</span>
+          <span class="brand-copy">
+            <strong>New Providence Community Hub</strong>
+            <span>New Providence, New Jersey</span>
+          </span>
+        </a>
+        <button
+          class="menu-toggle"
+          type="button"
+          aria-label="Open navigation"
+          aria-expanded="false"
+          data-menu-toggle
+        >
+          <span></span>
+          <span></span>
+        </button>
+        <nav class="site-nav" data-nav>
+          <a href="index.html">Home</a>
+          <a href="explore.html">Explore</a>
+          <a href="bulletin.html">Bulletin</a>
+          <a href="directory.html">Directory</a>
+          <a href="support.html">Support</a>
+          <a class="active" href="education.html">Education</a>
+          <a href="forum.html">Forum</a>
+          <a href="funding.html">Funding</a>
+        </nav>
+        <button class="button button-primary header-cta" type="button" data-open-alerts>
+          Town Alerts
+        </button>
       </div>
-      <nav class="nav">
-        <a href="index.html">Home</a>
-        <a href="explore.html">Explore</a>
-        <a href="bulletin.html">Bulletin</a>
-        <a href="directory.html">Directory</a>
-        <a href="support.html">Support</a>
-        <a href="education.html" class="active">Education</a>
-        <a href="forum.html">Forum</a>
-      </nav>
-      <a class="cta" href="funding.html">Funding</a>
     </header>
 
+    <section class="warning-banner is-hidden" data-warning-banner>
+      <div class="warning-banner__icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" focusable="false">
+          <path
+            d="M12 3 1.8 20.5h20.4L12 3Zm0 4.8 5.5 9.5H6.5L12 7.8Zm-1 2.5v3.9h2v-3.9h-2Zm0 5.1v2h2v-2h-2Z"
+            fill="currentColor"
+          />
+        </svg>
+      </div>
+      <div>
+        <p class="warning-banner__eyebrow">Active Town Notice</p>
+        <p class="warning-banner__text" data-warning-text></p>
+      </div>
+    </section>
 
-    <div class="warning-banner" id="warning-banner">
-      <strong>Warnings</strong>
-      <span>No active warnings. Alerts will appear here if needed.</span>
-    </div>
+    <main id="main-content">
+      <section class="page-hero page-hero--compact site-width reveal">
+        <p class="eyebrow">Education & School</p>
+        <h1>District updates and community learning.</h1>
+        <p>School links, BOE updates, and expandable resources for families and students.</p>
+      </section>
 
-    <main>
-      <section class="section">
-        <div class="section-title">
-          <h2>Education & School</h2>
-          <p>Social updates, official links, and district resources.</p>
-        </div>
-        <div class="education-grid">
-          <div class="education-card">
-            <h3>Important Social Posts</h3>
-            <ul>
-              <li>Board of Education update: budget session recap.</li>
-              <li>Library: reading challenge kickoff.</li>
-              <li>Weather watch: delayed openings protocol.</li>
-            </ul>
-          </div>
-          <div class="education-card">
-            <h3>School Website Redirects</h3>
-            <p class="note">
-              Placeholder links for official school sites and portals.
+      <section class="section site-width reveal">
+        <div class="three-card-grid">
+          <article class="card" data-education-update-card>
+            <p class="eyebrow">Important Updates</p>
+            <h2 data-education-update-title>Budget session recap</h2>
+            <p data-education-update-text>
+              The board reviewed instructional priorities and next-year capital requests.
             </p>
-            <div class="link-buttons">
-              <button class="ghost edu-link" type="button" data-edu-link="district">
-                District site
+          </article>
+          <article class="card">
+            <p class="eyebrow">School Links</p>
+            <h2>District shortcuts</h2>
+            <div class="button-stack">
+              <button class="button button-ghost" type="button" data-edu-link="district">
+                District Site
               </button>
-              <button class="ghost edu-link" type="button" data-edu-link="portal">
-                Parent portal
+              <button class="button button-ghost" type="button" data-edu-link="portal">
+                Parent Portal
               </button>
-              <button class="ghost edu-link" type="button" data-edu-link="lunch">
-                Lunch menus
+              <button class="button button-ghost" type="button" data-edu-link="menus">
+                Lunch Menus
               </button>
             </div>
-          </div>
-          <div class="education-card">
-            <h3>Community Learning</h3>
-            <p>After-school programs, summer camps, and tutoring services.</p>
-          </div>
+            <p class="helper-text">Quick access to frequently used district resources.</p>
+          </article>
+          <article class="card">
+            <p class="eyebrow">Community Learning</p>
+            <h2>Programs and opportunities</h2>
+            <div class="accordion-stack">
+              <details>
+                <summary>After-school enrichment</summary>
+                <p>Homework support, robotics, visual arts, and middle school clubs.</p>
+              </details>
+              <details>
+                <summary>Summer camps</summary>
+                <p>Town recreation, arts intensives, and academic skill refresh options.</p>
+              </details>
+              <details>
+                <summary>Tutoring and mentoring</summary>
+                <p>Local providers, peer mentorship, and library-based academic support.</p>
+              </details>
+            </div>
+          </article>
         </div>
       </section>
     </main>
 
     <footer class="site-footer">
-      <p>New Providence Community Hub · Draft for competition showcase</p>
+      <div class="site-width footer-grid">
+        <div>
+          <h2>New Providence Community Hub</h2>
+          <p>
+            A civic resource platform designed for clarity, care, and everyday town life.
+          </p>
+        </div>
+        <div>
+          <p class="footer-title">Navigate</p>
+          <a href="explore.html">Explore</a>
+          <a href="directory.html">Directory</a>
+          <a href="support.html">Support</a>
+        </div>
+        <div>
+          <p class="footer-title">Credits</p>
+          <p>New Providence High School</p>
+          <p>TSA Webmaster 2026</p>
+        </div>
+      </div>
+      <div class="site-width footer-bar">
+        New Providence Community Hub · TSA Webmaster 2026 · New Providence High School
+      </div>
     </footer>
-
     <script src="app.js"></script>
   </body>
 </html>

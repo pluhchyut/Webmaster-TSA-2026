@@ -3,100 +3,171 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Support & Help</title>
+    <title>Support | New Providence Community Hub</title>
+    <meta
+      name="description"
+      content="Support services, hotlines, tickets, and local help for New Providence residents."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700;800&family=JetBrains+Mono:wght@400;600&family=Playfair+Display:wght@600;700;800&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="styles.css" />
   </head>
-  <body>
-    <div class="grain"></div>
-
-    <header class="site-header">
-      <div class="brand">
-        <span class="brand-mark">NP</span>
-        <div>
-          <p class="brand-title">New Providence Community Hub</p>
-          <p class="brand-subtitle">Support & Help</p>
-        </div>
+  <body data-page="support">
+    <a class="skip-link" href="#main-content">Skip to content</a>
+    <header class="site-header" data-header>
+      <div class="header-shell">
+        <a class="brand" href="index.html" aria-label="New Providence Community Hub home">
+          <span class="brand-mark">NP</span>
+          <span class="brand-copy">
+            <strong>New Providence Community Hub</strong>
+            <span>New Providence, New Jersey</span>
+          </span>
+        </a>
+        <button
+          class="menu-toggle"
+          type="button"
+          aria-label="Open navigation"
+          aria-expanded="false"
+          data-menu-toggle
+        >
+          <span></span>
+          <span></span>
+        </button>
+        <nav class="site-nav" data-nav>
+          <a href="index.html">Home</a>
+          <a href="explore.html">Explore</a>
+          <a href="bulletin.html">Bulletin</a>
+          <a href="directory.html">Directory</a>
+          <a class="active" href="support.html">Support</a>
+          <a href="education.html">Education</a>
+          <a href="forum.html">Forum</a>
+          <a href="funding.html">Funding</a>
+        </nav>
+        <button class="button button-primary header-cta" type="button" data-open-alerts>
+          Town Alerts
+        </button>
       </div>
-      <nav class="nav">
-        <a href="index.html">Home</a>
-        <a href="explore.html">Explore</a>
-        <a href="bulletin.html">Bulletin</a>
-        <a href="directory.html">Directory</a>
-        <a href="support.html" class="active">Support</a>
-        <a href="education.html">Education</a>
-        <a href="forum.html">Forum</a>
-      </nav>
-      <a class="cta" href="funding.html">Funding</a>
     </header>
 
+    <section class="warning-banner is-hidden" data-warning-banner>
+      <div class="warning-banner__icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" focusable="false">
+          <path
+            d="M12 3 1.8 20.5h20.4L12 3Zm0 4.8 5.5 9.5H6.5L12 7.8Zm-1 2.5v3.9h2v-3.9h-2Zm0 5.1v2h2v-2h-2Z"
+            fill="currentColor"
+          />
+        </svg>
+      </div>
+      <div>
+        <p class="warning-banner__eyebrow">Active Town Notice</p>
+        <p class="warning-banner__text" data-warning-text></p>
+      </div>
+    </section>
 
-    <div class="warning-banner" id="warning-banner">
-      <strong>Warnings</strong>
-      <span>No active warnings. Alerts will appear here if needed.</span>
-    </div>
+    <main id="main-content">
+      <section class="page-hero page-hero--compact site-width reveal">
+        <p class="eyebrow">Support & Help</p>
+        <h1>Critical support, local service, and response tools.</h1>
+        <p>From alerts and hotlines to lost pet reports and town improvement tickets.</p>
+      </section>
 
-    <main>
-      <section class="section">
-        <div class="section-title">
-          <h2>Support & Help</h2>
-          <p>Critical resources, alerts, and response pathways.</p>
-        </div>
-        <div class="support-grid">
-          <div class="alert-panel">
-            <h3>Warning System</h3>
-            <ul>
-              <li>Storm advisories</li>
-              <li>Weather and heat alerts</li>
-              <li>Security / safety notifications</li>
-              <li>Power outage updates</li>
-            </ul>
-            <button id="support-alerts-signup" class="primary" type="button">
-              Sign up for alerts
-            </button>
+      <section class="section site-width reveal">
+        <article class="card card--dark support-alerts" id="alerts">
+          <div class="section-heading section-heading--compact">
+            <p class="eyebrow">Warning System</p>
+            <h2>Active alert channels</h2>
           </div>
-          <div class="support-panel">
+          <ul class="stack-list">
+            <li>Storm advisories and severe weather updates</li>
+            <li>Heat alerts, utility notices, and outage announcements</li>
+            <li>Security, safety, and emergency operations messaging</li>
+          </ul>
+          <button class="button button-primary" type="button" data-support-action="alerts">
+            Sign up for alerts
+          </button>
+        </article>
+
+        <div class="support-grid" id="ticket-form">
+          <article class="support-card card">
+            <p class="eyebrow">Hotlines</p>
             <h3>Support & Hotlines</h3>
-            <p>Mental health support, crisis hotlines, and wellness services.</p>
-            <button id="support-hotlines" class="ghost" type="button">
-              View hotline list
+            <p>988, 211, wellness resources, and emergency support numbers.</p>
+            <button class="button button-ghost" type="button" data-support-action="hotlines">
+              View Hotline List
             </button>
-          </div>
-          <div class="support-panel">
+          </article>
+          <article class="support-card card">
+            <p class="eyebrow">Food</p>
             <h3>Food Pantry</h3>
-            <p>Hours, volunteer needs, and donation drop-off points.</p>
-            <button id="support-pickup" class="ghost" type="button">
-              Schedule a pickup
+            <p>Weekly food assistance, pickups, and volunteer coordination.</p>
+            <button class="button button-ghost" type="button" data-support-action="pantry">
+              Schedule a Pickup
             </button>
-          </div>
-          <div class="support-panel">
+          </article>
+          <article class="support-card card">
+            <p class="eyebrow">Animals</p>
             <h3>Animal Shelter</h3>
-            <p>Adoptions, foster program, and lost & found support.</p>
-            <button id="support-lostpet" class="ghost" type="button">
-              Report lost pet
+            <p>Report a lost pet or learn more about adoptions and fosters.</p>
+            <button class="button button-ghost" type="button" data-support-action="lost-pet">
+              Report Lost Pet
             </button>
-          </div>
-          <div class="support-panel">
+          </article>
+          <article class="support-card card">
+            <p class="eyebrow">Town Fixes</p>
             <h3>Town Improvement Ticket</h3>
-            <p>Report potholes, signage, lighting, or infrastructure issues.</p>
-            <button id="support-ticket" class="primary" type="button">
-              File a ticket
+            <p>Submit potholes, lighting, drainage, and signage requests.</p>
+            <button class="button button-primary" type="button" data-support-action="ticket">
+              File a Ticket
             </button>
-          </div>
-          <div class="support-panel">
+          </article>
+          <article class="support-card card">
+            <p class="eyebrow">Emergency</p>
             <h3>Emergency Contacts</h3>
-            <p>911, town hall, public works, and after-hours lines.</p>
-            <button id="support-contacts" class="ghost" type="button">
-              View contacts
+            <p>Police, town hall, public works, and non-emergency contacts.</p>
+            <button class="button button-ghost" type="button" data-support-action="contacts">
+              View Contacts
             </button>
-          </div>
+          </article>
+          <article class="support-card card">
+            <p class="eyebrow">Volunteer</p>
+            <h3>Volunteer Match</h3>
+            <p>See current volunteer opportunities across town programs.</p>
+            <button class="button button-ghost" type="button" data-support-action="volunteer">
+              Open Opportunities
+            </button>
+          </article>
         </div>
       </section>
     </main>
 
     <footer class="site-footer">
-      <p>New Providence Community Hub · Draft for competition showcase</p>
+      <div class="site-width footer-grid">
+        <div>
+          <h2>New Providence Community Hub</h2>
+          <p>
+            A civic resource platform designed for clarity, care, and everyday town life.
+          </p>
+        </div>
+        <div>
+          <p class="footer-title">Navigate</p>
+          <a href="explore.html">Explore</a>
+          <a href="bulletin.html">Bulletin</a>
+          <a href="directory.html">Directory</a>
+        </div>
+        <div>
+          <p class="footer-title">Credits</p>
+          <p>New Providence High School</p>
+          <p>TSA Webmaster 2026</p>
+        </div>
+      </div>
+      <div class="site-width footer-bar">
+        New Providence Community Hub · TSA Webmaster 2026 · New Providence High School
+      </div>
     </footer>
-
     <script src="app.js"></script>
   </body>
 </html>
