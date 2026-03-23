@@ -2308,6 +2308,18 @@ function initModalForms() {
   // Reserved hook for future page-specific modal hydration.
 }
 
+function initMapReset() {
+  const resetButton = document.querySelector('[data-reset-map]');
+  if (resetButton) {
+    resetButton.addEventListener('click', function() {
+      const iframe = document.getElementById('map-iframe');
+      if (iframe) {
+        iframe.src = iframe.src; // Reload the iframe to reset to default view
+      }
+    });
+  }
+}
+
 document.addEventListener("DOMContentLoaded", () => {
   safeInit(ensureModalRoot);
   safeInit(initPageTransitions);
@@ -2326,4 +2338,5 @@ document.addEventListener("DOMContentLoaded", () => {
   safeInit(initForumPage);
   safeInit(initFundingPage);
   safeInit(initModalForms);
+  safeInit(initMapReset);
 });
