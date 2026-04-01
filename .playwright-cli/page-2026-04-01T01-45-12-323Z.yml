@@ -1,0 +1,299 @@
+- generic [active] [ref=e1]:
+  - link "Skip to content" [ref=e2] [cursor=pointer]:
+    - /url: "#main-content"
+  - banner [ref=e3]:
+    - generic [ref=e4]:
+      - link "New Providence Community Hub home" [ref=e5] [cursor=pointer]:
+        - /url: index.html
+        - generic [ref=e6]: NP
+        - generic [ref=e7]:
+          - strong [ref=e8]: New Providence Community Hub
+          - generic [ref=e9]: New Providence, New Jersey
+      - navigation [ref=e10]:
+        - link "Home" [ref=e11] [cursor=pointer]:
+          - /url: index.html
+        - link "Explore" [ref=e12] [cursor=pointer]:
+          - /url: explore.html
+        - link "Bulletin" [ref=e13] [cursor=pointer]:
+          - /url: bulletin.html
+        - link "Directory" [ref=e14] [cursor=pointer]:
+          - /url: directory.html
+        - link "Support" [ref=e15] [cursor=pointer]:
+          - /url: support.html
+        - link "Education" [ref=e16] [cursor=pointer]:
+          - /url: education.html
+        - link "Forum" [ref=e17] [cursor=pointer]:
+          - /url: forum.html
+        - link "Funding" [ref=e18] [cursor=pointer]:
+          - /url: funding.html
+      - button "Town Alerts" [ref=e19] [cursor=pointer]
+  - main [ref=e20]:
+    - generic [ref=e21]:
+      - paragraph [ref=e22]: Explore & Map
+      - heading "Explore New Providence" [level=1] [ref=e23]
+      - paragraph [ref=e24]: Search resources, focus local organizations, and suggest new additions directly on the town map.
+    - generic [ref=e26]:
+      - generic [ref=e27]:
+        - generic [ref=e28]:
+          - generic [ref=e29]:
+            - paragraph [ref=e30]: Interactive Map
+            - heading "New Providence on Google Maps" [level=2] [ref=e31]
+          - button "Reset View" [ref=e32] [cursor=pointer]
+        - iframe [ref=e33]:
+          
+        - paragraph [ref=e35]: Map powered by Google Maps.
+      - complementary [ref=e36]:
+        - generic [ref=e37]:
+          - generic [ref=e38]: Search resources
+          - searchbox "Search resources" [ref=e39]
+          - generic [ref=e40]:
+            - button "All" [ref=e41] [cursor=pointer]
+            - button "Food" [ref=e42] [cursor=pointer]
+            - button "Civic" [ref=e43] [cursor=pointer]
+            - button "Education" [ref=e44] [cursor=pointer]
+            - button "Youth" [ref=e45] [cursor=pointer]
+            - button "Arts" [ref=e46] [cursor=pointer]
+            - button "Recreation" [ref=e47] [cursor=pointer]
+            - button "Outdoors" [ref=e48] [cursor=pointer]
+            - button "Health" [ref=e49] [cursor=pointer]
+            - button "Social" [ref=e50] [cursor=pointer]
+            - button "Dining" [ref=e51] [cursor=pointer]
+            - button "Shopping" [ref=e52] [cursor=pointer]
+          - generic [ref=e54]:
+            - generic [ref=e55]: Neighborhood
+            - combobox "Neighborhood" [ref=e56]:
+              - option "All Neighborhoods" [selected]
+              - option "Downtown"
+              - option "Fairview"
+              - option "Oakwood"
+          - paragraph [ref=e57]: Showing 20 of 20 resources
+        - generic [ref=e58]:
+          - paragraph [ref=e59]: Selected Resource
+          - heading "Select a resource" [level=2] [ref=e60]
+          - paragraph [ref=e61]: Click a map pin or resource card to view the full detail panel.
+          - generic [ref=e62]:
+            - generic [ref=e63]:
+              - term [ref=e64]: Address
+              - definition [ref=e65]: —
+            - generic [ref=e66]:
+              - term [ref=e67]: Phone
+              - definition [ref=e68]: —
+            - generic [ref=e69]:
+              - term [ref=e70]: Hours
+              - definition [ref=e71]: —
+          - generic [ref=e72]:
+            - button "Map Me There" [ref=e73] [cursor=pointer]
+            - button "Share" [ref=e74] [cursor=pointer]
+        - generic [ref=e75]:
+          - article [ref=e76]:
+            - generic [ref=e77]:
+              - generic [ref=e78]: F
+              - generic [ref=e79]: Spotlight
+            - heading "New Providence Food Pantry" [level=3] [ref=e80]
+            - paragraph [ref=e81]: Weekly food assistance for residents in need with quick, low-friction support and community coordination.
+            - generic [ref=e82]:
+              - generic [ref=e83]: Food
+              - generic [ref=e84]: downtown
+          - article [ref=e85]:
+            - generic [ref=e86]:
+              - generic [ref=e87]: C
+              - generic [ref=e88]: Spotlight
+            - heading "Lions Club of New Providence" [level=3] [ref=e89]
+            - paragraph [ref=e90]: Volunteer service organization running food drives, fundraisers, and civic projects across the borough.
+            - generic [ref=e91]:
+              - generic [ref=e92]: Civic
+              - generic [ref=e93]: downtown
+          - article [ref=e94]:
+            - generic [ref=e95]:
+              - generic [ref=e96]: E
+              - generic [ref=e97]: Spotlight
+            - heading "New Providence Memorial Library" [level=3] [ref=e98]
+            - paragraph [ref=e99]: Public library offering books, digital resources, a maker lab, and year-round community programming.
+            - generic [ref=e100]:
+              - generic [ref=e101]: Education
+              - generic [ref=e102]: downtown
+          - article [ref=e103]:
+            - generic [ref=e104]:
+              - generic [ref=e105]: A
+              - generic [ref=e106]: Spotlight
+            - heading "PACA Arts Collective" [level=3] [ref=e107]
+            - paragraph [ref=e108]: Local arts organization hosting workshops, rotating exhibits, and community-focused cultural events.
+            - generic [ref=e109]:
+              - generic [ref=e110]: Arts
+              - generic [ref=e111]: downtown
+          - article [ref=e112]:
+            - generic [ref=e114]: "Y"
+            - heading "Scouts BSA Troop 61" [level=3] [ref=e115]
+            - paragraph [ref=e116]: Youth leadership, outdoor skills, camping, and community service through local scouting programs.
+            - generic [ref=e117]:
+              - generic [ref=e118]: Youth
+              - generic [ref=e119]: fairview
+          - article [ref=e120]:
+            - generic [ref=e122]: E
+            - heading "NPHS Parent-Teacher Association" [level=3] [ref=e123]
+            - paragraph [ref=e124]: Family engagement and school support programming for district families and school staff.
+            - generic [ref=e125]:
+              - generic [ref=e126]: Education
+              - generic [ref=e127]: downtown
+          - article [ref=e128]:
+            - generic [ref=e130]: S
+            - heading "New Providence Senior Center" [level=3] [ref=e131]
+            - paragraph [ref=e132]: Programs, activities, and social events for seniors with regular wellness and connection offerings.
+            - generic [ref=e133]:
+              - generic [ref=e134]: Social
+              - generic [ref=e135]: downtown
+          - article [ref=e136]:
+            - generic [ref=e138]: R
+            - heading "NP Recreation Department" [level=3] [ref=e139]
+            - paragraph [ref=e140]: Youth and adult sports leagues, summer camps, fitness programs, and seasonal town events.
+            - generic [ref=e141]:
+              - generic [ref=e142]: Recreation
+              - generic [ref=e143]: downtown
+          - article [ref=e144]:
+            - generic [ref=e146]: S
+            - heading "Fairview Artisan Market" [level=3] [ref=e147]
+            - paragraph [ref=e148]: Seasonal pop-up market featuring handmade goods, neighborhood vendors, and local makers.
+            - generic [ref=e149]:
+              - generic [ref=e150]: Shopping
+              - generic [ref=e151]: fairview
+          - article [ref=e152]:
+            - generic [ref=e154]: O
+            - heading "Oakwood Loop Trail" [level=3] [ref=e155]
+            - paragraph [ref=e156]: A shaded loop trail with gentle elevation, popular with walkers, runners, and families.
+            - generic [ref=e157]:
+              - generic [ref=e158]: Outdoors
+              - generic [ref=e159]: oakwood
+          - article [ref=e160]:
+            - generic [ref=e162]: R
+            - heading "Lions Park & Pavilion" [level=3] [ref=e163]
+            - paragraph [ref=e164]: A central gathering spot for picnics, youth sports, community days, and summer programming.
+            - generic [ref=e165]:
+              - generic [ref=e166]: Recreation
+              - generic [ref=e167]: fairview
+          - article [ref=e168]:
+            - generic [ref=e170]: D
+            - heading "Central Ave Dining District" [level=3] [ref=e171]
+            - paragraph [ref=e172]: A cluster of local dining favorites ranging from quick bites to sit-down neighborhood staples.
+            - generic [ref=e173]:
+              - generic [ref=e174]: Dining
+              - generic [ref=e175]: downtown
+          - article [ref=e176]:
+            - generic [ref=e178]: D
+            - heading "Maple Street Coffee" [level=3] [ref=e179]
+            - paragraph [ref=e180]: Cozy grab-and-go coffee spot for students, commuters, and weekend downtown walks.
+            - generic [ref=e181]:
+              - generic [ref=e182]: Dining
+              - generic [ref=e183]: downtown
+          - article [ref=e184]:
+            - generic [ref=e186]: "Y"
+            - heading "MuBoo Youth Arts Collective" [level=3] [ref=e187]
+            - paragraph [ref=e188]: Creative mentorship and arts access for local students through youth-led programming.
+            - generic [ref=e189]:
+              - generic [ref=e190]: Youth
+              - generic [ref=e191]: downtown
+          - article [ref=e192]:
+            - generic [ref=e194]: S
+            - heading "Clubbing Social Club" [level=3] [ref=e195]
+            - paragraph [ref=e196]: Open social group for hobby nights, meetups, and intergenerational community events.
+            - generic [ref=e197]:
+              - generic [ref=e198]: Social
+              - generic [ref=e199]: downtown
+          - article [ref=e200]:
+            - generic [ref=e202]: H
+            - heading "NP Community Health Services" [level=3] [ref=e203]
+            - paragraph [ref=e204]: Local health resources, wellness programs, referrals, and preventive care information.
+            - generic [ref=e205]:
+              - generic [ref=e206]: Health
+              - generic [ref=e207]: downtown
+          - article [ref=e208]:
+            - generic [ref=e210]: S
+            - heading "New Providence Animal Shelter" [level=3] [ref=e211]
+            - paragraph [ref=e212]: Animal adoptions, foster support, lost and found coordination, and pet community resources.
+            - generic [ref=e213]:
+              - generic [ref=e214]: Social
+              - generic [ref=e215]: fairview
+          - article [ref=e216]:
+            - generic [ref=e218]: C
+            - heading "NP Environmental Advisory Committee" [level=3] [ref=e219]
+            - paragraph [ref=e220]: Town advisory group focused on sustainability initiatives, policy, and environmental stewardship.
+            - generic [ref=e221]:
+              - generic [ref=e222]: Civic
+              - generic [ref=e223]: downtown
+          - article [ref=e224]:
+            - generic [ref=e226]: "Y"
+            - heading "NPHS Athletics Programs" [level=3] [ref=e227]
+            - paragraph [ref=e228]: Varsity and JV athletics programming with student participation across multiple seasons.
+            - generic [ref=e229]:
+              - generic [ref=e230]: Youth
+              - generic [ref=e231]: downtown
+          - article [ref=e232]:
+            - generic [ref=e234]: C
+            - heading "NP Volunteer Fire Department" [level=3] [ref=e235]
+            - paragraph [ref=e236]: Volunteer fire department delivering emergency response, drills, and community safety programming.
+            - generic [ref=e237]:
+              - generic [ref=e238]: Civic
+              - generic [ref=e239]: downtown
+        - generic [ref=e240]:
+          - generic [ref=e241]:
+            - paragraph [ref=e242]: Suggest a Resource
+            - heading "Add a local resource" [level=2] [ref=e243]
+          - generic [ref=e244]:
+            - generic [ref=e245]:
+              - generic [ref=e246]:
+                - generic [ref=e247]: Name *
+                - textbox "Name *" [ref=e248]
+              - generic [ref=e249]:
+                - generic [ref=e250]: Category *
+                - combobox "Category *" [ref=e251]:
+                  - option "Select category" [selected]
+                  - option "Food"
+                  - option "Civic"
+                  - option "Education"
+                  - option "Youth"
+                  - option "Arts"
+                  - option "Recreation"
+                  - option "Outdoors"
+                  - option "Health"
+                  - option "Social"
+                  - option "Dining"
+                  - option "Shopping"
+            - generic [ref=e252]:
+              - generic [ref=e253]: Description *
+              - textbox "Description *" [ref=e254]
+            - generic [ref=e255]:
+              - generic [ref=e256]:
+                - generic [ref=e257]: Address
+                - textbox "Address" [ref=e258]
+              - generic [ref=e259]:
+                - generic [ref=e260]: Phone
+                - textbox "Phone" [ref=e261]
+            - generic [ref=e262]:
+              - generic [ref=e263]:
+                - generic [ref=e264]: Hours
+                - textbox "Hours" [ref=e265]
+              - generic [ref=e266]:
+                - generic [ref=e267]: Tags
+                - textbox "Tags" [ref=e268]:
+                  - /placeholder: comma, separated, tags
+            - generic [ref=e269]:
+              - button "Click map to set location" [ref=e270] [cursor=pointer]
+              - button "Submit Resource" [ref=e271] [cursor=pointer]
+            - paragraph
+  - contentinfo [ref=e272]:
+    - generic [ref=e273]:
+      - generic [ref=e274]:
+        - heading "New Providence Community Hub" [level=2] [ref=e275]
+        - paragraph [ref=e276]: A civic resource platform designed for clarity, care, and everyday town life.
+      - generic [ref=e277]:
+        - paragraph [ref=e278]: Navigate
+        - link "Home" [ref=e279] [cursor=pointer]:
+          - /url: index.html
+        - link "Bulletin" [ref=e280] [cursor=pointer]:
+          - /url: bulletin.html
+        - link "Support" [ref=e281] [cursor=pointer]:
+          - /url: support.html
+      - generic [ref=e282]:
+        - paragraph [ref=e283]: Credits
+        - paragraph [ref=e284]: New Providence High School
+        - paragraph [ref=e285]: TSA Webmaster 2026
+    - generic [ref=e286]: New Providence Community Hub · TSA Webmaster 2026 · New Providence High School

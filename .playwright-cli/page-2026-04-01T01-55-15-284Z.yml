@@ -1,0 +1,169 @@
+- generic [active] [ref=e1]:
+  - link "Skip to content" [ref=e2] [cursor=pointer]:
+    - /url: "#main-content"
+  - banner [ref=e3]:
+    - generic [ref=e4]:
+      - link "New Providence Community Hub home" [ref=e5] [cursor=pointer]:
+        - /url: index.html
+        - generic [ref=e6]: NP
+        - generic [ref=e7]:
+          - strong [ref=e8]: New Providence Community Hub
+          - generic [ref=e9]: New Providence, New Jersey
+      - navigation [ref=e10]:
+        - link "Home" [ref=e11] [cursor=pointer]:
+          - /url: index.html
+        - link "Explore" [ref=e12] [cursor=pointer]:
+          - /url: explore.html
+        - link "Bulletin" [ref=e13] [cursor=pointer]:
+          - /url: bulletin.html
+        - link "Directory" [ref=e14] [cursor=pointer]:
+          - /url: directory.html
+        - link "Support" [ref=e15] [cursor=pointer]:
+          - /url: support.html
+        - link "Education" [ref=e16] [cursor=pointer]:
+          - /url: education.html
+        - link "Forum" [ref=e17] [cursor=pointer]:
+          - /url: forum.html
+        - link "Funding" [ref=e18] [cursor=pointer]:
+          - /url: funding.html
+      - button "Town Alerts" [ref=e19] [cursor=pointer]
+  - main [ref=e20]:
+    - generic [ref=e22]:
+      - generic [ref=e23]:
+        - paragraph [ref=e24]: New Providence, NJ · Est. 1921
+        - heading "Your Community, Connected." [level=1] [ref=e25]:
+          - generic [ref=e26]: Your
+          - generic [ref=e27]: Community,
+          - generic [ref=e28]: Connected.
+        - paragraph [ref=e29]: Track projects, discover local resources, and stay informed through a polished community hub built for New Providence residents.
+        - generic [ref=e30]:
+          - link "Explore Resources" [ref=e31] [cursor=pointer]:
+            - /url: explore.html
+          - link "View Bulletin" [ref=e32] [cursor=pointer]:
+            - /url: bulletin.html
+          - link "File a Ticket" [ref=e33] [cursor=pointer]:
+            - /url: support.html#ticket-form
+        - generic [ref=e34]:
+          - article [ref=e35]:
+            - strong [ref=e36]: $14.5M
+            - text: Active Funding
+          - article [ref=e37]:
+            - strong [ref=e38]: "33"
+            - text: Community Partners
+          - article [ref=e39]:
+            - strong [ref=e40]: 10,741
+            - text: Residents Served
+      - generic [ref=e41]:
+        - button "Bring Today in Town card forward" [ref=e43] [cursor=pointer]:
+          - paragraph [ref=e44]: Today in Town
+          - heading "March 31, 2026" [level=2] [ref=e45]
+          - list [ref=e46]:
+            - listitem [ref=e47]: Board of Education workshop · 5:30 PM
+            - listitem [ref=e48]: Library teen maker lab · 6:00 PM
+        - button "Bring Live Updates card forward" [ref=e49] [cursor=pointer]:
+          - paragraph [ref=e50]: Live Updates
+          - paragraph [ref=e51]: Library maker lab opens new fabrication slots this Friday.
+        - button "Bring Quick Stats card forward" [ref=e52] [cursor=pointer]:
+          - paragraph [ref=e53]: Quick Stats
+          - generic [ref=e54]:
+            - generic [ref=e55]:
+              - term [ref=e56]: County
+              - definition [ref=e57]: Union
+            - generic [ref=e58]:
+              - term [ref=e59]: Zip
+              - definition [ref=e60]: "07974"
+            - generic [ref=e61]:
+              - term [ref=e62]: Stations
+              - definition [ref=e63]: 2 NJ Transit
+    - generic [ref=e64]:
+      - generic [ref=e65]:
+        - paragraph [ref=e66]: Quick Jump
+        - heading "Everything You Need" [level=2] [ref=e67]
+      - generic [ref=e68]:
+        - link "M Explore & Map Navigate the town in 3D and discover trusted local resources." [ref=e69] [cursor=pointer]:
+          - /url: explore.html
+          - generic [ref=e70]: M
+          - heading "Explore & Map" [level=3] [ref=e71]
+          - paragraph [ref=e72]: Navigate the town in 3D and discover trusted local resources.
+        - link "F Funding See where civic investment is going and what projects are active." [ref=e73] [cursor=pointer]:
+          - /url: funding.html
+          - generic [ref=e74]: F
+          - heading "Funding" [level=3] [ref=e75]
+          - paragraph [ref=e76]: See where civic investment is going and what projects are active.
+        - link "B Bulletin Board Stay on top of regulations, events, notices, and local alerts." [ref=e77] [cursor=pointer]:
+          - /url: bulletin.html
+          - generic [ref=e78]: B
+          - heading "Bulletin Board" [level=3] [ref=e79]
+          - paragraph [ref=e80]: Stay on top of regulations, events, notices, and local alerts.
+        - link "Q Community Forum Ask questions, browse answers, and post town-specific updates." [ref=e81] [cursor=pointer]:
+          - /url: forum.html
+          - generic [ref=e82]: Q
+          - heading "Community Forum" [level=3] [ref=e83]
+          - paragraph [ref=e84]: Ask questions, browse answers, and post town-specific updates.
+        - link "D Directory Connect with clubs, civic groups, arts organizations, and teams." [ref=e85] [cursor=pointer]:
+          - /url: directory.html
+          - generic [ref=e86]: D
+          - heading "Directory" [level=3] [ref=e87]
+          - paragraph [ref=e88]: Connect with clubs, civic groups, arts organizations, and teams.
+        - link "S Support & Help Find hotlines, report issues, and get connected to services fast." [ref=e89] [cursor=pointer]:
+          - /url: support.html
+          - generic [ref=e90]: S
+          - heading "Support & Help" [level=3] [ref=e91]
+          - paragraph [ref=e92]: Find hotlines, report issues, and get connected to services fast.
+        - link "E Education Monitor BOE updates, school links, learning programs, and notices." [ref=e93] [cursor=pointer]:
+          - /url: education.html
+          - generic [ref=e94]: E
+          - heading "Education" [level=3] [ref=e95]
+          - paragraph [ref=e96]: Monitor BOE updates, school links, learning programs, and notices.
+    - generic [ref=e99]:
+      - generic [ref=e101]:
+        - paragraph [ref=e102]: Spotlighted Resource
+        - heading "New Providence Food Pantry" [level=2] [ref=e103]
+        - paragraph [ref=e104]: Weekly food assistance for residents in need with quick, low-friction support and community coordination.
+        - link "Learn More" [ref=e105] [cursor=pointer]:
+          - /url: explore.html?resource=food-pantry
+      - generic [ref=e106]:
+        - button "Previous spotlight" [ref=e107] [cursor=pointer]: ←
+        - button "Next spotlight" [ref=e110] [cursor=pointer]: →
+      - generic "Highlight navigation" [ref=e111]:
+        - button "Show New Providence Food Pantry" [ref=e112] [cursor=pointer]
+        - button "Show Lions Club of New Providence" [ref=e113] [cursor=pointer]
+        - button "Show New Providence Memorial Library" [ref=e114] [cursor=pointer]
+        - button "Show PACA Arts Collective" [ref=e115] [cursor=pointer]
+    - generic [ref=e117]:
+      - article [ref=e118]:
+        - strong [ref=e119]: "0"
+        - text: Buildings Mapped
+      - article [ref=e120]:
+        - strong [ref=e121]: "0"
+        - text: Events This Month
+      - article [ref=e122]:
+        - strong [ref=e123]: "0"
+        - text: Active Support Services
+      - article [ref=e124]:
+        - strong [ref=e125]: "0"
+        - text: Years of Community
+    - generic [ref=e127]:
+      - paragraph [ref=e128]: Reserve a Slot
+      - heading "This hub grows with the community." [level=2] [ref=e129]
+      - paragraph [ref=e130]: More services, more directories, more ways to connect. The framework is ready for the next wave of local updates.
+      - link "Reserve a slot" [ref=e131] [cursor=pointer]:
+        - /url: explore.html
+  - contentinfo [ref=e132]:
+    - generic [ref=e133]:
+      - generic [ref=e134]:
+        - heading "New Providence Community Hub" [level=2] [ref=e135]
+        - paragraph [ref=e136]: A civic resource platform designed for clarity, care, and everyday town life.
+      - generic [ref=e137]:
+        - paragraph [ref=e138]: Navigate
+        - link "Explore" [ref=e139] [cursor=pointer]:
+          - /url: explore.html
+        - link "Bulletin" [ref=e140] [cursor=pointer]:
+          - /url: bulletin.html
+        - link "Support" [ref=e141] [cursor=pointer]:
+          - /url: support.html
+      - generic [ref=e142]:
+        - paragraph [ref=e143]: Credits
+        - paragraph [ref=e144]: New Providence High School
+        - paragraph [ref=e145]: TSA Webmaster 2026
+    - generic [ref=e146]: New Providence Community Hub · TSA Webmaster 2026 · New Providence High School

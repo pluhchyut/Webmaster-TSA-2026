@@ -1134,6 +1134,60 @@ function syncResourceDetail(resource) {
   });
 }
 
+function focusExploreEmbeddedMap(resource, options = {}) {
+  const iframe = document.getElementById("map-iframe");
+  if (!iframe || !resource) return;
+
+  if (!iframe.dataset.defaultSrc) iframe.dataset.defaultSrc = iframe.src;
+
+  const query = (resource.address || `${resource.name}, New Providence, NJ`).trim();
+  iframe.src = `https://www.google.com/maps?q=${encodeURIComponent(query)}&z=16&output=embed`;
+
+  const tooltip = $("[data-map-tooltip]");
+  if (tooltip) {
+    tooltip.textContent = `Focused on ${resource.name}.`;
+  }
+
+  const shouldScroll =
+    options.scroll ?? window.matchMedia("(max-width: 1080px)").matches;
+  if (shouldScroll) {
+    iframe.closest(".map-shell")?.scrollIntoView({
+      behavior: "smooth",
+      block: "start",
+    });
+  }
+}
+
+function focusExploreMapById(id, options = {}) {
+  const resource = getAllResources().find((item) => item.id === id);
+  if (!resource) return;
+
+  if (townMapApi) {
+    townMapApi.focus(id);
+    return;
+  }
+
+  focusExploreEmbeddedMap(resource, options);
+}
+
+function resetExploreMap() {
+  if (townMapApi) {
+    townMapApi.reset();
+    return;
+  }
+
+  const iframe = document.getElementById("map-iframe");
+  if (!iframe) return;
+
+  if (!iframe.dataset.defaultSrc) iframe.dataset.defaultSrc = iframe.src;
+  iframe.src = iframe.dataset.defaultSrc;
+
+  const tooltip = $("[data-map-tooltip]");
+  if (tooltip) {
+    tooltip.textContent = "Showing the full town map.";
+  }
+}
+
 function renderExploreResources() {
   const results = $("[data-resource-results]");
   const search = $("[data-resource-search]");
@@ -1184,11 +1238,16 @@ function renderExploreResources() {
 
   results.innerHTML = filtered
     .map((item) => {
-      const active = item.id === selectedResourceId ? ' style="border-color: var(--np-gold);"' : "";
+      const active = item.id === selectedResourceId;
       const spotlight = item.spotlight ? '<span class="resource-card__badge">Spotlight</span>' : "";
       const badge = item.suggested ? '<span class="resource-card__badge">Suggested</span>' : spotlight;
       return `
-        <article class="resource-card card"${active} data-resource-card="${item.id}">
+        <button
+          class="resource-card card${active ? " is-selected" : ""}"
+          type="button"
+          data-resource-card="${item.id}"
+          aria-pressed="${active ? "true" : "false"}"
+        >
           <div class="resource-card__top">
             <span class="resource-card__icon">${createCategoryIcon(item.category)}</span>
             ${badge}
@@ -1199,7 +1258,11 @@ function renderExploreResources() {
             <span class="resource-card__badge">${getCategoryLabel(item.category)}</span>
             <span class="resource-card__badge">${item.neighborhood || "Suggested"}</span>
           </div>
-        </article>
+          <span class="resource-card__action">
+            View on map
+            <span class="resource-card__arrow" aria-hidden="true">→</span>
+          </span>
+        </button>
       `;
     })
     .join("");
@@ -1211,7 +1274,7 @@ function renderExploreResources() {
       selectedResourceId = resource.id;
       syncResourceDetail(resource);
       renderExploreResources();
-      if (townMapApi) townMapApi.focus(resource.id);
+      focusExploreMapById(resource.id);
     });
   });
 }
@@ -1268,7 +1331,7 @@ function initResourceDetailActions() {
       }
 
       const resource = getAllResources().find((item) => item.id === selectedResourceId);
-      if (townMapApi) townMapApi.focus(selectedResourceId);
+      focusExploreMapById(selectedResourceId);
 
       if (resource?.address) {
         window.open(
@@ -1912,6 +1975,16 @@ function initExplorePage() {
   if (search) search.addEventListener("input", debounce(renderExploreResources, 150));
   if (neighborhood) neighborhood.addEventListener("change", renderExploreResources);
 
+  if (!selectedResourceId) {
+    const requested = new URLSearchParams(window.location.search).get("resource");
+    const initial = getAllResources().find((item) => item.id === requested);
+    if (initial) {
+      selectedResourceId = initial.id;
+      syncResourceDetail(initial);
+      focusExploreMapById(initial.id, { scroll: false });
+    }
+  }
+
   const form = $("[data-suggest-form]");
   if (form) {
     const status = $("[data-suggest-status]");
@@ -2310,12 +2383,10 @@ function initModalForms() {
 
 function initMapReset() {
   const resetButton = document.querySelector('[data-reset-map]');
-  if (resetButton) {
+  const iframe = document.getElementById('map-iframe');
+  if (resetButton && iframe) {
     resetButton.addEventListener('click', function() {
-      const iframe = document.getElementById('map-iframe');
-      if (iframe) {
-        iframe.src = iframe.src; // Reload the iframe to reset to default view
-      }
+      resetExploreMap();
     });
   }
 }
