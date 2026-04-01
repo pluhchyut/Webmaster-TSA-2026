@@ -433,9 +433,9 @@ const educationLinkMeta = {
 };
 
 const defaultSchoolLinks = {
-  district: "https://www.npsdnj.org/",
-  portal: "https://powerschool.npsdnj.org/public/",
-  menus: "https://www.npsdnj.org/apps/pages/food-services",
+  district: "https://nphs.npsd.k12.nj.us/",
+  portal: "https://powerschool.npsd.us/public/home.html",
+  menus: "https://www.npsd.k12.nj.us/programsservices/food-services",
 };
 
 const forumSeed = [
