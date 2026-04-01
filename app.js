@@ -30,9 +30,6 @@ const resourceData = [
     description:
       "Weekly food assistance for residents in need with quick, low-friction support and community coordination.",
     position: { x: -60, z: 20 },
-    spotlight: true,
-    image:
-      "https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?auto=format&fit=crop&w=1600&q=75",
   },
   {
     id: "lions-club",
@@ -46,9 +43,6 @@ const resourceData = [
     description:
       "Volunteer service organization running food drives, fundraisers, and civic projects across the borough.",
     position: { x: -40, z: 45 },
-    spotlight: true,
-    image:
-      "https://images.unsplash.com/photo-1559027615-cd4628902d4a?auto=format&fit=crop&w=1600&q=75",
   },
   {
     id: "library",
@@ -63,8 +57,7 @@ const resourceData = [
       "Public library offering books, digital resources, a maker lab, and year-round community programming.",
     position: { x: -80, z: -10 },
     spotlight: true,
-    image:
-      "https://images.unsplash.com/photo-1521587760476-6c12a4b040da?auto=format&fit=crop&w=1600&q=75",
+    image: "assets/community/library-exterior-spring.jpg",
   },
   {
     id: "paca",
@@ -78,9 +71,6 @@ const resourceData = [
     description:
       "Local arts organization hosting workshops, rotating exhibits, and community-focused cultural events.",
     position: { x: -92, z: 8 },
-    spotlight: true,
-    image:
-      "https://images.unsplash.com/photo-1513364776144-60967b0f800f?auto=format&fit=crop&w=1600&q=75",
   },
   {
     id: "scouts",
@@ -172,6 +162,8 @@ const resourceData = [
     description:
       "A central gathering spot for picnics, youth sports, community days, and summer programming.",
     position: { x: 105, z: -38 },
+    spotlight: true,
+    image: "assets/community/pavilion-park.jpg",
   },
   {
     id: "central-bistros",
@@ -185,6 +177,8 @@ const resourceData = [
     description:
       "A cluster of local dining favorites ranging from quick bites to sit-down neighborhood staples.",
     position: { x: -70, z: 35 },
+    spotlight: true,
+    image: "assets/community/downtown-shops.jpg",
   },
   {
     id: "maple-coffee",
@@ -276,6 +270,7 @@ const resourceData = [
     description:
       "Varsity and JV athletics programming with student participation across multiple seasons.",
     position: { x: -10, z: 60 },
+    image: "assets/community/school-campus-drive.jpg",
   },
   {
     id: "np-fire",
@@ -289,6 +284,8 @@ const resourceData = [
     description:
       "Volunteer fire department delivering emergency response, drills, and community safety programming.",
     position: { x: 0, z: 0 },
+    spotlight: true,
+    image: "assets/community/firehouse-exterior.jpg",
   },
 ];
 
@@ -1113,8 +1110,21 @@ let townMapApi = null;
 function syncResourceDetail(resource) {
   const panel = $("[data-resource-detail]");
   if (!panel || !resource) return;
+  const media = $("[data-detail-media]", panel);
+  const mediaImage = $("[data-detail-image]", panel);
   $("[data-detail-name]", panel).textContent = resource.name;
   $("[data-detail-description]", panel).textContent = resource.description;
+  if (media && mediaImage) {
+    if (resource.image) {
+      media.hidden = false;
+      mediaImage.src = resource.image;
+      mediaImage.alt = `${resource.name} in New Providence`;
+    } else {
+      media.hidden = true;
+      mediaImage.src = "";
+      mediaImage.alt = "";
+    }
+  }
   const address = $("[data-detail-address]", panel);
   const phone = $("[data-detail-phone]", panel);
   const hours = $("[data-detail-hours]", panel);
@@ -1241,6 +1251,18 @@ function renderExploreResources() {
       const active = item.id === selectedResourceId;
       const spotlight = item.spotlight ? '<span class="resource-card__badge">Spotlight</span>' : "";
       const badge = item.suggested ? '<span class="resource-card__badge">Suggested</span>' : spotlight;
+      const media = item.image
+        ? `
+          <div class="resource-card__image-wrap">
+            <img
+              class="resource-card__image"
+              src="${item.image}"
+              alt=""
+              loading="lazy"
+            />
+          </div>
+        `
+        : "";
       return `
         <button
           class="resource-card card${active ? " is-selected" : ""}"
@@ -1248,6 +1270,7 @@ function renderExploreResources() {
           data-resource-card="${item.id}"
           aria-pressed="${active ? "true" : "false"}"
         >
+          ${media}
           <div class="resource-card__top">
             <span class="resource-card__icon">${createCategoryIcon(item.category)}</span>
             ${badge}
