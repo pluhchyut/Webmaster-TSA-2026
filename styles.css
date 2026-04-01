@@ -1289,6 +1289,16 @@ button {
 
 .support-alerts {
   margin-bottom: 22px;
+  color: #fff;
+}
+
+.support-alerts .section-heading h2 {
+  color: #fff;
+}
+
+.support-alerts .eyebrow,
+.support-alerts .stack-list li {
+  color: rgba(255, 255, 255, 0.92);
 }
 
 .support-alerts .button {
