@@ -70,14 +70,35 @@
     </section>
 
     <main id="main-content">
-      <section class="page-hero page-hero--compact site-width reveal">
+      <section class="page-hero page-hero--compact page-hero--directory site-width reveal">
         <p class="eyebrow">Get Connected</p>
         <h1>Clubs, organizations, and civic groups.</h1>
         <p>Search the groups that shape arts, sports, advocacy, service, and town life.</p>
       </section>
 
-      <section class="section section--tight site-width reveal">
-        <div class="civic-banner card">
+      <section class="section site-width reveal">
+        <div class="card">
+          <div class="split-fields">
+            <label class="input-group">
+              <span>Search directory</span>
+              <input class="input" type="search" placeholder="Lions Club, sports, arts..." data-directory-search />
+            </label>
+            <label class="input-group">
+              <span>Category</span>
+              <select class="input" data-directory-filter>
+                <option value="all">All Categories</option>
+                <option value="civic">Civic</option>
+                <option value="youth">Youth</option>
+                <option value="arts">Arts</option>
+                <option value="sports">Sports</option>
+                <option value="social">Social</option>
+                <option value="advocacy">Advocacy</option>
+              </select>
+            </label>
+          </div>
+        </div>
+        <div class="directory-grid" data-directory-grid></div>
+        <div class="civic-banner card directory-civic-banner">
           <div class="civic-banner__copy">
             <p class="eyebrow">Community Anchors</p>
             <h2>Local organizations grow around familiar town spaces.</h2>
@@ -109,30 +130,6 @@
             </figure>
           </div>
         </div>
-      </section>
-
-      <section class="section site-width reveal">
-        <div class="card">
-          <div class="split-fields">
-            <label class="input-group">
-              <span>Search directory</span>
-              <input class="input" type="search" placeholder="Lions Club, sports, arts..." data-directory-search />
-            </label>
-            <label class="input-group">
-              <span>Category</span>
-              <select class="input" data-directory-filter>
-                <option value="all">All Categories</option>
-                <option value="civic">Civic</option>
-                <option value="youth">Youth</option>
-                <option value="arts">Arts</option>
-                <option value="sports">Sports</option>
-                <option value="social">Social</option>
-                <option value="advocacy">Advocacy</option>
-              </select>
-            </label>
-          </div>
-        </div>
-        <div class="directory-grid" data-directory-grid></div>
       </section>
     </main>
 

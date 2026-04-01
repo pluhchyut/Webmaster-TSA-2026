@@ -733,6 +733,10 @@ button {
   align-items: center;
 }
 
+.directory-civic-banner {
+  margin-top: 28px;
+}
+
 .civic-banner__copy p:last-child {
   max-width: 40ch;
 }
@@ -973,6 +977,30 @@ button {
 
 .page-hero--compact {
   padding-bottom: 0;
+}
+
+.page-hero--directory {
+  padding: clamp(44px, 7vw, 84px) clamp(24px, 4vw, 40px);
+  border-radius: var(--radius-xl);
+  background:
+    linear-gradient(180deg, rgba(9, 24, 16, 0.34), rgba(9, 24, 16, 0.68)),
+    linear-gradient(135deg, rgba(201, 146, 42, 0.12), rgba(16, 59, 36, 0.2)),
+    url("assets/community/memorial-garden.jpg");
+  background-size: cover;
+  background-position: center;
+  color: var(--np-white);
+  overflow: hidden;
+}
+
+.page-hero--directory,
+.page-hero--directory .eyebrow,
+.page-hero--directory h1,
+.page-hero--directory p {
+  color: var(--np-white) !important;
+}
+
+.page-hero--directory p:last-child {
+  max-width: 54ch;
 }
 
 .explore-layout,
@@ -2045,6 +2073,13 @@ h4 {
 .eyebrow {
   color: var(--np-gold);
   font-weight: 700;
+}
+
+.page-hero--directory,
+.page-hero--directory .eyebrow,
+.page-hero--directory h1,
+.page-hero--directory p {
+  color: var(--np-white) !important;
 }
 
 .site-header {

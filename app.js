@@ -292,63 +292,73 @@ const resourceData = [
 const directoryData = [
   {
     id: "dir-lions",
-    name: "Lions Club of New Providence",
+    name: "New Providence Lions Club",
     category: "civic",
-    description: "Volunteer service, fundraising, and community support initiatives.",
-  },
-  {
-    id: "dir-paca",
-    name: "PACA Arts Collective",
-    category: "arts",
-    description: "Community arts workshops, exhibits, and public cultural programming.",
-  },
-  {
-    id: "dir-pta",
-    name: "Parent-Teacher Association",
-    category: "advocacy",
-    description: "School-family partnership and district support programming.",
-  },
-  {
-    id: "dir-troop61",
-    name: "Scouts BSA Troop 61",
-    category: "youth",
-    description: "Outdoor leadership, service, and mentoring through scouting.",
+    description: "Volunteer service, fundraising, scholarships, and hands-on support for local residents.",
+    url: "https://www.nplions.org/",
   },
   {
     id: "dir-muboo",
-    name: "MuBoo Youth Arts Collective",
+    name: "New Providence Music Boosters",
     category: "arts",
-    description: "Creative mentorship and youth-led arts expression.",
+    description: "Parent-and-community support for school music, performances, scholarships, and arts events.",
+    url: "https://www.npmusicboosters.org/about-us",
   },
   {
-    id: "dir-clubbing",
-    name: "Clubbing Social Club",
-    category: "social",
-    description: "Meetups and hobby nights open to the broader town community.",
-  },
-  {
-    id: "dir-rec",
-    name: "NP Recreation Department",
-    category: "sports",
-    description: "Programs, leagues, camps, and recreation planning across town.",
-  },
-  {
-    id: "dir-library",
-    name: "Library Friends Group",
+    id: "dir-parents",
+    name: "NP Parent and Student Site",
     category: "advocacy",
-    description: "Volunteer and fundraising support for library programs and expansion.",
+    description: "District family resources for communication, technology help, health, safety, and student support.",
+    url: "https://sites.google.com/npsdnj.org/np-parent-and-student-site/home",
   },
   {
-    id: "dir-eac",
-    name: "Environmental Advisory Committee",
-    category: "civic",
-    description: "Sustainability and environmental action planning.",
+    id: "dir-pack363",
+    name: "Cub Scout Pack 363",
+    category: "youth",
+    description: "Youth scouting with outdoor skills, service projects, and family-friendly events in town.",
+    url: "https://pack363-np.org/",
+  },
+  {
+    id: "dir-public-art",
+    name: "New Providence Public Art",
+    category: "arts",
+    description: "Community-supported sculptures, installations, and creative projects across borough spaces.",
+    url: "https://www.newprov.us/321/NP-Public-Art",
   },
   {
     id: "dir-seniors",
-    name: "Senior Social Circle",
+    name: "DeCorso Community Center",
     category: "social",
-    description: "Programs, luncheons, and social events for local seniors.",
+    description: "The home of the New Providence Senior Citizens Club, classes, trips, and weekday programming.",
+    url: "https://www.newprov.us/278/Seniors",
+  },
+  {
+    id: "dir-rec",
+    name: "New Providence Recreation",
+    category: "sports",
+    description: "Official borough hub for leagues, camps, classes, parks, and seasonal community activities.",
+    url: "https://www.newprov.us/191/Community-Activities",
+  },
+  {
+    id: "dir-library",
+    name: "Friends of the New Providence Memorial Library",
+    category: "advocacy",
+    description: "Volunteer and fundraising support for concerts, art exhibits, programs, and library improvements.",
+    url: "https://newprovlibrary.org/friends/",
+  },
+  {
+    id: "dir-green-team",
+    name: "New Providence Green Team",
+    category: "civic",
+    description: "Volunteer sustainability work focused on environmental, social, and long-range borough goals.",
+    url: "https://www.newprov.us/296/Volunteer-Advisory-Committees",
+  },
+  {
+    id: "dir-pal",
+    name: "New Providence PAL",
+    category: "sports",
+    description: "Youth sports leagues, coaching, and town athletics for football, basketball, softball, and more.",
+    url: "https://newprovidencepal.org/",
   },
 ];
 
@@ -2236,6 +2246,11 @@ function initDirectoryPage() {
             <p class="eyebrow">${getCategoryLabel(item.category)}</p>
             <h3>${escapeHtml(item.name)}</h3>
             <p>${escapeHtml(item.description)}</p>
+            ${
+              item.url
+                ? `<a class="button button-primary" href="${escapeHtml(item.url)}" target="_blank" rel="noopener noreferrer">Visit site</a>`
+                : ""
+            }
           </article>
         `,
       )
