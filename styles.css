@@ -204,13 +204,10 @@ button {
 .brand-mark {
   width: 54px;
   height: 54px;
-  display: grid;
-  place-items: center;
+  display: block;
+  flex: 0 0 54px;
   border-radius: 18px;
-  background: linear-gradient(180deg, var(--np-green), var(--np-forest));
-  color: var(--np-amber);
-  font-family: "Fraunces", Georgia, serif;
-  font-size: 1.6rem;
+  object-fit: contain;
   box-shadow: var(--shadow-md);
   animation: brand-pulse 1.15s var(--ease-out-expo) both;
 }
@@ -2052,12 +2049,6 @@ h4 {
 
 .site-header.scrolled .site-nav a.active {
   color: var(--np-gold);
-}
-
-.brand-mark {
-  background: linear-gradient(145deg, var(--np-deep), var(--np-forest));
-  color: var(--np-gold);
-  box-shadow: var(--shadow-md), inset 0 1px 0 rgba(255, 255, 255, 0.1);
 }
 
 .brand-copy strong {
