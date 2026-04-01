@@ -1,0 +1,96 @@
+- generic [active] [ref=e1]:
+  - link "Skip to content" [ref=e2] [cursor=pointer]:
+    - /url: "#main-content"
+  - banner [ref=e3]:
+    - generic [ref=e4]:
+      - link "New Providence Community Hub home" [ref=e5] [cursor=pointer]:
+        - /url: index.html
+        - generic [ref=e6]: NP
+        - generic [ref=e7]:
+          - strong [ref=e8]: New Providence Community Hub
+          - generic [ref=e9]: New Providence, New Jersey
+      - navigation [ref=e10]:
+        - link "Home" [ref=e11] [cursor=pointer]:
+          - /url: index.html
+        - link "Explore" [ref=e12] [cursor=pointer]:
+          - /url: explore.html
+        - link "Bulletin" [ref=e13] [cursor=pointer]:
+          - /url: bulletin.html
+        - link "Directory" [ref=e14] [cursor=pointer]:
+          - /url: directory.html
+        - link "Support" [ref=e15] [cursor=pointer]:
+          - /url: support.html
+        - link "Education" [ref=e16] [cursor=pointer]:
+          - /url: education.html
+        - link "Forum" [ref=e17] [cursor=pointer]:
+          - /url: forum.html
+        - link "Funding" [ref=e18] [cursor=pointer]:
+          - /url: funding.html
+      - button "Town Alerts" [ref=e19] [cursor=pointer]
+  - main [ref=e20]:
+    - generic [ref=e21]:
+      - paragraph [ref=e22]: Funding & Projects
+      - heading "Capital projects in motion." [level=1] [ref=e23]
+      - paragraph [ref=e24]: Animated funding charts, project categories, and a clean grant timeline.
+    - generic [ref=e25]:
+      - article [ref=e26]:
+        - paragraph [ref=e27]: Allocation Snapshot
+        - generic [ref=e28]:
+          - article [ref=e29]:
+            - generic [ref=e30]:
+              - strong [ref=e31]: Infrastructure
+              - generic [ref=e32]: 82%
+          - article [ref=e34]:
+            - generic [ref=e35]:
+              - strong [ref=e36]: Public Safety
+              - generic [ref=e37]: 64%
+          - article [ref=e39]:
+            - generic [ref=e40]:
+              - strong [ref=e41]: Community Spaces
+              - generic [ref=e42]: 56%
+          - article [ref=e44]:
+            - generic [ref=e45]:
+              - strong [ref=e46]: Sustainability
+              - generic [ref=e47]: 38%
+      - article [ref=e49]:
+        - paragraph [ref=e50]: Funding Details
+        - heading "What each category covers" [level=2] [ref=e51]
+        - list [ref=e52]:
+          - listitem [ref=e53]: "Infrastructure: roads, sidewalks, drainage, and traffic safety."
+          - listitem [ref=e54]: "Public Safety: emergency equipment, communications, and resilience."
+          - listitem [ref=e55]: "Community Spaces: parks, library upgrades, recreation, and civic spaces."
+          - listitem [ref=e56]: "Sustainability: green streets, environmental initiatives, and energy savings."
+        - paragraph [ref=e57]: Reserve slot for grant updates and future funding notes.
+    - article [ref=e59]:
+      - paragraph [ref=e60]: Grant Timeline
+      - generic [ref=e61]:
+        - article [ref=e62]:
+          - strong [ref=e63]: "2024"
+          - text: Planning phase
+        - article [ref=e64]:
+          - strong [ref=e65]: "2025"
+          - text: Grants secured
+        - article [ref=e66]:
+          - strong [ref=e67]: "2026"
+          - text: Construction begins
+        - article [ref=e68]:
+          - strong [ref=e69]: "2027"
+          - text: Completion
+  - contentinfo [ref=e70]:
+    - generic [ref=e71]:
+      - generic [ref=e72]:
+        - heading "New Providence Community Hub" [level=2] [ref=e73]
+        - paragraph [ref=e74]: A civic resource platform designed for clarity, care, and everyday town life.
+      - generic [ref=e75]:
+        - paragraph [ref=e76]: Navigate
+        - link "Explore" [ref=e77] [cursor=pointer]:
+          - /url: explore.html
+        - link "Directory" [ref=e78] [cursor=pointer]:
+          - /url: directory.html
+        - link "Support" [ref=e79] [cursor=pointer]:
+          - /url: support.html
+      - generic [ref=e80]:
+        - paragraph [ref=e81]: Credits
+        - paragraph [ref=e82]: New Providence High School
+        - paragraph [ref=e83]: TSA Webmaster 2026
+    - generic [ref=e84]: New Providence Community Hub · TSA Webmaster 2026 · New Providence High School
