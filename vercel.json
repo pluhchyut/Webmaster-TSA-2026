@@ -1,0 +1,18 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "framework": null,
+  "buildCommand": "node scripts/build-static-site.mjs",
+  "outputDirectory": "public",
+  "redirects": [
+    {
+      "source": "/documentation.html",
+      "destination": "/reference.html",
+      "permanent": true
+    },
+    {
+      "source": "/documentation",
+      "destination": "/reference.html",
+      "permanent": true
+    }
+  ]
+}
