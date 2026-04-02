@@ -1075,6 +1075,32 @@ button {
   gap: 20px;
 }
 
+.resource-panel__search {
+  display: grid;
+  gap: 16px;
+}
+
+.resource-panel__search .input-label {
+  margin-bottom: 0;
+}
+
+.resource-panel__search .pill-row {
+  margin-top: 2px;
+}
+
+.resource-panel__search .split-fields {
+  grid-template-columns: 1fr;
+  gap: 0;
+}
+
+.resource-panel__search .input-group {
+  margin: 0;
+}
+
+.resource-panel__search .results-count {
+  margin-top: -2px;
+}
+
 #map-iframe {
   display: block;
   width: 100%;
