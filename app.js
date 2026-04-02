@@ -5,6 +5,7 @@ const STORAGE_KEYS = {
   schoolLinks: "np_school_links_v1",
   alertSignups: "np_alert_signups_v1",
   bulletinInbox: "np_bulletin_inbox_v1",
+  communityComments: "np_community_comments_v1",
 };
 
 const activeWarnings = [];
@@ -472,6 +473,250 @@ const fundingData = [
   { label: "Sustainability", value: 38 },
 ];
 
+const communityMemoryShowcase = [
+  {
+    id: "concert-green",
+    title: "Summer concert on the green",
+    location: "Town Green",
+    ageLabel: "8 months ago",
+    strengthScore: 82,
+    revived: true,
+    excerpt:
+      "Families spread out lawn chairs while the sky turned pink over the band shell and the whole green felt connected for a night.",
+    detail:
+      "Residents described this memory as one of those evenings where different parts of town mixed naturally: younger families near the fountain, older neighbors near the path, and students drifting between both.",
+  },
+  {
+    id: "maple-bakery",
+    title: "The bakery on Maple before school",
+    location: "Maple Avenue",
+    ageLabel: "17 months ago",
+    strengthScore: 46,
+    revived: false,
+    excerpt:
+      "People still remember the smell of bread and warm cookies right before first period and the way everyone stopped in for a few minutes.",
+    detail:
+      "Even though the storefront is gone, the post keeps coming back whenever people talk about places that made downtown feel personal and welcoming.",
+  },
+  {
+    id: "snow-hill",
+    title: "Snow tunnel season on Fairview Hill",
+    location: "Fairview",
+    ageLabel: "3 years ago",
+    strengthScore: 68,
+    revived: true,
+    excerpt:
+      "After the storm, neighbors built sled paths, tiny snow walls, and long tunnels that stayed up for almost a week.",
+    detail:
+      "This memory revives whenever winter photos are shared because it represents a very local kind of community tradition: kids outside for hours while adults trade shovels and hot chocolate.",
+  },
+];
+
+const communityUnsentShowcase = [
+  {
+    id: "quiet-students",
+    title: "Checking in on quiet students",
+    tone: "Care",
+    body:
+      "I wish more people checked in on the quiet students. A lot of people look completely fine until you actually ask how they are doing.",
+    detail:
+      "Notes like this make room for honesty without demanding attention. The goal is to answer with care, not noise.",
+    reactions: {
+      heardYou: 18,
+      relate: 11,
+      support: 14,
+      thankYou: 6,
+    },
+  },
+  {
+    id: "library-thanks",
+    title: "A thank you never sent",
+    tone: "Gratitude",
+    body:
+      "I never properly thanked the librarian who helped me after school. That room felt safe on days when everything else felt loud.",
+    detail:
+      "Gratitude belongs here too. A note can be deeply personal while still feeling gentle, public, and shared.",
+    reactions: {
+      heardYou: 9,
+      relate: 15,
+      support: 8,
+      thankYou: 21,
+    },
+  },
+  {
+    id: "new-family",
+    title: "Starting over quietly",
+    tone: "Transition",
+    body:
+      "Moving into a new town is lonelier than people think. I am grateful when even one person remembers my name a second time.",
+    detail:
+      "Some thoughts are too small or tender for a public debate, but they still shape what community feels like day to day.",
+    reactions: {
+      heardYou: 13,
+      relate: 17,
+      support: 12,
+      thankYou: 4,
+    },
+  },
+];
+
+const communityIssueShowcase = {
+  title: "Should the town open a supervised teen center on Friday evenings?",
+  perspectives: [
+    {
+      id: "student",
+      label: "Student",
+      summary:
+        "Students may value a safe place to gather that does not require spending money downtown every weekend.",
+      concerns: ["Access", "Hours", "Activities"],
+      values: ["Belonging", "Affordability", "Safety"],
+      actions: [
+        "Keep entry free or very low cost",
+        "Offer both social and quiet spaces",
+        "Survey students after the pilot",
+      ],
+      compromise:
+        "Start with Friday-only hours for six months and review attendance, behavior, and student feedback.",
+    },
+    {
+      id: "parent",
+      label: "Parent",
+      summary:
+        "Parents may support the idea if transportation, supervision, and closing procedures are clearly defined in advance.",
+      concerns: ["Supervision", "Transportation", "Pickup Procedures"],
+      values: ["Security", "Consistency", "Wellbeing"],
+      actions: [
+        "Publish arrival and pickup expectations",
+        "Require trained staff on site",
+        "Set a firm closing routine for the pilot",
+      ],
+      compromise:
+        "Begin with an earlier closing time and expand only if the first review period goes well.",
+    },
+    {
+      id: "business-owner",
+      label: "Business Owner",
+      summary:
+        "Business owners may focus on parking, noise, and whether the program reduces loitering in nearby commercial areas.",
+      concerns: ["Noise", "Parking", "Downtown Impact"],
+      values: ["Order", "Predictability", "Community Vitality"],
+      actions: [
+        "Track neighborhood complaints during the pilot",
+        "Coordinate parking expectations",
+        "Keep entrances supervised before and after closing",
+      ],
+      compromise:
+        "Review attendance and downtown complaint data every 30 days before continuing the pilot unchanged.",
+    },
+    {
+      id: "local-official",
+      label: "Local Official",
+      summary:
+        "Officials may weigh staffing, insurance, cost, and whether the program can be measured with clear success criteria.",
+      concerns: ["Budget", "Staffing", "Liability"],
+      values: ["Accountability", "Feasibility", "Public Trust"],
+      actions: [
+        "Define measurable success criteria before launch",
+        "Set a fixed pilot budget",
+        "Publish a review timeline with public updates",
+      ],
+      compromise:
+        "Approve a limited pilot with a public report at 60 days and a final recommendation after six months.",
+    },
+  ],
+};
+
+const communityModerationQueue = [
+  {
+    label: "Message Review",
+    title: "A new note is waiting for review",
+    note: "A quick check keeps the public feed calm, safe, and consistent with community standards.",
+  },
+  {
+    label: "Reply Review",
+    title: "A supportive reply is in the queue",
+    note: "Replies stay short and carefully moderated so the space feels reassuring rather than overwhelming.",
+  },
+  {
+    label: "Decision Record",
+    title: "Each action leaves a clear trail",
+    note: "Approvals, removals, and notes are recorded so moderation stays consistent over time.",
+  },
+];
+
+const communityCommentSeeds = {
+  "memory:concert-green": [
+    {
+      name: "Ella",
+      body: "I still remember how many families stayed long after the music ended just talking on the lawn.",
+      createdAt: "2026-03-14T18:00:00.000Z",
+    },
+  ],
+  "memory:maple-bakery": [
+    {
+      name: "Neighbor",
+      body: "That place always smelled warm before school, even on the coldest mornings.",
+      createdAt: "2026-03-11T08:15:00.000Z",
+    },
+  ],
+  "memory:snow-hill": [
+    {
+      name: "Ari",
+      body: "The tunnel stayed up for days and every kid on the block ended up there at some point.",
+      createdAt: "2026-03-09T15:40:00.000Z",
+    },
+  ],
+  "unsent:quiet-students": [
+    {
+      name: "Anonymous",
+      body: "A small check-in can change the whole day for someone who is trying hard not to be noticed.",
+      createdAt: "2026-03-16T12:05:00.000Z",
+    },
+  ],
+  "unsent:library-thanks": [
+    {
+      name: "Neighbor",
+      body: "The library has quietly carried a lot of people through difficult seasons.",
+      createdAt: "2026-03-13T16:20:00.000Z",
+    },
+  ],
+  "unsent:new-family": [
+    {
+      name: "Anonymous",
+      body: "Being remembered matters more than people realize when you are still learning a place.",
+      createdAt: "2026-03-10T10:50:00.000Z",
+    },
+  ],
+  "issue:student": [
+    {
+      name: "Resident",
+      body: "A space like this could help students who want somewhere safe to go without having to spend money.",
+      createdAt: "2026-03-17T09:00:00.000Z",
+    },
+  ],
+  "issue:parent": [
+    {
+      name: "Parent",
+      body: "I would support it if pickup rules, supervision, and staffing were all very clear from the start.",
+      createdAt: "2026-03-18T19:10:00.000Z",
+    },
+  ],
+  "issue:business-owner": [
+    {
+      name: "Business Owner",
+      body: "Downtown businesses would probably want regular check-ins about noise and parking during the pilot.",
+      createdAt: "2026-03-15T14:35:00.000Z",
+    },
+  ],
+  "issue:local-official": [
+    {
+      name: "Town Staff",
+      body: "A short pilot with clear review dates would make the decision easier to evaluate fairly.",
+      createdAt: "2026-03-19T11:45:00.000Z",
+    },
+  ],
+};
+
 const supportModalContent = {
   alerts: {
     title: "Town Alert Sign-up",
@@ -630,6 +875,138 @@ function escapeHtml(value = "") {
 
 function capitalize(value = "") {
   return value.charAt(0).toUpperCase() + value.slice(1);
+}
+
+function clampNumber(value, min, max) {
+  return Math.max(min, Math.min(max, value));
+}
+
+function mapRange(value, inMin, inMax, outMin, outMax) {
+  if (inMax === inMin) return outMin;
+  const ratio = (value - inMin) / (inMax - inMin);
+  return outMin + ratio * (outMax - outMin);
+}
+
+function formatCommunityCommentDate(value) {
+  const parsed = new Date(value);
+  if (Number.isNaN(parsed.getTime())) return "Today";
+  return new Intl.DateTimeFormat("en-US", {
+    month: "short",
+    day: "numeric",
+  }).format(parsed);
+}
+
+function readCommunityCommentStore() {
+  return safeRead(STORAGE_KEYS.communityComments, localStorage, {});
+}
+
+function getCommunityComments(threadKey) {
+  const store = readCommunityCommentStore();
+  const seeded = communityCommentSeeds[threadKey] || [];
+  const stored = Array.isArray(store[threadKey]) ? store[threadKey] : [];
+  return [...seeded, ...stored].sort(
+    (left, right) => new Date(right.createdAt).getTime() - new Date(left.createdAt).getTime(),
+  );
+}
+
+function addCommunityComment(threadKey, comment) {
+  const store = readCommunityCommentStore();
+  const next = {
+    ...store,
+    [threadKey]: [...(Array.isArray(store[threadKey]) ? store[threadKey] : []), comment],
+  };
+  safeWrite(STORAGE_KEYS.communityComments, next, localStorage);
+}
+
+function renderCommunityCommentBlock({
+  threadKey,
+  title,
+  emptyText,
+  submitLabel,
+  placeholder,
+  defaultName,
+  comments = getCommunityComments(threadKey),
+  countOverride,
+}) {
+  const commentCount = typeof countOverride === "number" ? countOverride : comments.length;
+  const countLabel = `${commentCount} ${commentCount === 1 ? "comment" : "comments"}`;
+
+  return `
+    <div class="community-comment-block" data-community-thread="${threadKey}">
+      <div class="community-comment-block__top">
+        <p class="input-label">${escapeHtml(title)}</p>
+        <span class="community-comment-count">${escapeHtml(countLabel)}</span>
+      </div>
+      <div class="community-comment-list">
+        ${
+          comments.length
+            ? comments
+                .map(
+                  (comment) => `
+                    <article class="community-comment">
+                      <div class="community-comment__meta">
+                        <strong>${escapeHtml(comment.name || defaultName)}</strong>
+                        <span>${escapeHtml(formatCommunityCommentDate(comment.createdAt))}</span>
+                      </div>
+                      <p class="community-comment__body">${escapeHtml(comment.body)}</p>
+                    </article>
+                  `,
+                )
+                .join("")
+            : `<p class="community-comment-empty">${escapeHtml(emptyText)}</p>`
+        }
+      </div>
+      <form
+        class="community-comment-form"
+        data-community-comment-form="${threadKey}"
+        data-default-name="${escapeHtml(defaultName)}"
+        novalidate
+      >
+        <label class="input-group">
+          <span>Name (optional)</span>
+          <input class="input" name="name" type="text" maxlength="40" placeholder="${escapeHtml(defaultName)}" />
+        </label>
+        <label class="input-group">
+          <span>Comment</span>
+          <textarea class="input" name="body" rows="3" placeholder="${escapeHtml(placeholder)}" required></textarea>
+        </label>
+        <div class="button-row">
+          <button class="button button-ghost" type="submit">${escapeHtml(submitLabel)}</button>
+        </div>
+        <p class="form-status" data-community-comment-status></p>
+      </form>
+    </div>
+  `;
+}
+
+function bindCommunityCommentForms(root, rerender) {
+  $$("[data-community-comment-form]", root).forEach((form) => {
+    form.addEventListener("submit", (event) => {
+      event.preventDefault();
+
+      const formData = new FormData(form);
+      const body = String(formData.get("body") || "").trim();
+      const status = $("[data-community-comment-status]", form);
+      const defaultName = form.dataset.defaultName || "Neighbor";
+
+      if (body.length < 3) {
+        if (status) {
+          status.textContent = "Please write a little more before posting.";
+          status.className = "form-status is-error";
+        }
+        return;
+      }
+
+      addCommunityComment(form.dataset.communityCommentForm, {
+        name: String(formData.get("name") || "").trim() || defaultName,
+        body,
+        createdAt: new Date().toISOString(),
+      });
+
+      showToast("Comment added.", "success");
+      rerender();
+    });
+  });
 }
 
 function smoothSwap(elements, update, delay = 180) {
@@ -2377,6 +2754,251 @@ function initFundingPage() {
   });
 }
 
+function getCommunityMemoryVisuals(score) {
+  const safeScore = clampNumber(score, 0, 100);
+  return {
+    blurPx: mapRange(safeScore, 0, 100, 2.8, 0),
+    grayscale: mapRange(safeScore, 0, 100, 0.72, 0),
+    opacity: mapRange(safeScore, 0, 100, 0.58, 1),
+  };
+}
+
+function initCommunityPage() {
+  if (document.body.dataset.page !== "community") return;
+
+  const memoriesRoot = $("[data-community-memories]");
+  const unsentRoot = $("[data-community-unsent]");
+  const queueRoot = $("[data-community-queue]");
+  const issueTabs = $("[data-community-issue-tabs]");
+  const issuePanel = $("[data-community-issue-panel]");
+
+  if (memoriesRoot) {
+    const renderMemories = () => {
+      memoriesRoot.innerHTML = communityMemoryShowcase
+        .map((memory) => {
+          const threadKey = `memory:${memory.id}`;
+          const comments = getCommunityComments(threadKey);
+          const previewComments = comments.slice(0, 2);
+          const visuals = getCommunityMemoryVisuals(memory.strengthScore);
+          return `
+            <article class="card community-memory-card">
+              <p class="eyebrow">Town Memory</p>
+              <h3>${escapeHtml(memory.title)}</h3>
+              <div class="community-memory-card__meta">
+                <span>${escapeHtml(memory.location)}</span>
+                <span>${escapeHtml(memory.ageLabel)}</span>
+              </div>
+              <div class="tag-list">
+                ${memory.revived ? "<span>Still in conversation</span>" : "<span>Resting quietly</span>"}
+                <span>${memory.strengthScore}/100 vividness</span>
+              </div>
+              <div
+                class="community-memory-card__preview"
+                style="filter: blur(${visuals.blurPx.toFixed(2)}px) grayscale(${visuals.grayscale.toFixed(2)}); opacity: ${visuals.opacity.toFixed(2)};"
+              >
+                ${escapeHtml(memory.excerpt)}
+              </div>
+              <div class="community-memory-card__bar" aria-hidden="true">
+                <span style="width:${memory.strengthScore}%"></span>
+              </div>
+              <button class="button button-ghost" type="button" data-community-memory-open="${memory.id}">
+                Read story
+              </button>
+              ${renderCommunityCommentBlock({
+                threadKey,
+                title: "Memory Notes",
+                emptyText: "Be the first to add a detail or memory.",
+                submitLabel: "Add Comment",
+                placeholder: "Add a detail, memory, or reflection...",
+                defaultName: "Neighbor",
+                comments: previewComments,
+                countOverride: comments.length,
+              })}
+            </article>
+          `;
+        })
+        .join("");
+
+      $$("[data-community-memory-open]", memoriesRoot).forEach((button) => {
+        button.addEventListener("click", () => {
+          const memory = communityMemoryShowcase.find((item) => item.id === button.dataset.communityMemoryOpen);
+          if (!memory) return;
+          openModal({
+            title: memory.title,
+            body: `
+              <p><strong>Location:</strong> ${escapeHtml(memory.location)}</p>
+              <p><strong>Age:</strong> ${escapeHtml(memory.ageLabel)}</p>
+              <p><strong>Vividness:</strong> ${memory.strengthScore}/100</p>
+              <p>${escapeHtml(memory.detail)}</p>
+            `,
+          });
+        });
+      });
+
+      bindCommunityCommentForms(memoriesRoot, renderMemories);
+    };
+
+    renderMemories();
+  }
+
+  if (unsentRoot) {
+    const renderUnsent = () => {
+      unsentRoot.innerHTML = communityUnsentShowcase
+        .map((message) => {
+          const threadKey = `unsent:${message.id}`;
+          return `
+            <article class="card community-note-card">
+              <p class="eyebrow">${escapeHtml(message.tone)}</p>
+              <h3>${escapeHtml(message.title)}</h3>
+              <p>${escapeHtml(message.body)}</p>
+              <div class="community-note-card__reactions">
+                <button class="filter-pill community-note-card__reaction" type="button" data-community-reaction="${message.id}" data-reaction-key="heardYou">
+                  Heard you · <span>${message.reactions.heardYou}</span>
+                </button>
+                <button class="filter-pill community-note-card__reaction" type="button" data-community-reaction="${message.id}" data-reaction-key="relate">
+                  Relate · <span>${message.reactions.relate}</span>
+                </button>
+                <button class="filter-pill community-note-card__reaction" type="button" data-community-reaction="${message.id}" data-reaction-key="support">
+                  Support · <span>${message.reactions.support}</span>
+                </button>
+                <button class="filter-pill community-note-card__reaction" type="button" data-community-reaction="${message.id}" data-reaction-key="thankYou">
+                  Thank you · <span>${message.reactions.thankYou}</span>
+                </button>
+              </div>
+              <button class="button button-ghost" type="button" data-community-unsent-open="${message.id}">
+                Read note
+              </button>
+              ${renderCommunityCommentBlock({
+                threadKey,
+                title: "Responses",
+                emptyText: "Be the first to leave a thoughtful response.",
+                submitLabel: "Add Response",
+                placeholder: "Write a calm, supportive response...",
+                defaultName: "Anonymous",
+              })}
+            </article>
+          `;
+        })
+        .join("");
+
+      $$("[data-community-unsent-open]", unsentRoot).forEach((button) => {
+        button.addEventListener("click", () => {
+          const message = communityUnsentShowcase.find((item) => item.id === button.dataset.communityUnsentOpen);
+          if (!message) return;
+          openModal({
+            title: message.title,
+            body: `
+              <p><strong>Theme:</strong> ${escapeHtml(message.tone)}</p>
+              <p>${escapeHtml(message.detail)}</p>
+            `,
+          });
+        });
+      });
+
+      $$("[data-community-reaction]", unsentRoot).forEach((button) => {
+        button.addEventListener("click", () => {
+          if (button.dataset.locked === "true") {
+            showToast("Support already sent here.", "info");
+            return;
+          }
+
+          const count = button.querySelector("span");
+          const current = Number(count?.textContent || "0");
+          if (count) count.textContent = String(current + 1);
+          button.dataset.locked = "true";
+          button.classList.add("is-active");
+          showToast("Support reaction added.", "success");
+        });
+      });
+
+      bindCommunityCommentForms(unsentRoot, renderUnsent);
+    };
+
+    renderUnsent();
+  }
+
+  if (queueRoot) {
+    queueRoot.innerHTML = communityModerationQueue
+      .map(
+        (item) => `
+          <article class="calendar-entry">
+            <span class="calendar-entry__date">${escapeHtml(item.label)}</span>
+            <h3>${escapeHtml(item.title)}</h3>
+            <p>${escapeHtml(item.note)}</p>
+          </article>
+        `,
+      )
+      .join("");
+  }
+
+  if (issueTabs && issuePanel) {
+    const renderPerspective = (perspectiveId) => {
+      const active =
+        communityIssueShowcase.perspectives.find((item) => item.id === perspectiveId) ||
+        communityIssueShowcase.perspectives[0];
+      const threadKey = `issue:${active.id}`;
+
+      issueTabs.innerHTML = communityIssueShowcase.perspectives
+        .map(
+          (item) => `
+            <button
+              class="forum-tab${item.id === active.id ? " active" : ""}"
+              type="button"
+              data-community-issue-tab="${item.id}"
+            >
+              ${escapeHtml(item.label)}
+            </button>
+          `,
+        )
+        .join("");
+
+      issuePanel.innerHTML = `
+        <h2>${escapeHtml(active.label)} Perspective</h2>
+        <p>${escapeHtml(active.summary)}</p>
+        <div class="tag-list">
+          ${active.values.map((value) => `<span>${escapeHtml(value)}</span>`).join("")}
+        </div>
+        <div class="community-issue-columns">
+          <div>
+            <p class="input-label">Top Concerns</p>
+            <ul class="stack-list">
+              ${active.concerns.map((item) => `<li>${escapeHtml(item)}</li>`).join("")}
+            </ul>
+          </div>
+          <div>
+            <p class="input-label">Suggested Actions</p>
+            <ul class="stack-list">
+              ${active.actions.map((item) => `<li>${escapeHtml(item)}</li>`).join("")}
+            </ul>
+          </div>
+        </div>
+        <div class="calendar-entry community-compromise-card">
+          <span class="calendar-entry__date">Compromise idea</span>
+          <p>${escapeHtml(active.compromise)}</p>
+        </div>
+        ${renderCommunityCommentBlock({
+          threadKey,
+          title: "Community Notes",
+          emptyText: "Share a thought on this point of view.",
+          submitLabel: "Add Comment",
+          placeholder: "Add a thought about this perspective...",
+          defaultName: "Resident",
+        })}
+      `;
+
+      $$("[data-community-issue-tab]", issueTabs).forEach((button) => {
+        button.addEventListener("click", () => {
+          renderPerspective(button.dataset.communityIssueTab);
+        });
+      });
+
+      bindCommunityCommentForms(issuePanel, () => renderPerspective(active.id));
+    };
+
+    renderPerspective(communityIssueShowcase.perspectives[0].id);
+  }
+}
+
 function initModalForms() {
   // Reserved hook for future page-specific modal hydration.
 }
@@ -2408,6 +3030,7 @@ document.addEventListener("DOMContentLoaded", () => {
   safeInit(initEducationPage);
   safeInit(initForumPage);
   safeInit(initFundingPage);
+  safeInit(initCommunityPage);
   safeInit(initModalForms);
   safeInit(initMapReset);
 });

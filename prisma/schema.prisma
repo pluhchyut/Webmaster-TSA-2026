@@ -1,0 +1,294 @@
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+enum UserRole {
+  user
+  trusted_user
+  moderator
+  admin
+}
+
+enum ContentVisibility {
+  public
+  school_only
+  local_only
+}
+
+enum ContentStatus {
+  active
+  pending
+  approved
+  flagged
+  removed
+  rejected
+  archived
+}
+
+enum MemoryInteractionType {
+  view
+  react
+  comment
+  reply
+  share
+  context_add
+  verify_location
+}
+
+enum UnsentDisplayMode {
+  anonymous
+  pseudonymous
+}
+
+enum UnsentReactionType {
+  heard_you
+  relate
+  support
+  thank_you
+}
+
+enum ReportStatus {
+  open
+  reviewing
+  resolved
+  dismissed
+}
+
+enum ReportTargetType {
+  memory
+  memory_comment
+  unsent_message
+  unsent_reply
+  issue
+}
+
+enum ModerationAction {
+  auto_approve
+  queue_for_review
+  approve
+  reject
+  remove
+  restore
+  feature
+  unfeature
+}
+
+model User {
+  id                 String              @id @default(uuid())
+  username           String              @unique
+  displayName        String
+  avatarUrl          String?
+  role               UserRole            @default(user)
+  createdAt          DateTime            @default(now())
+  updatedAt          DateTime            @updatedAt
+  memories           Memory[]
+  memoryComments     MemoryComment[]
+  memoryInteractions MemoryInteraction[]
+  unsentMessages     UnsentMessage[]
+  unsentReplies      UnsentReply[]
+  unsentReactions    UnsentReaction[]
+  filedReports       ContentReport[]     @relation("ReportedContent")
+  moderationLogs     ModerationLog[]     @relation("ModeratorActions")
+  auditEvents        AuditEvent[]        @relation("ActorEvents")
+  createdIssues      Issue[]             @relation("IssueCreator")
+}
+
+model Memory {
+  id           String              @id @default(uuid())
+  authorId     String
+  title        String
+  body         String
+  mediaUrl     String?
+  mediaType    String?
+  locationName String?
+  latitude     Decimal?
+  longitude    Decimal?
+  eventDate    DateTime?
+  visibility   ContentVisibility   @default(public)
+  status       ContentStatus       @default(active)
+  createdAt    DateTime            @default(now())
+  updatedAt    DateTime            @updatedAt
+  author       User                @relation(fields: [authorId], references: [id], onDelete: Cascade)
+  interactions MemoryInteraction[]
+  comments     MemoryComment[]
+  cache        MemoryStrengthCache?
+
+  @@index([createdAt(sort: Desc)])
+  @@index([status, visibility])
+  @@index([authorId])
+}
+
+model MemoryInteraction {
+  id              String                @id @default(uuid())
+  memoryId        String
+  userId          String
+  interactionType MemoryInteractionType
+  weight          Decimal
+  createdAt       DateTime              @default(now())
+  memory          Memory                @relation(fields: [memoryId], references: [id], onDelete: Cascade)
+  user            User                  @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([memoryId, createdAt(sort: Desc)])
+  @@index([userId, createdAt(sort: Desc)])
+}
+
+model MemoryComment {
+  id              String          @id @default(uuid())
+  memoryId        String
+  userId          String
+  parentCommentId String?
+  body            String
+  status          ContentStatus   @default(active)
+  createdAt       DateTime        @default(now())
+  updatedAt       DateTime        @updatedAt
+  memory          Memory          @relation(fields: [memoryId], references: [id], onDelete: Cascade)
+  user            User            @relation(fields: [userId], references: [id], onDelete: Cascade)
+  parent          MemoryComment?  @relation("MemoryCommentReplies", fields: [parentCommentId], references: [id], onDelete: Cascade)
+  replies         MemoryComment[] @relation("MemoryCommentReplies")
+
+  @@index([memoryId, createdAt(sort: Asc)])
+  @@index([parentCommentId])
+}
+
+model MemoryStrengthCache {
+  memoryId        String   @id
+  strengthScore   Decimal
+  clarityScore    Decimal
+  feedScore       Decimal
+  lastComputedAt  DateTime
+  memory          Memory   @relation(fields: [memoryId], references: [id], onDelete: Cascade)
+}
+
+model UnsentMessage {
+  id           String             @id @default(uuid())
+  authorId     String?
+  displayMode  UnsentDisplayMode  @default(anonymous)
+  title        String?
+  body         String
+  toneTag      String?
+  replyEnabled Boolean            @default(true)
+  featured     Boolean            @default(false)
+  visibility   ContentVisibility  @default(public)
+  status       ContentStatus      @default(pending)
+  createdAt    DateTime           @default(now())
+  updatedAt    DateTime           @updatedAt
+  author       User?              @relation(fields: [authorId], references: [id], onDelete: SetNull)
+  replies      UnsentReply[]
+  reactions    UnsentReaction[]
+
+  @@index([createdAt(sort: Desc)])
+  @@index([status, featured, createdAt(sort: Desc)])
+}
+
+model UnsentReply {
+  id            String        @id @default(uuid())
+  messageId      String
+  authorId       String?
+  parentReplyId  String?
+  body           String
+  isOfficial     Boolean      @default(false)
+  status         ContentStatus @default(pending)
+  createdAt      DateTime     @default(now())
+  updatedAt      DateTime     @updatedAt
+  message        UnsentMessage @relation(fields: [messageId], references: [id], onDelete: Cascade)
+  author         User?         @relation(fields: [authorId], references: [id], onDelete: SetNull)
+  parent         UnsentReply?  @relation("UnsentReplyReplies", fields: [parentReplyId], references: [id], onDelete: Cascade)
+  replies        UnsentReply[] @relation("UnsentReplyReplies")
+
+  @@index([messageId, createdAt(sort: Asc)])
+  @@index([parentReplyId])
+}
+
+model UnsentReaction {
+  id            String             @id @default(uuid())
+  messageId      String
+  userId         String
+  reactionType   UnsentReactionType
+  createdAt      DateTime          @default(now())
+  message        UnsentMessage     @relation(fields: [messageId], references: [id], onDelete: Cascade)
+  user           User              @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([messageId, userId, reactionType])
+  @@index([messageId, createdAt(sort: Desc)])
+}
+
+model Issue {
+  id           String           @id @default(uuid())
+  title        String
+  slug         String           @unique
+  summary      String
+  body         String
+  category     String
+  status       ContentStatus    @default(approved)
+  createdBy    String
+  createdAt    DateTime         @default(now())
+  updatedAt    DateTime         @updatedAt
+  creator      User             @relation("IssueCreator", fields: [createdBy], references: [id], onDelete: Restrict)
+  perspectives IssuePerspective[]
+
+  @@index([status, updatedAt(sort: Desc)])
+}
+
+model IssuePerspective {
+  id                   String   @id @default(uuid())
+  issueId              String
+  perspectiveKey       String
+  displayName          String
+  summary              String
+  topConcernsJson      Json
+  topValuesJson        Json
+  suggestedActionsJson Json
+  compromiseJson       Json?
+  sortOrder            Int      @default(0)
+  createdAt            DateTime @default(now())
+  updatedAt            DateTime @updatedAt
+  issue                Issue    @relation(fields: [issueId], references: [id], onDelete: Cascade)
+
+  @@unique([issueId, perspectiveKey])
+  @@index([issueId, sortOrder])
+}
+
+model ContentReport {
+  id         String          @id @default(uuid())
+  reporterId String
+  targetType ReportTargetType
+  targetId   String
+  reason     String
+  status     ReportStatus    @default(open)
+  createdAt  DateTime        @default(now())
+  updatedAt  DateTime        @updatedAt
+  reporter   User            @relation("ReportedContent", fields: [reporterId], references: [id], onDelete: Cascade)
+
+  @@index([status, createdAt(sort: Desc)])
+}
+
+model ModerationLog {
+  id          String           @id @default(uuid())
+  targetType  ReportTargetType
+  targetId    String
+  action      ModerationAction
+  moderatorId String
+  notes       String?
+  createdAt   DateTime         @default(now())
+  moderator   User             @relation("ModeratorActions", fields: [moderatorId], references: [id], onDelete: Restrict)
+
+  @@index([targetType, targetId, createdAt(sort: Desc)])
+}
+
+model AuditEvent {
+  id          String   @id @default(uuid())
+  actorUserId String?
+  eventType   String
+  entityType  String
+  entityId    String?
+  payloadJson Json?
+  createdAt   DateTime @default(now())
+  actor       User?    @relation("ActorEvents", fields: [actorUserId], references: [id], onDelete: SetNull)
+
+  @@index([createdAt(sort: Desc)])
+}

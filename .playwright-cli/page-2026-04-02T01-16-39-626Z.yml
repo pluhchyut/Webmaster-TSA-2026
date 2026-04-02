@@ -1,0 +1,438 @@
+- generic [active] [ref=e1]:
+  - link "Skip to content" [ref=e2] [cursor=pointer]:
+    - /url: "#main-content"
+  - banner [ref=e3]:
+    - generic [ref=e4]:
+      - link "New Providence Community Hub home" [ref=e5] [cursor=pointer]:
+        - /url: index.html
+        - generic [ref=e6]: NP
+        - generic [ref=e7]:
+          - strong [ref=e8]: New Providence Community Hub
+          - generic [ref=e9]: New Providence, New Jersey
+      - navigation [ref=e10]:
+        - link "Home" [ref=e11] [cursor=pointer]:
+          - /url: index.html
+        - link "Explore" [ref=e12] [cursor=pointer]:
+          - /url: explore.html
+        - link "Bulletin" [ref=e13] [cursor=pointer]:
+          - /url: bulletin.html
+        - link "Directory" [ref=e14] [cursor=pointer]:
+          - /url: directory.html
+        - link "Support" [ref=e15] [cursor=pointer]:
+          - /url: support.html
+        - link "Education" [ref=e16] [cursor=pointer]:
+          - /url: education.html
+        - link "Forum" [ref=e17] [cursor=pointer]:
+          - /url: forum.html
+        - link "Community Hub" [ref=e18] [cursor=pointer]:
+          - /url: community.html
+        - link "Funding" [ref=e19] [cursor=pointer]:
+          - /url: funding.html
+      - button "Town Alerts" [ref=e20] [cursor=pointer]
+  - main [ref=e21]:
+    - generic [ref=e22]:
+      - paragraph [ref=e23]: Community Hub
+      - heading "Town stories, quiet notes, and issues seen from every side." [level=1] [ref=e24]
+      - paragraph [ref=e25]: A place to revisit memories people still carry, leave words that never quite found the right moment, and explore how different neighbors may see the same town question.
+    - article [ref=e27]:
+      - paragraph [ref=e28]: Start Here
+      - heading "Three ways to move through community life." [level=2] [ref=e29]
+      - paragraph [ref=e30]: Revisit a story that still lives in town memory, read notes that were never said out loud, or step through a local issue one perspective at a time.
+      - generic [ref=e31]:
+        - link "Explore Memories" [ref=e32] [cursor=pointer]:
+          - /url: "#community-memories"
+        - link "Read Reflections" [ref=e33] [cursor=pointer]:
+          - /url: "#community-unsent"
+        - link "Switch Perspectives" [ref=e34] [cursor=pointer]:
+          - /url: "#community-issues"
+    - generic [ref=e36]:
+      - article [ref=e37]:
+        - strong [ref=e38]: "3"
+        - text: Connected Spaces
+      - article [ref=e39]:
+        - strong [ref=e40]: Many
+        - text: Town Stories
+      - article [ref=e41]:
+        - strong [ref=e42]: "4"
+        - text: Community Voices
+      - article [ref=e43]:
+        - strong [ref=e44]: "1"
+        - text: Shared Question
+    - generic [ref=e46]:
+      - article [ref=e47]:
+        - paragraph [ref=e48]: Community Memory
+        - heading "Shared stories fade and revive." [level=3] [ref=e49]
+        - paragraph [ref=e50]: Some stories stay vivid because neighbors keep returning to them with details, conversation, and recognition.
+        - link "See Stories" [ref=e51] [cursor=pointer]:
+          - /url: "#community-memories"
+      - article [ref=e52]:
+        - paragraph [ref=e53]: Unsent Messages
+        - heading "Calm, reflective expression." [level=3] [ref=e54]
+        - paragraph [ref=e55]: Short notes, gratitude, worries, and things left unsaid all have a place here without becoming loud or combative.
+        - link "Read Notes" [ref=e56] [cursor=pointer]:
+          - /url: "#community-unsent"
+      - article [ref=e57]:
+        - paragraph [ref=e58]: Issues in Perspective
+        - heading "See an issue through more than one lens." [level=3] [ref=e59]
+        - paragraph [ref=e60]: Read the same town question through different voices and look for overlap, tension, and possible common ground.
+        - link "View Perspectives" [ref=e61] [cursor=pointer]:
+          - /url: "#community-issues"
+    - generic [ref=e62]:
+      - generic [ref=e63]:
+        - paragraph [ref=e64]: Community Memory
+        - heading "Memories fade unless the town brings them back." [level=2] [ref=e65]
+      - paragraph [ref=e66]: Some stories stay bright because the town keeps coming back to them. Others soften until someone adds another memory, another detail, or another reason to remember.
+      - generic [ref=e67]:
+        - article [ref=e383]:
+          - paragraph [ref=e384]: Town Memory
+          - heading "Summer concert on the green" [level=3] [ref=e385]
+          - generic [ref=e386]:
+            - generic [ref=e387]: Town Green
+            - generic [ref=e388]: 8 months ago
+          - generic [ref=e389]:
+            - generic [ref=e390]: Still in conversation
+            - generic [ref=e391]: 82/100 vividness
+          - generic [ref=e392]: Families spread out lawn chairs while the sky turned pink over the band shell and the whole green felt connected for a night.
+          - button "Read story" [ref=e395] [cursor=pointer]
+          - generic [ref=e396]:
+            - generic [ref=e397]:
+              - paragraph [ref=e398]: Memory Notes
+              - generic [ref=e399]: 2 comments
+            - generic [ref=e400]:
+              - article [ref=e401]:
+                - generic [ref=e402]:
+                  - strong [ref=e403]: Alex
+                  - generic [ref=e404]: Apr 1
+                - paragraph [ref=e405]: I still think about how full the green felt that night.
+              - article [ref=e406]:
+                - generic [ref=e407]:
+                  - strong [ref=e408]: Ella
+                  - generic [ref=e409]: Mar 14
+                - paragraph [ref=e410]: I still remember how many families stayed long after the music ended just talking on the lawn.
+            - generic [ref=e411]:
+              - generic [ref=e412]:
+                - generic [ref=e413]: Name (optional)
+                - textbox "Name (optional)" [ref=e414]:
+                  - /placeholder: Neighbor
+              - generic [ref=e415]:
+                - generic [ref=e416]: Comment
+                - textbox "Comment" [ref=e417]:
+                  - /placeholder: Add a detail, memory, or reflection...
+              - button "Add Comment" [ref=e419] [cursor=pointer]
+              - paragraph
+        - article [ref=e420]:
+          - paragraph [ref=e421]: Town Memory
+          - heading "The bakery on Maple before school" [level=3] [ref=e422]
+          - generic [ref=e423]:
+            - generic [ref=e424]: Maple Avenue
+            - generic [ref=e425]: 17 months ago
+          - generic [ref=e426]:
+            - generic [ref=e427]: Resting quietly
+            - generic [ref=e428]: 46/100 vividness
+          - generic [ref=e429]: People still remember the smell of bread and warm cookies right before first period and the way everyone stopped in for a few minutes.
+          - button "Read story" [ref=e432] [cursor=pointer]
+          - generic [ref=e433]:
+            - generic [ref=e434]:
+              - paragraph [ref=e435]: Memory Notes
+              - generic [ref=e436]: 1 comment
+            - article [ref=e438]:
+              - generic [ref=e439]:
+                - strong [ref=e440]: Neighbor
+                - generic [ref=e441]: Mar 11
+              - paragraph [ref=e442]: That place always smelled warm before school, even on the coldest mornings.
+            - generic [ref=e443]:
+              - generic [ref=e444]:
+                - generic [ref=e445]: Name (optional)
+                - textbox "Name (optional)" [ref=e446]:
+                  - /placeholder: Neighbor
+              - generic [ref=e447]:
+                - generic [ref=e448]: Comment
+                - textbox "Comment" [ref=e449]:
+                  - /placeholder: Add a detail, memory, or reflection...
+              - button "Add Comment" [ref=e451] [cursor=pointer]
+              - paragraph
+        - article [ref=e452]:
+          - paragraph [ref=e453]: Town Memory
+          - heading "Snow tunnel season on Fairview Hill" [level=3] [ref=e454]
+          - generic [ref=e455]:
+            - generic [ref=e456]: Fairview
+            - generic [ref=e457]: 3 years ago
+          - generic [ref=e458]:
+            - generic [ref=e459]: Still in conversation
+            - generic [ref=e460]: 68/100 vividness
+          - generic [ref=e461]: After the storm, neighbors built sled paths, tiny snow walls, and long tunnels that stayed up for almost a week.
+          - button "Read story" [ref=e464] [cursor=pointer]
+          - generic [ref=e465]:
+            - generic [ref=e466]:
+              - paragraph [ref=e467]: Memory Notes
+              - generic [ref=e468]: 1 comment
+            - article [ref=e470]:
+              - generic [ref=e471]:
+                - strong [ref=e472]: Ari
+                - generic [ref=e473]: Mar 9
+              - paragraph [ref=e474]: The tunnel stayed up for days and every kid on the block ended up there at some point.
+            - generic [ref=e475]:
+              - generic [ref=e476]:
+                - generic [ref=e477]: Name (optional)
+                - textbox "Name (optional)" [ref=e478]:
+                  - /placeholder: Neighbor
+              - generic [ref=e479]:
+                - generic [ref=e480]: Comment
+                - textbox "Comment" [ref=e481]:
+                  - /placeholder: Add a detail, memory, or reflection...
+              - button "Add Comment" [ref=e483] [cursor=pointer]
+              - paragraph
+    - generic [ref=e164]:
+      - generic [ref=e165]:
+        - paragraph [ref=e166]: Unsent Messages
+        - heading "Reflective notes with supportive, low-pressure engagement." [level=2] [ref=e167]
+      - paragraph [ref=e168]: This space is quieter by design — part gratitude wall, part listening space, and part place to say what never found the right moment out loud.
+      - generic [ref=e169]:
+        - article [ref=e486]:
+          - paragraph [ref=e487]: Care
+          - heading "Checking in on quiet students" [level=3] [ref=e488]
+          - paragraph [ref=e489]: I wish more people checked in on the quiet students. A lot of people look completely fine until you actually ask how they are doing.
+          - generic [ref=e490]:
+            - button "Heard you · 18" [ref=e491] [cursor=pointer]:
+              - text: Heard you ·
+              - generic [ref=e492]: "18"
+            - button "Relate · 11" [ref=e493] [cursor=pointer]:
+              - text: Relate ·
+              - generic [ref=e494]: "11"
+            - button "Support · 14" [ref=e495] [cursor=pointer]:
+              - text: Support ·
+              - generic [ref=e496]: "14"
+            - button "Thank you · 6" [ref=e497] [cursor=pointer]:
+              - text: Thank you ·
+              - generic [ref=e498]: "6"
+          - button "Read note" [ref=e499] [cursor=pointer]
+          - generic [ref=e500]:
+            - generic [ref=e501]:
+              - paragraph [ref=e502]: Responses
+              - generic [ref=e503]: 2 comments
+            - generic [ref=e504]:
+              - article [ref=e505]:
+                - generic [ref=e506]:
+                  - strong [ref=e507]: Taylor
+                  - generic [ref=e508]: Apr 1
+                - paragraph [ref=e509]: Thank you for putting this into words. A lot of people probably needed to read it.
+              - article [ref=e510]:
+                - generic [ref=e511]:
+                  - strong [ref=e512]: Anonymous
+                  - generic [ref=e513]: Mar 16
+                - paragraph [ref=e514]: A small check-in can change the whole day for someone who is trying hard not to be noticed.
+            - generic [ref=e515]:
+              - generic [ref=e516]:
+                - generic [ref=e517]: Name (optional)
+                - textbox "Name (optional)" [ref=e518]:
+                  - /placeholder: Anonymous
+              - generic [ref=e519]:
+                - generic [ref=e520]: Comment
+                - textbox "Comment" [ref=e521]:
+                  - /placeholder: Write a calm, supportive response...
+              - button "Add Response" [ref=e523] [cursor=pointer]
+              - paragraph
+        - article [ref=e524]:
+          - paragraph [ref=e525]: Gratitude
+          - heading "A thank you never sent" [level=3] [ref=e526]
+          - paragraph [ref=e527]: I never properly thanked the librarian who helped me after school. That room felt safe on days when everything else felt loud.
+          - generic [ref=e528]:
+            - button "Heard you · 9" [ref=e529] [cursor=pointer]:
+              - text: Heard you ·
+              - generic [ref=e530]: "9"
+            - button "Relate · 15" [ref=e531] [cursor=pointer]:
+              - text: Relate ·
+              - generic [ref=e532]: "15"
+            - button "Support · 8" [ref=e533] [cursor=pointer]:
+              - text: Support ·
+              - generic [ref=e534]: "8"
+            - button "Thank you · 21" [ref=e535] [cursor=pointer]:
+              - text: Thank you ·
+              - generic [ref=e536]: "21"
+          - button "Read note" [ref=e537] [cursor=pointer]
+          - generic [ref=e538]:
+            - generic [ref=e539]:
+              - paragraph [ref=e540]: Responses
+              - generic [ref=e541]: 1 comment
+            - article [ref=e543]:
+              - generic [ref=e544]:
+                - strong [ref=e545]: Neighbor
+                - generic [ref=e546]: Mar 13
+              - paragraph [ref=e547]: The library has quietly carried a lot of people through difficult seasons.
+            - generic [ref=e548]:
+              - generic [ref=e549]:
+                - generic [ref=e550]: Name (optional)
+                - textbox "Name (optional)" [ref=e551]:
+                  - /placeholder: Anonymous
+              - generic [ref=e552]:
+                - generic [ref=e553]: Comment
+                - textbox "Comment" [ref=e554]:
+                  - /placeholder: Write a calm, supportive response...
+              - button "Add Response" [ref=e556] [cursor=pointer]
+              - paragraph
+        - article [ref=e557]:
+          - paragraph [ref=e558]: Transition
+          - heading "Starting over quietly" [level=3] [ref=e559]
+          - paragraph [ref=e560]: Moving into a new town is lonelier than people think. I am grateful when even one person remembers my name a second time.
+          - generic [ref=e561]:
+            - button "Heard you · 13" [ref=e562] [cursor=pointer]:
+              - text: Heard you ·
+              - generic [ref=e563]: "13"
+            - button "Relate · 17" [ref=e564] [cursor=pointer]:
+              - text: Relate ·
+              - generic [ref=e565]: "17"
+            - button "Support · 12" [ref=e566] [cursor=pointer]:
+              - text: Support ·
+              - generic [ref=e567]: "12"
+            - button "Thank you · 4" [ref=e568] [cursor=pointer]:
+              - text: Thank you ·
+              - generic [ref=e569]: "4"
+          - button "Read note" [ref=e570] [cursor=pointer]
+          - generic [ref=e571]:
+            - generic [ref=e572]:
+              - paragraph [ref=e573]: Responses
+              - generic [ref=e574]: 1 comment
+            - article [ref=e576]:
+              - generic [ref=e577]:
+                - strong [ref=e578]: Anonymous
+                - generic [ref=e579]: Mar 10
+              - paragraph [ref=e580]: Being remembered matters more than people realize when you are still learning a place.
+            - generic [ref=e581]:
+              - generic [ref=e582]:
+                - generic [ref=e583]: Name (optional)
+                - textbox "Name (optional)" [ref=e584]:
+                  - /placeholder: Anonymous
+              - generic [ref=e585]:
+                - generic [ref=e586]: Comment
+                - textbox "Comment" [ref=e587]:
+                  - /placeholder: Write a calm, supportive response...
+              - button "Add Response" [ref=e589] [cursor=pointer]
+              - paragraph
+    - generic [ref=e269]:
+      - generic [ref=e270]:
+        - paragraph [ref=e271]: Issues in Perspective
+        - heading "One issue, many ways of seeing it." [level=2] [ref=e272]
+      - paragraph [ref=e273]: Read the issue once, then move through different points of view to see where concerns diverge, where values overlap, and where compromise can begin.
+      - generic [ref=e274]:
+        - article [ref=e275]:
+          - paragraph [ref=e276]: Issue Overview
+          - heading "Should the town open a supervised teen center on Friday evenings?" [level=2] [ref=e277]
+          - paragraph [ref=e278]: The proposal uses the community center as a six-month pilot program for Friday evenings. The goal is to create a safe social space without relying on expensive private options.
+          - generic [ref=e279]:
+            - generic [ref=e280]: Youth
+            - generic [ref=e281]: Safety
+            - generic [ref=e282]: Public Space
+          - generic [ref=e283]:
+            - article [ref=e284]:
+              - generic [ref=e285]: Shared value
+              - paragraph [ref=e286]: Any pilot should be safe and clearly supervised.
+            - article [ref=e287]:
+              - generic [ref=e288]: Shared value
+              - paragraph [ref=e289]: The program should stay affordable for families and the town.
+            - article [ref=e290]:
+              - generic [ref=e291]: Shared value
+              - paragraph [ref=e292]: The town should review results before making it permanent.
+        - generic [ref=e293]:
+          - generic [ref=e294]:
+            - button "Student" [ref=e591] [cursor=pointer]
+            - button "Parent" [ref=e592] [cursor=pointer]
+            - button "Business Owner" [ref=e593] [cursor=pointer]
+            - button "Local Official" [ref=e594] [cursor=pointer]
+          - generic [ref=e299]:
+            - heading "Student Perspective" [level=2] [ref=e595]
+            - paragraph [ref=e596]: Students may value a safe place to gather that does not require spending money downtown every weekend.
+            - generic [ref=e597]:
+              - generic [ref=e598]: Belonging
+              - generic [ref=e599]: Affordability
+              - generic [ref=e600]: Safety
+            - generic [ref=e601]:
+              - generic [ref=e602]:
+                - paragraph [ref=e603]: Top Concerns
+                - list [ref=e604]:
+                  - listitem [ref=e605]: Access
+                  - listitem [ref=e606]: Hours
+                  - listitem [ref=e607]: Activities
+              - generic [ref=e608]:
+                - paragraph [ref=e609]: Suggested Actions
+                - list [ref=e610]:
+                  - listitem [ref=e611]: Keep entry free or very low cost
+                  - listitem [ref=e612]: Offer both social and quiet spaces
+                  - listitem [ref=e613]: Survey students after the pilot
+            - generic [ref=e614]:
+              - generic [ref=e615]: Compromise idea
+              - paragraph [ref=e616]: Start with Friday-only hours for six months and review attendance, behavior, and student feedback.
+            - generic [ref=e617]:
+              - generic [ref=e618]:
+                - paragraph [ref=e619]: Community Notes
+                - generic [ref=e620]: 2 comments
+              - generic [ref=e621]:
+                - article [ref=e622]:
+                  - generic [ref=e623]:
+                    - strong [ref=e624]: Morgan
+                    - generic [ref=e625]: Apr 1
+                  - paragraph [ref=e626]: It would help if the pilot also had a clear quiet-study area for students who want structure.
+                - article [ref=e627]:
+                  - generic [ref=e628]:
+                    - strong [ref=e629]: Resident
+                    - generic [ref=e630]: Mar 17
+                  - paragraph [ref=e631]: A space like this could help students who want somewhere safe to go without having to spend money.
+              - generic [ref=e632]:
+                - generic [ref=e633]:
+                  - generic [ref=e634]: Name (optional)
+                  - textbox "Name (optional)" [ref=e635]:
+                    - /placeholder: Resident
+                - generic [ref=e636]:
+                  - generic [ref=e637]: Comment
+                  - textbox "Comment" [ref=e638]:
+                    - /placeholder: Add a thought about this perspective...
+                - button "Add Comment" [ref=e640] [cursor=pointer]
+                - paragraph
+    - generic [ref=e341]:
+      - generic [ref=e342]:
+        - paragraph [ref=e343]: Community Standards
+        - heading "Clear expectations keep the space calm and respectful." [level=2] [ref=e344]
+      - generic [ref=e345]:
+        - article [ref=e346]:
+          - generic [ref=e347]: Message Review
+          - heading "A new note is waiting for review" [level=3] [ref=e348]
+          - paragraph [ref=e349]: A quick check keeps the public feed calm, safe, and consistent with community standards.
+        - article [ref=e350]:
+          - generic [ref=e351]: Reply Review
+          - heading "A supportive reply is in the queue" [level=3] [ref=e352]
+          - paragraph [ref=e353]: Replies stay short and carefully moderated so the space feels reassuring rather than overwhelming.
+        - article [ref=e354]:
+          - generic [ref=e355]: Decision Record
+          - heading "Each action leaves a clear trail" [level=3] [ref=e356]
+          - paragraph [ref=e357]: Approvals, removals, and notes are recorded so moderation stays consistent over time.
+    - article [ref=e359]:
+      - paragraph [ref=e360]: Part of Town Life
+      - heading "Community Hub belongs with the rest of New Providence." [level=2] [ref=e361]
+      - paragraph [ref=e362]: Explore the town map, track projects, browse support resources, and return here to see how people remember places, share reflection, and work through civic questions together.
+      - generic [ref=e363]:
+        - link "Back to Explore" [ref=e364] [cursor=pointer]:
+          - /url: explore.html
+        - link "View Funding" [ref=e365] [cursor=pointer]:
+          - /url: funding.html
+        - link "Open Support" [ref=e366] [cursor=pointer]:
+          - /url: support.html
+  - contentinfo [ref=e367]:
+    - generic [ref=e368]:
+      - generic [ref=e369]:
+        - heading "New Providence Community Hub" [level=2] [ref=e370]
+        - paragraph [ref=e371]: A shared space for clarity, care, and everyday town life.
+      - generic [ref=e372]:
+        - paragraph [ref=e373]: Navigate
+        - link "Community Hub" [ref=e374] [cursor=pointer]:
+          - /url: community.html
+        - link "Explore" [ref=e375] [cursor=pointer]:
+          - /url: explore.html
+        - link "Support" [ref=e376] [cursor=pointer]:
+          - /url: support.html
+        - link "Funding" [ref=e377] [cursor=pointer]:
+          - /url: funding.html
+      - generic [ref=e378]:
+        - paragraph [ref=e379]: Credits
+        - paragraph [ref=e380]: New Providence High School
+        - paragraph [ref=e381]: TSA Webmaster 2026
+    - generic [ref=e382]: New Providence Community Hub · TSA Webmaster 2026 · New Providence High School
+  - generic [ref=e641]: Comment added.
