@@ -1085,7 +1085,7 @@ function ensureModalRoot() {
   root.innerHTML = `
     <div class="modal-backdrop" data-modal-backdrop></div>
     <div class="modal-panel" role="dialog" aria-modal="true" aria-live="polite">
-      <button class="modal-close" type="button" aria-label="Close modal" data-modal-close>x</button>
+      <button class="modal-close" type="button" aria-label="Close modal" data-modal-close>&times;</button>
       <div data-modal-content></div>
     </div>
   `;

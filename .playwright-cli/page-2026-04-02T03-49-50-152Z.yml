@@ -1,0 +1,145 @@
+- generic [ref=e1]:
+  - link "Skip to content" [ref=e2] [cursor=pointer]:
+    - /url: "#main-content"
+  - banner [ref=e3]:
+    - generic [ref=e4]:
+      - link "New Providence Community Hub home" [ref=e5] [cursor=pointer]:
+        - /url: index.html
+        - generic [ref=e6]:
+          - strong [ref=e7]: New Providence Community Hub
+          - generic [ref=e8]: New Providence, New Jersey
+      - navigation [ref=e9]:
+        - link "Home" [ref=e10] [cursor=pointer]:
+          - /url: index.html
+        - link "Explore" [ref=e11] [cursor=pointer]:
+          - /url: explore.html
+        - link "Bulletin" [ref=e12] [cursor=pointer]:
+          - /url: bulletin.html
+        - link "Directory" [ref=e13] [cursor=pointer]:
+          - /url: directory.html
+        - link "Support" [ref=e14] [cursor=pointer]:
+          - /url: support.html
+        - link "Education" [ref=e15] [cursor=pointer]:
+          - /url: education.html
+        - link "Forum" [ref=e16] [cursor=pointer]:
+          - /url: forum.html
+        - link "Community Hub" [ref=e17] [cursor=pointer]:
+          - /url: community.html
+        - link "Documentation" [ref=e18] [cursor=pointer]:
+          - /url: documentation.html
+        - link "Funding" [ref=e19] [cursor=pointer]:
+          - /url: funding.html
+      - button "Town Alerts" [ref=e20] [cursor=pointer]
+  - main [ref=e21]:
+    - generic [ref=e22]:
+      - paragraph [ref=e23]: Documentation
+      - heading "Project records, submitted PDFs, and image citations." [level=1] [ref=e24]
+      - paragraph [ref=e25]: This page collects the project documentation files and the MLA works cited list for the visual assets currently used throughout the site.
+    - generic [ref=e27]:
+      - article [ref=e28]:
+        - generic [ref=e29]:
+          - paragraph [ref=e30]: Project File
+          - heading "Student Copyright Checklist" [level=2] [ref=e31]
+        - paragraph [ref=e32]: Submission checklist covering copyright and usage requirements for the project build.
+        - generic [ref=e33]:
+          - generic [ref=e34]: PDF
+          - generic [ref=e35]: 1 page
+          - generic [ref=e36]: Project record
+        - generic [ref=e37]:
+          - link "Open PDF" [ref=e38] [cursor=pointer]:
+            - /url: assets/docs/student-copyright-checklist.pdf
+          - link "Download" [ref=e39] [cursor=pointer]:
+            - /url: assets/docs/student-copyright-checklist.pdf
+        - iframe [ref=e40]:
+          
+      - article [ref=e41]:
+        - generic [ref=e42]:
+          - paragraph [ref=e43]: Project File
+          - heading "Work Log" [level=2] [ref=e44]
+        - paragraph [ref=e45]: Recorded project log documenting the work completed during the build.
+        - generic [ref=e46]:
+          - generic [ref=e47]: PDF
+          - generic [ref=e48]: 1 page
+          - generic [ref=e49]: Process record
+        - generic [ref=e50]:
+          - link "Open PDF" [ref=e51] [cursor=pointer]:
+            - /url: assets/docs/work-log.pdf
+          - link "Download" [ref=e52] [cursor=pointer]:
+            - /url: assets/docs/work-log.pdf
+        - iframe [ref=e53]:
+          
+    - article [ref=e55]:
+      - generic [ref=e56]:
+        - paragraph [ref=e57]: MLA Works Cited
+        - heading "Visual assets currently used on the site" [level=2] [ref=e58]
+      - paragraph [ref=e59]: These entries cover the local image files currently referenced in the site templates and application data.
+      - list [ref=e60]:
+        - listitem [ref=e61]:
+          - text: "\"Downtown Shops.\""
+          - emphasis [ref=e62]: New Providence Community Hub
+          - text: ", 2026. JPG file."
+        - listitem [ref=e63]:
+          - text: "\"Firehouse Exterior.\""
+          - emphasis [ref=e64]: New Providence Community Hub
+          - text: ", 2026. JPG file."
+        - listitem [ref=e65]:
+          - text: "\"Library Exterior, Spring.\""
+          - emphasis [ref=e66]: New Providence Community Hub
+          - text: ", 2026. JPG file."
+        - listitem [ref=e67]:
+          - text: "\"Library Interior Stacks.\""
+          - emphasis [ref=e68]: New Providence Community Hub
+          - text: ", 2026. JPG file."
+        - listitem [ref=e69]:
+          - text: "\"Library Media Shelves.\""
+          - emphasis [ref=e70]: New Providence Community Hub
+          - text: ", 2026. JPG file."
+        - listitem [ref=e71]:
+          - text: "\"Memorial Garden.\""
+          - emphasis [ref=e72]: New Providence Community Hub
+          - text: ", 2026. JPG file."
+        - listitem [ref=e73]:
+          - text: "\"Municipal Building.\""
+          - emphasis [ref=e74]: New Providence Community Hub
+          - text: ", 2026. JPG file."
+        - listitem [ref=e75]:
+          - text: "\"NP Logo.\""
+          - emphasis [ref=e76]: New Providence Community Hub
+          - text: ", 2026. SVG file."
+        - listitem [ref=e77]:
+          - text: "\"Pavilion Park.\""
+          - emphasis [ref=e78]: New Providence Community Hub
+          - text: ", 2026. JPG file."
+        - listitem [ref=e79]:
+          - text: "\"Salt Brook School.\""
+          - emphasis [ref=e80]: New Providence Community Hub
+          - text: ", 2026. JPG file."
+        - listitem [ref=e81]:
+          - text: "\"School Campus Drive.\""
+          - emphasis [ref=e82]: New Providence Community Hub
+          - text: ", 2026. JPG file."
+  - contentinfo [ref=e83]:
+    - generic [ref=e84]:
+      - generic [ref=e85]:
+        - heading "New Providence Community Hub" [level=2] [ref=e86]
+        - paragraph [ref=e87]: A civic resource platform designed for clarity, care, and everyday town life.
+      - generic [ref=e88]:
+        - paragraph [ref=e89]: Navigate
+        - link "Home" [ref=e90] [cursor=pointer]:
+          - /url: index.html
+        - link "Community Hub" [ref=e91] [cursor=pointer]:
+          - /url: community.html
+        - link "Documentation" [ref=e92] [cursor=pointer]:
+          - /url: documentation.html
+        - link "Support" [ref=e93] [cursor=pointer]:
+          - /url: support.html
+      - generic [ref=e94]:
+        - paragraph [ref=e95]: Credits
+        - paragraph [ref=e96]: New Providence High School
+        - paragraph [ref=e97]: TSA Webmaster 2026
+    - generic [ref=e98]: New Providence Community Hub · TSA Webmaster 2026 · New Providence High School
+  - dialog [ref=e101]:
+    - button "Close modal" [active] [ref=e102] [cursor=pointer]: ×
+    - generic [ref=e103]:
+      - heading "Town Alerts" [level=2] [ref=e104]
+      - paragraph [ref=e105]: There are no active warnings right now. You can still use the Support page to sign up for alert notifications.
