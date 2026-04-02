@@ -1453,6 +1453,249 @@ button {
   font-family: "Fraunces", Georgia, serif;
 }
 
+.bulletin-calendar {
+  display: grid;
+  grid-template-columns: minmax(0, 1.35fr) minmax(260px, 0.85fr);
+  gap: 22px;
+  align-items: start;
+}
+
+.bulletin-calendar__shell {
+  overflow: hidden;
+  border-radius: 28px;
+  background: rgba(255, 255, 255, 0.92);
+  border: 1px solid rgba(200, 161, 90, 0.16);
+  box-shadow: var(--shadow-md);
+}
+
+.bulletin-calendar__header {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: 14px;
+  align-items: center;
+  padding: 18px 20px;
+  background: linear-gradient(180deg, #183b63 0%, #163458 100%);
+}
+
+.bulletin-calendar__nav {
+  width: 42px;
+  height: 42px;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.08);
+  color: #fff;
+  font-size: 1.4rem;
+  line-height: 1;
+  transition: transform var(--transition-fast), background var(--transition-fast);
+}
+
+.bulletin-calendar__nav:hover {
+  transform: translateY(-1px);
+  background: rgba(255, 255, 255, 0.16);
+}
+
+.bulletin-calendar__month {
+  margin: 0;
+  text-align: center;
+  color: #fff;
+  font-size: clamp(1.2rem, 2vw, 1.5rem);
+  letter-spacing: 0.12em;
+}
+
+.bulletin-calendar__weekdays,
+.bulletin-calendar__days {
+  display: grid;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+}
+
+.bulletin-calendar__weekdays {
+  gap: 8px;
+  padding: 16px 16px 8px;
+}
+
+.bulletin-calendar__weekdays span {
+  text-align: center;
+  color: var(--np-fog);
+  font-size: 0.76rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+}
+
+.bulletin-calendar__days {
+  gap: 8px;
+  padding: 0 16px 16px;
+}
+
+.bulletin-calendar__day {
+  min-height: 84px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 8px 10px;
+  border: 1px solid rgba(28, 60, 46, 0.08);
+  border-radius: 18px;
+  background: rgba(240, 237, 228, 0.45);
+  color: var(--np-forest);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.35);
+  transition:
+    transform var(--transition-fast),
+    background var(--transition-fast),
+    border-color var(--transition-fast),
+    box-shadow var(--transition-fast),
+    color var(--transition-fast);
+}
+
+.bulletin-calendar__day:hover {
+  transform: translateY(-2px);
+  border-color: rgba(200, 161, 90, 0.34);
+  box-shadow: var(--shadow-sm);
+}
+
+.bulletin-calendar__day.is-outside-month {
+  color: rgba(74, 101, 88, 0.4);
+  background: transparent;
+  border-style: dashed;
+}
+
+.bulletin-calendar__day.has-events {
+  border-color: rgba(200, 161, 90, 0.28);
+  background: rgba(247, 244, 236, 0.9);
+}
+
+.bulletin-calendar__day.is-today:not(.is-selected) {
+  background: rgba(24, 59, 99, 0.08);
+  border-color: rgba(24, 59, 99, 0.22);
+}
+
+.bulletin-calendar__day.is-selected {
+  background: linear-gradient(180deg, #183b63 0%, #163458 100%);
+  border-color: rgba(24, 59, 99, 0.5);
+  color: #fff;
+  box-shadow: var(--shadow-lg);
+}
+
+.bulletin-calendar__day-number {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.bulletin-calendar__markers {
+  min-height: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+
+.bulletin-calendar__marker {
+  width: 6px;
+  height: 6px;
+  border-radius: 999px;
+}
+
+.bulletin-calendar__marker--official {
+  background: var(--np-gold);
+}
+
+.bulletin-calendar__marker--submitted {
+  background: #8d2347;
+}
+
+.bulletin-calendar__day.is-selected .bulletin-calendar__marker--official {
+  background: #fff3d3;
+}
+
+.bulletin-calendar__day.is-selected .bulletin-calendar__marker--submitted {
+  background: #ffb8d0;
+}
+
+.bulletin-calendar__details {
+  display: grid;
+  gap: 16px;
+  padding: 22px;
+  border-radius: 24px;
+  background: var(--surface-02);
+  border: 1px solid rgba(200, 161, 90, 0.12);
+}
+
+.bulletin-calendar__details-top {
+  display: grid;
+  gap: 6px;
+}
+
+.bulletin-calendar__details-top h3 {
+  font-size: 1.5rem;
+  color: var(--np-forest);
+}
+
+.bulletin-calendar__events {
+  display: grid;
+  gap: 12px;
+}
+
+.bulletin-calendar__empty {
+  padding: 18px;
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.75);
+  border: 1px dashed rgba(28, 60, 46, 0.12);
+}
+
+.bulletin-calendar__empty p:first-child {
+  margin-bottom: 6px;
+  color: var(--np-forest);
+  font-weight: 600;
+}
+
+.bulletin-event-card {
+  padding: 16px;
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.84);
+  border: 1px solid rgba(200, 161, 90, 0.12);
+  box-shadow: var(--shadow-sm);
+}
+
+.bulletin-event-card__badge {
+  display: inline-flex;
+  margin-bottom: 10px;
+  padding: 6px 10px;
+  border-radius: 999px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.bulletin-event-card__badge--official {
+  background: rgba(24, 59, 99, 0.12);
+  color: #183b63;
+}
+
+.bulletin-event-card__badge--submitted {
+  background: rgba(141, 35, 71, 0.12);
+  color: #8d2347;
+}
+
+.bulletin-event-card h3 {
+  margin: 0 0 8px;
+  font-size: 1.04rem;
+  color: var(--np-forest);
+}
+
+.bulletin-event-card__meta {
+  margin: 0 0 8px;
+  color: var(--np-deep);
+  font-size: 0.92rem;
+  font-weight: 600;
+}
+
+.bulletin-event-card p:last-child {
+  margin: 0;
+  color: var(--np-muted);
+  line-height: 1.6;
+}
+
 .calendar-grid {
   grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
   margin-bottom: 20px;
@@ -2953,6 +3196,10 @@ mark {
   .docs-grid {
     grid-template-columns: 1fr;
   }
+
+  .bulletin-calendar {
+    grid-template-columns: 1fr;
+  }
 }
 
 @media (max-width: 760px) {
@@ -2996,6 +3243,35 @@ mark {
   .map-shell__top {
     flex-direction: column;
     align-items: stretch;
+  }
+
+  .bulletin-calendar__header {
+    padding: 16px 14px;
+  }
+
+  .bulletin-calendar__month {
+    font-size: 1.08rem;
+    letter-spacing: 0.1em;
+  }
+
+  .bulletin-calendar__weekdays {
+    gap: 6px;
+    padding: 14px 10px 8px;
+  }
+
+  .bulletin-calendar__days {
+    gap: 6px;
+    padding: 0 10px 10px;
+  }
+
+  .bulletin-calendar__day {
+    min-height: 72px;
+    border-radius: 14px;
+    padding: 10px 6px 8px;
+  }
+
+  .bulletin-calendar__details {
+    padding: 18px;
   }
 
   .community-issue-columns {

@@ -95,12 +95,54 @@
         <article class="card">
           <div class="section-heading section-heading--compact">
             <p class="eyebrow">Town Calendar</p>
-            <h2>Upcoming events</h2>
+            <h2>Events & Community Calendar</h2>
           </div>
-          <div class="calendar-grid" data-calendar-grid></div>
-          <button class="button button-ghost" type="button" data-open-calendar-modal>
-            Add Event
-          </button>
+          <div class="bulletin-calendar" data-bulletin-calendar>
+            <div class="bulletin-calendar__shell">
+              <div class="bulletin-calendar__header">
+                <button
+                  class="bulletin-calendar__nav"
+                  type="button"
+                  aria-label="Previous month"
+                  data-calendar-prev
+                >
+                  ‹
+                </button>
+                <h3 class="bulletin-calendar__month" data-calendar-month></h3>
+                <button
+                  class="bulletin-calendar__nav"
+                  type="button"
+                  aria-label="Next month"
+                  data-calendar-next
+                >
+                  ›
+                </button>
+              </div>
+              <div class="bulletin-calendar__weekdays" aria-hidden="true">
+                <span>S</span>
+                <span>M</span>
+                <span>T</span>
+                <span>W</span>
+                <span>T</span>
+                <span>F</span>
+                <span>S</span>
+              </div>
+              <div class="bulletin-calendar__days" data-calendar-grid></div>
+            </div>
+            <aside class="bulletin-calendar__details">
+              <div class="bulletin-calendar__details-top">
+                <p class="eyebrow">Selected Day</p>
+                <h3 data-calendar-selected-label></h3>
+                <p class="helper-text">
+                  Click any date to review what is happening or add your own event.
+                </p>
+              </div>
+              <div class="bulletin-calendar__events" data-calendar-events></div>
+              <button class="button button-ghost" type="button" data-open-calendar-modal>
+                Add Event
+              </button>
+            </aside>
+          </div>
         </article>
       </section>
     </main>

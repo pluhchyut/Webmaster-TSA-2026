@@ -404,10 +404,86 @@ const bulletinLiveFeed = [
 ];
 
 const officialCalendar = [
-  { date: "Mar 20", title: "Board of Education Workshop", note: "District offices" },
-  { date: "Mar 22", title: "Spring Cleanup Kickoff", note: "Lions Park pavilion" },
-  { date: "Mar 26", title: "Library Teen Maker Lab", note: "Memorial Library" },
-  { date: "Apr 02", title: "Downtown Listening Session", note: "Municipal building" },
+  {
+    id: "listen-session",
+    date: "2026-04-02",
+    title: "Downtown Listening Session",
+    location: "Municipal building",
+    note: "Open public conversation on traffic, downtown walkability, and project priorities.",
+    source: "official",
+  },
+  {
+    id: "cleanup-kickoff",
+    date: "2026-04-04",
+    title: "Spring Cleanup Kickoff",
+    location: "Lions Park pavilion",
+    note: "Volunteer check-in begins at 9:00 AM with supplies and route assignments.",
+    source: "official",
+  },
+  {
+    id: "maker-lab",
+    date: "2026-04-07",
+    title: "Library Teen Maker Lab",
+    location: "Memorial Library",
+    note: "Hands-on fabrication session for students in grades 6 through 10.",
+    source: "official",
+  },
+  {
+    id: "board-workshop",
+    date: "2026-04-11",
+    title: "Board of Education Workshop",
+    location: "District offices",
+    note: "Workshop session covering next-year priorities, facilities, and staffing.",
+    source: "official",
+  },
+  {
+    id: "garden-day",
+    date: "2026-04-12",
+    title: "Memorial Garden Service Day",
+    location: "9/11 Memorial garden",
+    note: "Volunteer planting and seasonal cleanup with borough staff and residents.",
+    source: "official",
+  },
+  {
+    id: "pantry-drive",
+    date: "2026-04-17",
+    title: "Pantry Evening Drive",
+    location: "Community pantry annex",
+    note: "Donation sorting and evening collection window for shelf-stable goods.",
+    source: "official",
+  },
+  {
+    id: "arts-night",
+    date: "2026-04-18",
+    title: "PACA Open Studio Night",
+    location: "Community Arts Loft",
+    note: "Resident gallery walk, youth work showcase, and informal drop-in workshops.",
+    source: "official",
+  },
+  {
+    id: "earth-week",
+    date: "2026-04-22",
+    title: "Earth Week Volunteer Rally",
+    location: "Town Green",
+    note: "Neighborhood sustainability booths, sign-ups, and environmental project updates.",
+    source: "official",
+  },
+  {
+    id: "safety-fair",
+    date: "2026-04-25",
+    title: "Neighborhood Safety Fair",
+    location: "Volunteer fire department",
+    note: "Emergency preparedness demos, family safety guides, and equipment tours.",
+    source: "official",
+  },
+  {
+    id: "grant-wrapup",
+    date: "2026-04-30",
+    title: "Grant Review Wrap-Up",
+    location: "Municipal chambers",
+    note: "Public summary of spring grants, timelines, and near-term construction scheduling.",
+    source: "official",
+  },
 ];
 
 const educationUpdates = [
@@ -931,6 +1007,109 @@ function formatCommunityCommentDate(value) {
     month: "short",
     day: "numeric",
   }).format(parsed);
+}
+
+function createLocalDate(year, monthIndex, day) {
+  return new Date(year, monthIndex, day, 12);
+}
+
+function createDateKey(date) {
+  const year = date.getFullYear();
+  const month = String(date.getMonth() + 1).padStart(2, "0");
+  const day = String(date.getDate()).padStart(2, "0");
+  return `${year}-${month}-${day}`;
+}
+
+function parseCalendarDate(value) {
+  if (value instanceof Date && !Number.isNaN(value.getTime())) {
+    return createLocalDate(value.getFullYear(), value.getMonth(), value.getDate());
+  }
+
+  if (typeof value !== "string") return null;
+
+  const isoMatch = value.match(/^(\d{4})-(\d{2})-(\d{2})$/);
+  if (isoMatch) {
+    return createLocalDate(Number(isoMatch[1]), Number(isoMatch[2]) - 1, Number(isoMatch[3]));
+  }
+
+  const shortMatch = value.match(/^([A-Za-z]{3,9})\s+(\d{1,2})(?:,\s*(\d{4}))?$/);
+  if (shortMatch) {
+    const monthNames = [
+      "january",
+      "february",
+      "march",
+      "april",
+      "may",
+      "june",
+      "july",
+      "august",
+      "september",
+      "october",
+      "november",
+      "december",
+    ];
+    const monthIndex = monthNames.findIndex((month) =>
+      month.startsWith(shortMatch[1].toLowerCase()),
+    );
+    if (monthIndex >= 0) {
+      const year = Number(shortMatch[3] || new Date().getFullYear());
+      return createLocalDate(year, monthIndex, Number(shortMatch[2]));
+    }
+  }
+
+  const parsed = new Date(value);
+  if (Number.isNaN(parsed.getTime())) return null;
+  return createLocalDate(parsed.getFullYear(), parsed.getMonth(), parsed.getDate());
+}
+
+function shiftCalendarMonth(date, amount) {
+  return createLocalDate(date.getFullYear(), date.getMonth() + amount, 1);
+}
+
+function isSameCalendarMonth(left, right) {
+  return (
+    left.getFullYear() === right.getFullYear() && left.getMonth() === right.getMonth()
+  );
+}
+
+function formatCalendarMonthLabel(date) {
+  return new Intl.DateTimeFormat("en-US", {
+    month: "long",
+    year: "numeric",
+  })
+    .format(date)
+    .toUpperCase();
+}
+
+function formatCalendarSelectedLabel(date) {
+  return new Intl.DateTimeFormat("en-US", {
+    weekday: "long",
+    month: "long",
+    day: "numeric",
+  }).format(date);
+}
+
+function normalizeCalendarItems(items, fallbackSource = "submitted") {
+  return items
+    .map((item, index) => {
+      const dateObject = parseCalendarDate(item.date);
+      if (!dateObject) return null;
+      return {
+        id: item.id || `calendar-${fallbackSource}-${index}`,
+        date: createDateKey(dateObject),
+        dateObject,
+        title: String(item.title || "").trim(),
+        note: String(item.note || "").trim(),
+        location: String(item.location || "").trim(),
+        source: item.source || fallbackSource,
+      };
+    })
+    .filter(Boolean)
+    .sort(
+      (left, right) =>
+        left.dateObject.getTime() - right.dateObject.getTime() ||
+        left.title.localeCompare(right.title),
+    );
 }
 
 function readCommunityCommentStore() {
@@ -2572,9 +2751,27 @@ function initBulletinPage() {
   if (document.body.dataset.page !== "bulletin") return;
   const loop = $("[data-bulletin-loop]");
   const live = $("[data-bulletin-live]");
+  const calendar = $("[data-bulletin-calendar]");
   const calendarGrid = $("[data-calendar-grid]");
+  const calendarMonth = $("[data-calendar-month]");
+  const calendarEvents = $("[data-calendar-events]");
+  const selectedLabel = $("[data-calendar-selected-label]");
+  const previousMonthButton = $("[data-calendar-prev]");
+  const nextMonthButton = $("[data-calendar-next]");
   const openModalButton = $("[data-open-calendar-modal]");
-  if (!loop || !live || !calendarGrid) return;
+  if (
+    !loop ||
+    !live ||
+    !calendar ||
+    !calendarGrid ||
+    !calendarMonth ||
+    !calendarEvents ||
+    !selectedLabel ||
+    !previousMonthButton ||
+    !nextMonthButton
+  ) {
+    return;
+  }
 
   const items = renderBulletinCards();
   const track = $("[data-bulletin-track]");
@@ -2615,21 +2812,170 @@ function initBulletinPage() {
   liveIndex = (liveIndex + 1) % bulletinLiveFeed.length;
   window.setInterval(cycleLive, 4600);
 
-  const renderCalendar = () => {
-    const custom = safeRead(STORAGE_KEYS.calendarEvents, localStorage, []);
-    const itemsToRender = [...officialCalendar, ...custom];
-    calendarGrid.innerHTML = itemsToRender
-      .map(
-        (item) => `
-          <article class="calendar-entry">
-            <span class="calendar-entry__date">${escapeHtml(item.date)}</span>
-            <h3>${escapeHtml(item.title)}</h3>
-            <p>${escapeHtml(item.note || "")}</p>
-          </article>
-        `,
-      )
-      .join("");
+  const today = createLocalDate(
+    new Date().getFullYear(),
+    new Date().getMonth(),
+    new Date().getDate(),
+  );
+  let visibleMonth = createLocalDate(today.getFullYear(), today.getMonth(), 1);
+  let selectedDateKey = createDateKey(today);
+
+  const getCalendarItems = () => {
+    const custom = normalizeCalendarItems(
+      safeRead(STORAGE_KEYS.calendarEvents, localStorage, []),
+      "submitted",
+    );
+    return normalizeCalendarItems(officialCalendar, "official")
+      .concat(custom)
+      .sort(
+        (left, right) =>
+          left.dateObject.getTime() - right.dateObject.getTime() ||
+          Number(left.source === "submitted") - Number(right.source === "submitted") ||
+          left.title.localeCompare(right.title),
+      );
   };
+
+  const selectDateForMonth = (items, preferredDateKey = selectedDateKey) => {
+    const preferredDate = parseCalendarDate(preferredDateKey);
+    if (preferredDate && isSameCalendarMonth(preferredDate, visibleMonth)) {
+      selectedDateKey = createDateKey(preferredDate);
+      return;
+    }
+
+    const inMonth = items.filter((item) => isSameCalendarMonth(item.dateObject, visibleMonth));
+    if (inMonth.length) {
+      selectedDateKey = inMonth[0].date;
+      return;
+    }
+
+    if (isSameCalendarMonth(today, visibleMonth)) {
+      selectedDateKey = createDateKey(today);
+      return;
+    }
+
+    selectedDateKey = createDateKey(
+      createLocalDate(visibleMonth.getFullYear(), visibleMonth.getMonth(), 1),
+    );
+  };
+
+  const renderCalendar = () => {
+    const itemsToRender = getCalendarItems();
+    const itemsByDate = new Map();
+    itemsToRender.forEach((item) => {
+      const existing = itemsByDate.get(item.date) || [];
+      existing.push(item);
+      itemsByDate.set(item.date, existing);
+    });
+
+    selectDateForMonth(itemsToRender);
+    calendarMonth.textContent = formatCalendarMonthLabel(visibleMonth);
+
+    const monthStart = createLocalDate(visibleMonth.getFullYear(), visibleMonth.getMonth(), 1);
+    const startingOffset = monthStart.getDay();
+    const gridStart = createLocalDate(
+      visibleMonth.getFullYear(),
+      visibleMonth.getMonth(),
+      1 - startingOffset,
+    );
+
+    calendarGrid.innerHTML = Array.from({ length: 42 }, (_, index) => {
+      const day = createLocalDate(
+        gridStart.getFullYear(),
+        gridStart.getMonth(),
+        gridStart.getDate() + index,
+      );
+      const dayKey = createDateKey(day);
+      const dayItems = itemsByDate.get(dayKey) || [];
+      const isCurrentMonth = isSameCalendarMonth(day, visibleMonth);
+      const isToday = dayKey === createDateKey(today);
+      const isSelected = dayKey === selectedDateKey;
+      const classes = [
+        "bulletin-calendar__day",
+        isCurrentMonth ? "" : "is-outside-month",
+        isToday ? "is-today" : "",
+        isSelected ? "is-selected" : "",
+        dayItems.length ? "has-events" : "",
+      ]
+        .filter(Boolean)
+        .join(" ");
+      const markerMarkup = dayItems
+        .slice(0, 3)
+        .map(
+          (item) =>
+            `<span class="bulletin-calendar__marker ${
+              item.source === "submitted"
+                ? "bulletin-calendar__marker--submitted"
+                : "bulletin-calendar__marker--official"
+            }"></span>`,
+        )
+        .join("");
+
+      return `
+        <button
+          class="${classes}"
+          type="button"
+          data-calendar-date="${dayKey}"
+          aria-label="${escapeHtml(
+            `${formatCalendarSelectedLabel(day)}${dayItems.length ? `, ${dayItems.length} event${dayItems.length === 1 ? "" : "s"}` : ""}`,
+          )}"
+        >
+          <span class="bulletin-calendar__day-number">${day.getDate()}</span>
+          <span class="bulletin-calendar__markers">${markerMarkup}</span>
+        </button>
+      `;
+    }).join("");
+
+    const selectedDate = parseCalendarDate(selectedDateKey) || monthStart;
+    const selectedItems = itemsByDate.get(selectedDateKey) || [];
+    selectedLabel.textContent = formatCalendarSelectedLabel(selectedDate);
+
+    calendarEvents.innerHTML = selectedItems.length
+      ? selectedItems
+          .map(
+            (item) => `
+              <article class="bulletin-event-card bulletin-event-card--${escapeHtml(item.source)}">
+                <span class="bulletin-event-card__badge bulletin-event-card__badge--${escapeHtml(item.source)}">
+                  ${item.source === "submitted" ? "Resident Added" : "Town Event"}
+                </span>
+                <h3>${escapeHtml(item.title)}</h3>
+                ${
+                  item.location
+                    ? `<p class="bulletin-event-card__meta">${escapeHtml(item.location)}</p>`
+                    : ""
+                }
+                ${
+                  item.note ? `<p>${escapeHtml(item.note)}</p>` : `<p>No extra details added yet.</p>`
+                }
+              </article>
+            `,
+          )
+          .join("")
+      : `
+          <div class="bulletin-calendar__empty">
+            <p>No events are listed for this date yet.</p>
+            <p class="helper-text">Use Add Event to place a resident submission on the calendar.</p>
+          </div>
+        `;
+  };
+
+  calendarGrid.addEventListener("click", (event) => {
+    const target = event.target.closest("[data-calendar-date]");
+    if (!target) return;
+    selectedDateKey = target.dataset.calendarDate;
+    renderCalendar();
+  });
+
+  previousMonthButton.addEventListener("click", () => {
+    visibleMonth = shiftCalendarMonth(visibleMonth, -1);
+    selectDateForMonth(getCalendarItems(), null);
+    renderCalendar();
+  });
+
+  nextMonthButton.addEventListener("click", () => {
+    visibleMonth = shiftCalendarMonth(visibleMonth, 1);
+    selectDateForMonth(getCalendarItems(), null);
+    renderCalendar();
+  });
 
   renderCalendar();
 
@@ -2639,26 +2985,49 @@ function initBulletinPage() {
         title: "Add an Event",
         body: `
           <form data-calendar-form novalidate>
-            <label class="input-group"><span>Date</span><input class="input" name="date" type="text" placeholder="Apr 12" required></label>
-            <label class="input-group"><span>Title</span><input class="input" name="title" type="text" required></label>
-            <label class="input-group"><span>Details</span><textarea class="input" name="note" rows="4"></textarea></label>
+            <label class="input-group"><span>Date</span><input class="input" name="date" type="date" value="${escapeHtml(selectedDateKey)}" required></label>
+            <label class="input-group"><span>Title</span><input class="input" name="title" type="text" maxlength="80" required></label>
+            <label class="input-group"><span>Location</span><input class="input" name="location" type="text" maxlength="80" placeholder="Town Green"></label>
+            <label class="input-group"><span>Details</span><textarea class="input" name="note" rows="4" placeholder="Share timing, who it is for, or what people should bring."></textarea></label>
+            <small>Resident-added events stay on this browser unless cleared.</small>
             <div class="button-row"><button class="button button-primary" type="submit">Save Event</button></div>
             <p class="form-status" data-modal-status></p>
           </form>
         `,
-        onOpen: () => {
-          const form = $("[data-calendar-form]", ensureModalRoot().root);
-          const status = $("[data-modal-status]", ensureModalRoot().root);
+        onOpen: (root) => {
+          const form = $("[data-calendar-form]", root);
+          const status = $("[data-modal-status]", root);
           form.addEventListener("submit", (event) => {
             event.preventDefault();
             const payload = Object.fromEntries(new FormData(form).entries());
+            const parsedDate = parseCalendarDate(String(payload.date || ""));
+            const title = String(payload.title || "").trim();
+
+            if (!parsedDate || !title) {
+              status.textContent = "Please add both a date and an event title.";
+              status.className = "form-status is-error";
+              return;
+            }
+
             const items = safeRead(STORAGE_KEYS.calendarEvents, localStorage, []);
-            items.push(payload);
+            items.unshift({
+              id: `calendar-${slugify(title)}-${Date.now().toString(36)}`,
+              date: createDateKey(parsedDate),
+              title,
+              location: String(payload.location || "").trim(),
+              note: String(payload.note || "").trim(),
+              source: "submitted",
+            });
             safeWrite(STORAGE_KEYS.calendarEvents, items, localStorage);
+            visibleMonth = createLocalDate(parsedDate.getFullYear(), parsedDate.getMonth(), 1);
+            selectedDateKey = createDateKey(parsedDate);
             status.textContent = "Event added to the community calendar.";
             status.className = "form-status is-success";
             renderCalendar();
             showToast("Calendar event added.", "success");
+            form.reset();
+            const dateInput = $("[name='date']", form);
+            if (dateInput) dateInput.value = selectedDateKey;
           });
         },
       });
