@@ -474,11 +474,41 @@ const forumSeed = [
 ];
 
 const fundingData = [
-  { label: "Infrastructure", value: 82 },
-  { label: "Public Safety", value: 64 },
-  { label: "Community Spaces", value: 56 },
-  { label: "Sustainability", value: 38 },
+  { label: "Infrastructure", amount: 5.5 },
+  { label: "Public Safety", amount: 4.6 },
+  { label: "Community Spaces", amount: 4.6 },
+  { label: "Sustainability", amount: 3.7 },
 ];
+
+function getFundingBreakdown(items) {
+  const totalAmount = items.reduce((sum, item) => sum + item.amount, 0);
+  if (!totalAmount) {
+    return items.map((item) => ({ ...item, share: 0 }));
+  }
+
+  const withShares = items.map((item, index) => {
+    const rawShare = (item.amount / totalAmount) * 100;
+    const wholeShare = Math.floor(rawShare);
+    return {
+      ...item,
+      index,
+      rawShare,
+      share: wholeShare,
+      remainder: rawShare - wholeShare,
+    };
+  });
+
+  let remainingPoints = 100 - withShares.reduce((sum, item) => sum + item.share, 0);
+  withShares
+    .slice()
+    .sort((left, right) => right.remainder - left.remainder || left.index - right.index)
+    .slice(0, remainingPoints)
+    .forEach((item) => {
+      item.share += 1;
+    });
+
+  return withShares.sort((left, right) => left.index - right.index);
+}
 
 const communityMemoryShowcase = [
   {
@@ -1259,19 +1289,57 @@ function initHeader() {
   window.addEventListener("scroll", handleScroll, { passive: true });
 
   if (toggle && nav) {
+    const mobileNavQuery = window.matchMedia("(max-width: 1180px)");
+    nav.id ||= "site-navigation";
+    toggle.setAttribute("aria-controls", nav.id);
+
+    const setMenuState = (isOpen) => {
+      toggle.setAttribute("aria-expanded", String(isOpen));
+      toggle.setAttribute("aria-label", isOpen ? "Close navigation" : "Open navigation");
+      document.body.classList.toggle("nav-open", isOpen);
+      nav.setAttribute("aria-hidden", String(mobileNavQuery.matches ? !isOpen : false));
+      if ("inert" in nav) {
+        nav.inert = mobileNavQuery.matches ? !isOpen : false;
+      }
+    };
+
+    const syncMenuState = () => {
+      if (!mobileNavQuery.matches) {
+        setMenuState(false);
+        nav.removeAttribute("aria-hidden");
+        if ("inert" in nav) {
+          nav.inert = false;
+        }
+        return;
+      }
+      setMenuState(document.body.classList.contains("nav-open"));
+    };
+
     toggle.addEventListener("click", () => {
+      if (!mobileNavQuery.matches) return;
       const expanded = toggle.getAttribute("aria-expanded") === "true";
-      toggle.setAttribute("aria-expanded", String(!expanded));
-      toggle.setAttribute("aria-label", expanded ? "Open navigation" : "Close navigation");
-      document.body.classList.toggle("nav-open", !expanded);
+      setMenuState(!expanded);
     });
 
     $$("a", nav).forEach((link) => {
       link.addEventListener("click", () => {
-        document.body.classList.remove("nav-open");
-        toggle.setAttribute("aria-expanded", "false");
+        setMenuState(false);
       });
     });
+
+    window.addEventListener("keydown", (event) => {
+      if (event.key === "Escape" && document.body.classList.contains("nav-open")) {
+        setMenuState(false);
+      }
+    });
+
+    if ("addEventListener" in mobileNavQuery) {
+      mobileNavQuery.addEventListener("change", syncMenuState);
+    } else {
+      mobileNavQuery.addListener(syncMenuState);
+    }
+
+    syncMenuState();
   }
 }
 
@@ -2771,15 +2839,16 @@ function initFundingPage() {
   if (document.body.dataset.page !== "funding") return;
   const root = $("[data-funding-bars]");
   if (!root) return;
-  root.innerHTML = fundingData
+  const breakdown = getFundingBreakdown(fundingData);
+  root.innerHTML = breakdown
     .map(
       (item) => `
         <article class="funding-row">
           <div class="funding-row__top">
             <strong>${escapeHtml(item.label)}</strong>
-            <span>${item.value}%</span>
+            <span>${item.share}% · $${item.amount.toFixed(1)}M</span>
           </div>
-          <div class="funding-bar"><span data-bar-width="${item.value}%"></span></div>
+          <div class="funding-bar"><span data-bar-width="${item.share}%"></span></div>
         </article>
       `,
     )
