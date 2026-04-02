@@ -88,7 +88,14 @@
         <article class="card card--dark live-panel">
           <div class="live-panel__top">
             <p class="eyebrow">Live Feed</p>
-            <span class="live-dot" aria-hidden="true">→</span>
+            <button
+              class="live-dot"
+              type="button"
+              data-live-next
+              aria-label="Show next live feed update"
+            >
+              <span class="chevron-icon chevron-icon--right" aria-hidden="true"></span>
+            </button>
           </div>
           <p class="live-panel__text" data-bulletin-live></p>
         </article>

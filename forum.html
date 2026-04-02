@@ -93,6 +93,14 @@
           </div>
           <form data-forum-form novalidate>
             <label class="input-group">
+              <span>Question source</span>
+              <select class="input" name="source">
+                <option value="community" selected>Community Question</option>
+                <option value="public">Public</option>
+                <option value="official">Public Official</option>
+              </select>
+            </label>
+            <label class="input-group">
               <span>Your question</span>
               <input class="input" name="question" type="text" />
             </label>
@@ -100,6 +108,10 @@
               <span>Details</span>
               <textarea class="input" name="details" rows="4"></textarea>
             </label>
+            <p class="helper-text">
+              Community questions can receive replies. Public official posts stay anonymous and
+              read-only.
+            </p>
             <div class="button-row">
               <button class="button button-primary" type="submit">Post Question</button>
             </div>

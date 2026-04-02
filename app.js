@@ -532,6 +532,7 @@ const forumSeed = [
     question: "How do I request a new crosswalk near the school campus?",
     answer:
       "Submit a Town Improvement Ticket on the support page with the exact location, nearby landmarks, and why the crossing is needed. Public Works and the police department review those requests together.",
+    source: "official",
   },
   {
     id: "winter-hiking",
@@ -539,6 +540,7 @@ const forumSeed = [
     question: "What is the best local trail when the weather is cold but dry?",
     answer:
       "Oakwood Loop Trail is the safest default for a short winter walk. It has a manageable grade, good visibility, and steady use throughout the day.",
+    source: "public",
   },
   {
     id: "volunteer-needs",
@@ -546,8 +548,30 @@ const forumSeed = [
     question: "Where can I volunteer this month if I only have a few hours?",
     answer:
       "The Lions Club pantry drive, library event support, and the Spring Cleanup all have short-shift options that work well for first-time volunteers.",
+    source: "community",
   },
 ];
+
+const forumSourceMeta = {
+  community: {
+    label: "Community Question",
+    note: "Replies are open so neighbors can share suggestions and experience.",
+    locked: false,
+    anonymous: false,
+  },
+  public: {
+    label: "Public",
+    note: "This public-facing thread is read-only in the forum view.",
+    locked: true,
+    anonymous: false,
+  },
+  official: {
+    label: "Public Official",
+    note: "Public official posts stay anonymous and replies are turned off.",
+    locked: true,
+    anonymous: true,
+  },
+};
 
 const fundingData = [
   { label: "Infrastructure", amount: 5.5 },
@@ -826,6 +850,18 @@ const communityCommentSeeds = {
       name: "Town Staff",
       body: "A short pilot with clear review dates would make the decision easier to evaluate fairly.",
       createdAt: "2026-03-19T11:45:00.000Z",
+    },
+  ],
+  "forum:volunteer-needs": [
+    {
+      name: "Neighbor",
+      body: "The pantry always has short sorting shifts, and cleanup mornings are easy to join even for first-timers.",
+      createdAt: "2026-03-19T14:20:00.000Z",
+    },
+    {
+      name: "Maya",
+      body: "If you want something indoors, the library usually posts event-help slots that only last a couple of hours.",
+      createdAt: "2026-03-20T11:05:00.000Z",
     },
   ],
 };
@@ -2751,6 +2787,7 @@ function initBulletinPage() {
   if (document.body.dataset.page !== "bulletin") return;
   const loop = $("[data-bulletin-loop]");
   const live = $("[data-bulletin-live]");
+  const liveNextButton = $("[data-live-next]");
   const calendar = $("[data-bulletin-calendar]");
   const calendarGrid = $("[data-calendar-grid]");
   const calendarMonth = $("[data-calendar-month]");
@@ -2801,16 +2838,42 @@ function initBulletinPage() {
   });
   animate();
 
+  const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   let liveIndex = 0;
+  let liveCycleInterval = 0;
   const cycleLive = () => {
     smoothSwap(live, () => {
       live.textContent = bulletinLiveFeed[liveIndex];
-    });
+    }, 250);
     liveIndex = (liveIndex + 1) % bulletinLiveFeed.length;
+  };
+  const restartLiveCycle = () => {
+    window.clearInterval(liveCycleInterval);
+    liveCycleInterval = window.setInterval(cycleLive, 5200);
   };
   live.textContent = bulletinLiveFeed[liveIndex];
   liveIndex = (liveIndex + 1) % bulletinLiveFeed.length;
-  window.setInterval(cycleLive, 4600);
+  restartLiveCycle();
+
+  if (liveNextButton) {
+    liveNextButton.addEventListener("click", () => {
+      if (liveNextButton.animate && !prefersReducedMotion) {
+        liveNextButton.animate(
+          [
+            { transform: "scale(1)" },
+            { transform: "scale(0.92)" },
+            { transform: "scale(1)" },
+          ],
+          {
+            duration: 320,
+            easing: "cubic-bezier(0.34, 1.56, 0.64, 1)",
+          },
+        );
+      }
+      cycleLive();
+      restartLiveCycle();
+    });
+  }
 
   const today = createLocalDate(
     new Date().getFullYear(),
@@ -2819,6 +2882,42 @@ function initBulletinPage() {
   );
   let visibleMonth = createLocalDate(today.getFullYear(), today.getMonth(), 1);
   let selectedDateKey = createDateKey(today);
+  let calendarTransitionTimer = 0;
+
+  const animateCalendarButton = (button) => {
+    if (prefersReducedMotion || !button?.animate) return;
+    button.animate(
+      [
+        { transform: "scale(1)" },
+        { transform: "scale(0.92)" },
+        { transform: "scale(1)" },
+      ],
+      {
+        duration: 260,
+        easing: "cubic-bezier(0.34, 1.56, 0.64, 1)",
+      },
+    );
+  };
+
+  const transitionCalendar = (motion, update) => {
+    if (prefersReducedMotion) {
+      update();
+      return;
+    }
+
+    window.clearTimeout(calendarTransitionTimer);
+    calendar.classList.remove("is-animating");
+    calendar.dataset.motion = motion;
+    void calendar.offsetWidth;
+    calendar.classList.add("is-animating");
+
+    calendarTransitionTimer = window.setTimeout(() => {
+      update();
+      requestAnimationFrame(() => {
+        calendar.classList.remove("is-animating");
+      });
+    }, motion === "month" ? 210 : 170);
+  };
 
   const getCalendarItems = () => {
     const custom = normalizeCalendarItems(
@@ -2961,20 +3060,23 @@ function initBulletinPage() {
   calendarGrid.addEventListener("click", (event) => {
     const target = event.target.closest("[data-calendar-date]");
     if (!target) return;
+    if (selectedDateKey === target.dataset.calendarDate) return;
     selectedDateKey = target.dataset.calendarDate;
-    renderCalendar();
+    transitionCalendar("day", renderCalendar);
   });
 
   previousMonthButton.addEventListener("click", () => {
+    animateCalendarButton(previousMonthButton);
     visibleMonth = shiftCalendarMonth(visibleMonth, -1);
     selectDateForMonth(getCalendarItems(), null);
-    renderCalendar();
+    transitionCalendar("month", renderCalendar);
   });
 
   nextMonthButton.addEventListener("click", () => {
+    animateCalendarButton(nextMonthButton);
     visibleMonth = shiftCalendarMonth(visibleMonth, 1);
     selectDateForMonth(getCalendarItems(), null);
-    renderCalendar();
+    transitionCalendar("month", renderCalendar);
   });
 
   renderCalendar();
@@ -3023,7 +3125,7 @@ function initBulletinPage() {
             selectedDateKey = createDateKey(parsedDate);
             status.textContent = "Event added to the community calendar.";
             status.className = "form-status is-success";
-            renderCalendar();
+            transitionCalendar("day", renderCalendar);
             showToast("Calendar event added.", "success");
             form.reset();
             const dateInput = $("[name='date']", form);
@@ -3151,9 +3253,32 @@ function initForumPage() {
   const status = $("[data-forum-status]");
   if (!tabs || !panel || !form) return;
 
+  const normalizeForumPost = (item, index) => {
+    const source = Object.hasOwn(forumSourceMeta, item?.source) ? item.source : "community";
+    const question = String(item?.question || "").trim();
+    const details = String(item?.details || item?.answer || "").trim();
+
+    return {
+      id: String(item?.id || `forum-${index}`),
+      title: String(item?.title || question || `Question ${index + 1}`)
+        .trim()
+        .slice(0, 28),
+      question,
+      details,
+      answer: String(item?.answer || details).trim(),
+      source,
+    };
+  };
+
+  const getPosts = () =>
+    [...forumSeed, ...safeRead(STORAGE_KEYS.forumPosts, localStorage, [])].map(normalizeForumPost);
+
   const render = (activeId) => {
-    const posts = [...forumSeed, ...safeRead(STORAGE_KEYS.forumPosts, localStorage, [])];
+    const posts = getPosts();
     const active = posts.find((item) => item.id === activeId) || posts[0];
+    const sourceMeta = forumSourceMeta[active.source] || forumSourceMeta.community;
+    const threadKey = `forum:${active.id}`;
+    const repliesEnabled = active.source === "community";
 
     tabs.innerHTML = posts
       .map(
@@ -3166,13 +3291,40 @@ function initForumPage() {
       .join("");
 
     panel.innerHTML = `
+      <div class="forum-panel__meta">
+        <span class="forum-source forum-source--${escapeHtml(active.source)}">${escapeHtml(sourceMeta.label)}</span>
+        <span class="forum-panel__meta-text">${escapeHtml(
+          sourceMeta.anonymous ? "Anonymous post" : repliesEnabled ? "Replies open" : "Read-only thread",
+        )}</span>
+      </div>
       <h2>${escapeHtml(active.question)}</h2>
       <p>${escapeHtml(active.answer || active.details)}</p>
+      ${
+        repliesEnabled
+          ? renderCommunityCommentBlock({
+              threadKey,
+              title: "Responses",
+              emptyText: "No replies yet. Add the first helpful response.",
+              submitLabel: "Post Reply",
+              placeholder: "Share a helpful answer, tip, or resource...",
+              defaultName: "Neighbor",
+            })
+          : `
+            <div class="forum-lock-note">
+              <p class="input-label">Replies</p>
+              <p>${escapeHtml(sourceMeta.note)}</p>
+            </div>
+          `
+      }
     `;
 
     $$("[data-forum-tab]", tabs).forEach((button) => {
       button.addEventListener("click", () => render(button.dataset.forumTab));
     });
+
+    if (repliesEnabled) {
+      bindCommunityCommentForms(panel, () => render(active.id));
+    }
   };
 
   render();
@@ -3185,6 +3337,8 @@ function initForumPage() {
       status.className = "form-status is-error";
       return;
     }
+
+    const source = Object.hasOwn(forumSourceMeta, data.source) ? data.source : "community";
     const posts = safeRead(STORAGE_KEYS.forumPosts, localStorage, []);
     const entry = {
       id: `post-${Date.now().toString(36)}`,
@@ -3193,11 +3347,18 @@ function initForumPage() {
       answer: String(
         data.details || "Community responses will appear here as neighbors contribute.",
       ).trim(),
+      details: String(data.details || "").trim(),
+      source,
     };
     posts.push(entry);
     safeWrite(STORAGE_KEYS.forumPosts, posts, localStorage);
     form.reset();
-    status.textContent = "Question posted to the forum.";
+    status.textContent =
+      source === "community"
+        ? "Community question posted. Replies are now open."
+        : source === "official"
+          ? "Public official post added anonymously."
+          : "Public question posted to the forum.";
     status.className = "form-status is-success";
     render(entry.id);
     showToast("Forum question posted.", "success");
@@ -3489,6 +3650,52 @@ function initMapReset() {
   }
 }
 
+function initScrollPrompt() {
+  if ($("[data-scroll-prompt]")) return;
+  const main = $("main");
+  if (!main) return;
+
+  const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const prompt = document.createElement("button");
+  prompt.type = "button";
+  prompt.className = "scroll-prompt";
+  prompt.dataset.scrollPrompt = "true";
+  prompt.setAttribute("aria-label", "Scroll down");
+  prompt.setAttribute("aria-hidden", "true");
+  prompt.innerHTML = '<span class="chevron-icon chevron-icon--down" aria-hidden="true"></span>';
+  document.body.appendChild(prompt);
+
+  const getScrollTarget = () => {
+    const sections = $$("main > section");
+    return sections.find((section) => section.getBoundingClientRect().top > 120) || sections[1] || sections[0];
+  };
+
+  const updatePrompt = () => {
+    const canScroll = document.documentElement.scrollHeight - window.innerHeight > 200;
+    const shouldShow = canScroll && window.scrollY < 60 && !document.body.classList.contains("nav-open");
+    prompt.classList.toggle("is-visible", shouldShow);
+    prompt.setAttribute("aria-hidden", shouldShow ? "false" : "true");
+  };
+
+  prompt.addEventListener("click", () => {
+    const target = getScrollTarget();
+    const fallbackTop = Math.max(window.innerHeight * 0.82, 360);
+    const top = target
+      ? Math.max(target.getBoundingClientRect().top + window.scrollY - 92, fallbackTop)
+      : fallbackTop;
+
+    window.scrollTo({
+      top,
+      behavior: prefersReducedMotion ? "auto" : "smooth",
+    });
+  });
+
+  const handleUpdate = () => requestAnimationFrame(updatePrompt);
+  window.addEventListener("scroll", handleUpdate, { passive: true });
+  window.addEventListener("resize", handleUpdate);
+  updatePrompt();
+}
+
 document.addEventListener("DOMContentLoaded", () => {
   safeInit(ensureModalRoot);
   safeInit(initPageTransitions);
@@ -3509,4 +3716,5 @@ document.addEventListener("DOMContentLoaded", () => {
   safeInit(initCommunityPage);
   safeInit(initModalForms);
   safeInit(initMapReset);
+  safeInit(initScrollPrompt);
 });
