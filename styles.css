@@ -249,6 +249,7 @@ button {
   padding: 8px 0;
   color: var(--np-ink);
   font-weight: 500;
+  white-space: nowrap;
 }
 
 .site-nav a::after {
