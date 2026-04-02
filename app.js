@@ -8,7 +8,15 @@ const STORAGE_KEYS = {
   communityComments: "np_community_comments_v1",
 };
 
-const activeWarnings = [];
+const activeWarnings = [
+  {
+    id: "bear-springfield-ave",
+    label: "Wildlife Alert",
+    title: "Bear sighting on Springfield Ave",
+    bannerText: "Bear sighting reported on Springfield Ave. Use caution and keep your distance.",
+    text: "A bear has been reported on Springfield Ave. Please avoid approaching wildlife, keep pets indoors, and contact the police department if the bear remains nearby.",
+  },
+];
 
 const liveUpdates = [
   "Library maker lab opens new fabrication slots this Friday.",
@@ -1561,35 +1569,58 @@ function initHeader() {
 function initWarningBanner() {
   const banner = $("[data-warning-banner]");
   const text = $("[data-warning-text]");
-  const alertsButton = $("[data-open-alerts]");
+  const alertsButtons = $$("[data-open-alerts]");
   if (!banner || !text) return;
 
-  if (!activeWarnings.length) {
+  const hasWarnings = activeWarnings.length > 0;
+  const openWarningsModal = () => {
+    if (!hasWarnings) {
+      openModal({
+        title: "Town Alerts",
+        body: `
+          <div class="alerts-modal alerts-modal--empty">
+            <p class="alerts-modal__lead">No active warnings right now.</p>
+            <p>You can still use the Support page to sign up for alert notifications.</p>
+          </div>
+        `,
+      });
+      return;
+    }
+
+    openModal({
+      title: "Town Alerts",
+      body: `
+        <div class="alerts-modal">
+          ${activeWarnings
+            .map(
+              (warning) => `
+                <article class="alerts-modal__item">
+                  <span class="alerts-modal__dot" aria-hidden="true"></span>
+                  <div class="alerts-modal__copy">
+                    <p class="alerts-modal__eyebrow">${escapeHtml(warning.label || "Active Town Alert")}</p>
+                    <h3>${escapeHtml(warning.title || warning.bannerText || warning.text)}</h3>
+                    <p>${escapeHtml(warning.text)}</p>
+                  </div>
+                </article>
+              `,
+            )
+            .join("")}
+        </div>
+      `,
+    });
+  };
+
+  alertsButtons.forEach((button) => {
+    button.classList.toggle("has-active-alerts", hasWarnings);
+    button.addEventListener("click", openWarningsModal);
+  });
+
+  if (!hasWarnings) {
     banner.classList.add("is-hidden");
   } else {
     banner.classList.remove("is-hidden");
-    text.textContent = activeWarnings[0].text;
-    banner.addEventListener("click", () => {
-      openModal({
-        title: "Active Town Alerts",
-        body: `<ul class="stack-list">${activeWarnings
-          .map((warning) => `<li>${escapeHtml(warning.text)}</li>`)
-          .join("")}</ul>`,
-      });
-    });
-  }
-
-  if (alertsButton) {
-    alertsButton.addEventListener("click", () => {
-      if (!activeWarnings.length) {
-        openModal({
-          title: "Town Alerts",
-          body: "<p>There are no active warnings right now. You can still use the Support page to sign up for alert notifications.</p>",
-        });
-        return;
-      }
-      banner.click();
-    });
+    text.textContent = activeWarnings[0].bannerText || activeWarnings[0].text;
+    banner.addEventListener("click", openWarningsModal);
   }
 }
 
